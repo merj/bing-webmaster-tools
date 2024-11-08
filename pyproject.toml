@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "bing-webmaster-tools"
-version = "1.0.1"
+version = "1.1.0"
 description = "Python wrapper for the Bing Webmaster Tools API"
 authors = [
     "Ryan Siddle <ryan.siddle@merj.com>",
