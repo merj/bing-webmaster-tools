@@ -1,5 +1,11 @@
 # Bing Webmaster Tools API Client
 
+[![PyPI version](https://img.shields.io/pypi/v/bing-webmaster-tools.svg)](https://pypi.org/project/bing-webmaster-tools/)
+[![Python versions](https://img.shields.io/pypi/pyversions/bing-webmaster-tools.svg)](https://pypi.org/project/bing-webmaster-tools/)
+[![License](https://img.shields.io/pypi/l/bing-webmaster-tools.svg)](https://github.com/merj/bing-webmaster-tools/blob/main/LICENSE)
+[![CI](https://github.com/merj/bing-webmaster-tools/actions/workflows/ci.yml/badge.svg)](https://github.com/merj/bing-webmaster-tools/actions/workflows/ci.yml)
+
+
 An async Python client library for the [Bing Webmaster Tools API](https://learn.microsoft.com/en-us/bingwebmaster/), providing a clean interface for managing websites, analyzing search traffic, handling content submissions, and more.
 
 ## Overview
