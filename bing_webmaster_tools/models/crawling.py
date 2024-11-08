@@ -15,6 +15,7 @@ class CrawlSettings(BingModel):
     @field_validator("crawl_rate")
     @classmethod
     def validate_crawl_rate(cls, v: List[int]) -> List[int]:
+        """Validate the crawl rate values are between 1 and 10."""
         if not all(1 <= x <= 10 for x in v):
             raise ValueError("All crawl rate values must be between 1 and 10")
         return v
