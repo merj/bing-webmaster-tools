@@ -1,0 +1,135 @@
+interactions:
+- request:
+    body: '{"siteUrl": "https://merj.dev", "url": "https://merj.dev/test-preview-example",
+      "reason": 4}'
+    headers:
+      Content-Type:
+      - application/json; charset=utf-8
+    method: POST
+    uri: https://ssl.bing.com/webmaster/api.svc/json/AddPagePreviewBlock
+  response:
+    body:
+      string: '{"d":null}'
+    headers:
+      Accept-CH:
+      - Sec-CH-UA-Arch, Sec-CH-UA-Bitness, Sec-CH-UA-Full-Version, Sec-CH-UA-Full-Version-List,
+        Sec-CH-UA-Mobile, Sec-CH-UA-Model, Sec-CH-UA-Platform, Sec-CH-UA-Platform-Version
+      Cache-Control:
+      - private
+      Content-Length:
+      - '10'
+      Content-Type:
+      - application/json; charset=utf-8
+      Date:
+      - Fri, 08 Nov 2024 10:32:56 GMT
+      X-AspNet-Version:
+      - 4.0.30319
+      X-Cache:
+      - CONFIG_NOCACHE
+      X-MSEdge-Ref:
+      - 'Ref A: FC2E34E492CB43C89A9C98A83451DA1E Ref B: SGN30EDGE0307 Ref C: 2024-11-08T10:32:56Z'
+      X-Powered-By:
+      - ASP.NET
+    status:
+      code: 200
+      message: OK
+- request:
+    body: null
+    headers:
+      Content-Type:
+      - application/json; charset=utf-8
+    method: GET
+    uri: https://ssl.bing.com/webmaster/api.svc/json/GetActivePagePreviewBlocks?siteUrl=https%3A%2F%2Fmerj.dev
+  response:
+    body:
+      string: '{"d":[{"__type":"PagePreview:#Microsoft.Bing.Webmaster.Shared.DataContracts","Action":0,"BlockReason":4,"Reason":"4","RefreshReason":0,"SiteUrl":"https:\/\/merj.dev\/","SubmitDate":"\/Date(1731061976719)\/","Url":"https:\/\/merj.dev\/test-preview-example","UserId":"E105EF16419561771CA3C4464704AF93"}]}'
+    headers:
+      Accept-CH:
+      - Sec-CH-UA-Arch, Sec-CH-UA-Bitness, Sec-CH-UA-Full-Version, Sec-CH-UA-Full-Version-List,
+        Sec-CH-UA-Mobile, Sec-CH-UA-Model, Sec-CH-UA-Platform, Sec-CH-UA-Platform-Version
+      Cache-Control:
+      - private
+      Content-Length:
+      - '302'
+      Content-Type:
+      - application/json; charset=utf-8
+      Date:
+      - Fri, 08 Nov 2024 10:32:57 GMT
+      X-AspNet-Version:
+      - 4.0.30319
+      X-Cache:
+      - CONFIG_NOCACHE
+      X-MSEdge-Ref:
+      - 'Ref A: 81302D24C1C14F1BA9CF4AA9268FC72B Ref B: SGN30EDGE0307 Ref C: 2024-11-08T10:32:56Z'
+      X-Powered-By:
+      - ASP.NET
+    status:
+      code: 200
+      message: OK
+- request:
+    body: '{"siteUrl": "https://merj.dev", "url": "https://merj.dev/test-preview-example"}'
+    headers:
+      Content-Type:
+      - application/json; charset=utf-8
+    method: POST
+    uri: https://ssl.bing.com/webmaster/api.svc/json/RemovePagePreviewBlock
+  response:
+    body:
+      string: '{"d":null}'
+    headers:
+      Accept-CH:
+      - Sec-CH-UA-Arch, Sec-CH-UA-Bitness, Sec-CH-UA-Full-Version, Sec-CH-UA-Full-Version-List,
+        Sec-CH-UA-Mobile, Sec-CH-UA-Model, Sec-CH-UA-Platform, Sec-CH-UA-Platform-Version
+      Cache-Control:
+      - private
+      Content-Length:
+      - '10'
+      Content-Type:
+      - application/json; charset=utf-8
+      Date:
+      - Fri, 08 Nov 2024 10:32:57 GMT
+      X-AspNet-Version:
+      - 4.0.30319
+      X-Cache:
+      - CONFIG_NOCACHE
+      X-MSEdge-Ref:
+      - 'Ref A: C4C6E9C681E3441FA9E072D4532E4537 Ref B: SGN30EDGE0307 Ref C: 2024-11-08T10:32:57Z'
+      X-Powered-By:
+      - ASP.NET
+    status:
+      code: 200
+      message: OK
+- request:
+    body: null
+    headers:
+      Content-Type:
+      - application/json; charset=utf-8
+    method: GET
+    uri: https://ssl.bing.com/webmaster/api.svc/json/GetActivePagePreviewBlocks?siteUrl=https%3A%2F%2Fmerj.dev
+  response:
+    body:
+      string: '{"d":[]}'
+    headers:
+      Accept-CH:
+      - Sec-CH-UA-Arch, Sec-CH-UA-Bitness, Sec-CH-UA-Full-Version, Sec-CH-UA-Full-Version-List,
+        Sec-CH-UA-Mobile, Sec-CH-UA-Model, Sec-CH-UA-Platform, Sec-CH-UA-Platform-Version
+      Cache-Control:
+      - private
+      Content-Length:
+      - '8'
+      Content-Type:
+      - application/json; charset=utf-8
+      Date:
+      - Fri, 08 Nov 2024 10:32:58 GMT
+      X-AspNet-Version:
+      - 4.0.30319
+      X-Cache:
+      - CONFIG_NOCACHE
+      X-MSEdge-Ref:
+      - 'Ref A: 09562F7B89F349A4BFC3BD8BF45476DB Ref B: SGN30EDGE0307 Ref C: 2024-11-08T10:32:58Z'
+      X-Powered-By:
+      - ASP.NET
+    status:
+      code: 200
+      message: OK
+version: 1

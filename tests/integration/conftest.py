@@ -1,6 +1,6 @@
 import asyncio
 import os
-from typing import AsyncGenerator
+from typing import Any, AsyncGenerator, Dict
 
 import pytest
 import pytest_asyncio
@@ -10,10 +10,30 @@ from bing_webmaster_tools import BingWebmasterClient, Settings
 
 load_dotenv(find_dotenv(raise_error_if_not_found=True))
 
-# logging.basicConfig(
-#     level=logging.INFO,
-#     format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
-# )
+
+@pytest.fixture(scope="session")
+def vcr_config() -> Dict[str, Any]:
+    """VCR configuration fixture."""
+    return {
+        # Filter out authorization headers and API keys
+        "filter_headers": ["authorization", "apikey", "user-agent", "x-request-origin", "cookie", "host"],
+        # Replace API key in query parameters
+        "filter_query_parameters": ["apikey"],
+        # Custom function to filter sensitive data from responses
+        # "before_record_response": lambda response: {
+        #     **response,
+        #     "body": {
+        #         # Filter sensitive fields from JSON responses
+        #         # Add more fields as needed
+        #         **response["body"],
+        #         "api_key": "[FILTERED]" if "api_key" in response["body"] else response["body"].get("api_key"),
+        #     }
+        # },
+        # We exclude headers and body because:
+        # - Headers contain API keys we want to ignore
+        # - The body might contain dynamic timestamps we don't want to match on
+        "match_on": ["method", "scheme", "host", "port", "path", "query", "body"],
+    }
 
 
 @pytest.fixture(scope="session", autouse=True)
@@ -39,10 +59,6 @@ def get_required_env_var(name: str) -> str:
     return value
 
 
-TEST_SITE = get_required_env_var("TEST_SITE_URL")
-LIVE_SITE = get_required_env_var("LIVE_SITE_URL")
-
-
 async def _verify_site(client: BingWebmasterClient, site_url: str) -> None:
     """Verify that a site is available in the account."""
     sites = await client.sites.get_sites()
@@ -54,13 +70,15 @@ async def _verify_site(client: BingWebmasterClient, site_url: str) -> None:
 @pytest_asyncio.fixture(scope="session")
 async def test_site(client: BingWebmasterClient) -> str:
     """Fixture providing a test site URL from the account."""
-    await _verify_site(client, TEST_SITE)
-    return TEST_SITE
+    site = get_required_env_var("BING_WEBMASTER_TEST_DEV_SITE")
+    await _verify_site(client, site)
+    return site.rstrip("/")
 
 
 @pytest_asyncio.fixture(scope="session")
 async def live_site(client: BingWebmasterClient) -> str:
     """Fixture providing a live site URL from the account."""
     # TODO: disallow destructive operations here
-    await _verify_site(client, LIVE_SITE)
-    return LIVE_SITE
+    site = get_required_env_var("BING_WEBMASTER_TEST_LIVE_SITE")
+    await _verify_site(client, site)
+    return site.rstrip("/")

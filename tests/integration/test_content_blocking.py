@@ -1,4 +1,4 @@
-from datetime import datetime
+from datetime import datetime, timezone
 
 import pytest
 
@@ -10,6 +10,7 @@ from bing_webmaster_tools.models.content_blocking import BlockedUrl, BlockReason
 class TestContentBlockingService:
     """Tests for the content blocking service."""
 
+    @pytest.mark.vcr
     async def test_get_blocked_urls(self, client: BingWebmasterClient, test_site: str):
         """Test retrieving blocked URLs."""
         blocked_urls = await client.blocking.get_blocked_urls(test_site)
@@ -21,15 +22,19 @@ class TestContentBlockingService:
             assert isinstance(blocked_url.entity_type, BlockedUrl.BlockedUrlEntityType)
             assert isinstance(blocked_url.request_type, BlockedUrl.BlockedUrlRequestType)
 
+    @pytest.mark.vcr
     async def test_block_url_lifecycle(self, client: BingWebmasterClient, test_site: str):
         """Test the complete lifecycle of blocking and unblocking a URL."""
-        test_url = f"{test_site}/test-block-{datetime.now().timestamp()}"
+        test_url = f"{test_site}/test-block-example"
+
+        fixed_date = datetime(2024, 1, 1, tzinfo=timezone.utc)
 
         # Add blocked URL
         await client.blocking.add_blocked_url(
             site_url=test_site,
             blocked_url=test_url,
             entity_type=BlockedUrl.BlockedUrlEntityType.PAGE,
+            date=fixed_date,
         )
 
         # Verify URL is blocked
@@ -43,15 +48,17 @@ class TestContentBlockingService:
             site_url=test_site,
             blocked_url=test_url,
             entity_type=BlockedUrl.BlockedUrlEntityType.PAGE,
+            date=fixed_date,
         )
 
         # Verify URL is no longer blocked
         blocked_urls = await client.blocking.get_blocked_urls(test_site)
         assert not any(u.url == test_url for u in blocked_urls)
 
+    @pytest.mark.vcr
     async def test_page_preview_block_lifecycle(self, client: BingWebmasterClient, test_site: str):
         """Test the complete lifecycle of page preview blocking."""
-        test_url = f"{test_site}/test-preview-{datetime.now().timestamp()}"
+        test_url = f"{test_site}/test-preview-example"
 
         # Add preview block
         await client.blocking.add_page_preview_block(site_url=test_site, url=test_url, reason=BlockReason.OTHER)
@@ -73,6 +80,7 @@ class TestContentBlockingService:
         "entity_type",
         [BlockedUrl.BlockedUrlEntityType.PAGE, BlockedUrl.BlockedUrlEntityType.DIRECTORY],
     )
+    @pytest.mark.vcr
     async def test_block_url_with_different_entity_types(
         self,
         client: BingWebmasterClient,
@@ -80,11 +88,23 @@ class TestContentBlockingService:
         entity_type: BlockedUrl.BlockedUrlEntityType,
     ):
         """Test blocking URLs with different entity types."""
-        test_url = f"{test_site}test-block-{entity_type.name.lower()}-{datetime.now().timestamp()}"
+        fixed_date = datetime(2024, 1, 1, tzinfo=timezone.utc)
+        # Add trailing slash for directory type
+        # (the API returns it with a trailing slash for some reason)
+        test_url = (
+            f"{test_site}/test-block-{entity_type.name.lower()}"
+            if entity_type == BlockedUrl.BlockedUrlEntityType.PAGE
+            else f"{test_site}/test-block-{entity_type.name.lower()}/"
+        )
 
         try:
             # Add blocked URL
-            await client.blocking.add_blocked_url(site_url=test_site, blocked_url=test_url, entity_type=entity_type)
+            await client.blocking.add_blocked_url(
+                site_url=test_site,
+                blocked_url=test_url,
+                entity_type=entity_type,
+                date=fixed_date,
+            )
 
             # Verify URL is blocked with correct entity type
             blocked_urls = await client.blocking.get_blocked_urls(test_site)
@@ -94,4 +114,9 @@ class TestContentBlockingService:
 
         finally:
             # Cleanup
-            await client.blocking.remove_blocked_url(site_url=test_site, blocked_url=test_url, entity_type=entity_type)
+            await client.blocking.remove_blocked_url(
+                site_url=test_site,
+                blocked_url=test_url,
+                entity_type=entity_type,
+                date=fixed_date,
+            )

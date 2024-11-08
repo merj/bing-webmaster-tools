@@ -1,0 +1,105 @@
+interactions:
+- request:
+    body: '{"siteUrl": "https://merj.dev", "blockedUrl": {"__type": "BlockedUrl:#Microsoft.Bing.Webmaster.Api",
+      "Date": "/Date(1704067200000+0000)/", "EntityType": 0, "RequestType": 0, "Url":
+      "https://merj.dev/test-block-page"}}'
+    headers:
+      Content-Type:
+      - application/json; charset=utf-8
+    method: POST
+    uri: https://ssl.bing.com/webmaster/api.svc/json/AddBlockedUrl
+  response:
+    body:
+      string: '{"d":null}'
+    headers:
+      Accept-CH:
+      - Sec-CH-UA-Arch, Sec-CH-UA-Bitness, Sec-CH-UA-Full-Version, Sec-CH-UA-Full-Version-List,
+        Sec-CH-UA-Mobile, Sec-CH-UA-Model, Sec-CH-UA-Platform, Sec-CH-UA-Platform-Version
+      Cache-Control:
+      - private
+      Content-Length:
+      - '10'
+      Content-Type:
+      - application/json; charset=utf-8
+      Date:
+      - Fri, 08 Nov 2024 10:32:58 GMT
+      X-AspNet-Version:
+      - 4.0.30319
+      X-Cache:
+      - CONFIG_NOCACHE
+      X-MSEdge-Ref:
+      - 'Ref A: DFA0CDEBE83D482F85CF25AAEDCF5A04 Ref B: SGN30EDGE0307 Ref C: 2024-11-08T10:32:58Z'
+      X-Powered-By:
+      - ASP.NET
+    status:
+      code: 200
+      message: OK
+- request:
+    body: null
+    headers:
+      Content-Type:
+      - application/json; charset=utf-8
+    method: GET
+    uri: https://ssl.bing.com/webmaster/api.svc/json/GetBlockedUrls?siteUrl=https%3A%2F%2Fmerj.dev
+  response:
+    body:
+      string: '{"d":[{"__type":"BlockedUrl:#Microsoft.Bing.Webmaster.Api","Date":"\/Date(1730173887265)\/","DaysToExpire":80,"EntityType":0,"RequestType":0,"Url":"https:\/\/merj.dev\/\/test-block-1730173886.947705"},{"__type":"BlockedUrl:#Microsoft.Bing.Webmaster.Api","Date":"\/Date(1730797669445)\/","DaysToExpire":87,"EntityType":1,"RequestType":0,"Url":"https:\/\/merj.dev\/test-block-directory-1730797669.062881\/"},{"__type":"BlockedUrl:#Microsoft.Bing.Webmaster.Api","Date":"\/Date(1731061979094)\/","DaysToExpire":90,"EntityType":0,"RequestType":0,"Url":"https:\/\/merj.dev\/test-block-page"},{"__type":"BlockedUrl:#Microsoft.Bing.Webmaster.Api","Date":"\/Date(1730794076085)\/","DaysToExpire":87,"EntityType":1,"RequestType":0,"Url":"https:\/\/merj.dev\/test-block-directory-1730794075.535982\/"},{"__type":"BlockedUrl:#Microsoft.Bing.Webmaster.Api","Date":"\/Date(1730173674007)\/","DaysToExpire":80,"EntityType":0,"RequestType":0,"Url":"https:\/\/merj.dev\/\/test-block-1730173673.697091"},{"__type":"BlockedUrl:#Microsoft.Bing.Webmaster.Api","Date":"\/Date(1730794102834)\/","DaysToExpire":87,"EntityType":1,"RequestType":0,"Url":"https:\/\/merj.dev\/test-block-directory-1730794102.346603\/"},{"__type":"BlockedUrl:#Microsoft.Bing.Webmaster.Api","Date":"\/Date(1730173868174)\/","DaysToExpire":80,"EntityType":0,"RequestType":0,"Url":"https:\/\/merj.dev\/\/test-block-1730173867.881925"},{"__type":"BlockedUrl:#Microsoft.Bing.Webmaster.Api","Date":"\/Date(1730173944074)\/","DaysToExpire":80,"EntityType":0,"RequestType":0,"Url":"https:\/\/merj.dev\/\/test-block-1730173943.760593"},{"__type":"BlockedUrl:#Microsoft.Bing.Webmaster.Api","Date":"\/Date(1730174130189)\/","DaysToExpire":80,"EntityType":1,"RequestType":0,"Url":"https:\/\/merj.dev\/\/test-block-directory-1730174129.865993\/"}]}'
+    headers:
+      Accept-CH:
+      - Sec-CH-UA-Arch, Sec-CH-UA-Bitness, Sec-CH-UA-Full-Version, Sec-CH-UA-Full-Version-List,
+        Sec-CH-UA-Mobile, Sec-CH-UA-Model, Sec-CH-UA-Platform, Sec-CH-UA-Platform-Version
+      Cache-Control:
+      - private
+      Content-Length:
+      - '1789'
+      Content-Type:
+      - application/json; charset=utf-8
+      Date:
+      - Fri, 08 Nov 2024 10:32:59 GMT
+      X-AspNet-Version:
+      - 4.0.30319
+      X-Cache:
+      - CONFIG_NOCACHE
+      X-MSEdge-Ref:
+      - 'Ref A: 0D1B5E02789D43D6B094F8BAE4DA8634 Ref B: SGN30EDGE0307 Ref C: 2024-11-08T10:32:59Z'
+      X-Powered-By:
+      - ASP.NET
+    status:
+      code: 200
+      message: OK
+- request:
+    body: '{"siteUrl": "https://merj.dev", "blockedUrl": {"__type": "BlockedUrl:#Microsoft.Bing.Webmaster.Api",
+      "Date": "/Date(1704067200000+0000)/", "EntityType": 0, "RequestType": 1, "Url":
+      "https://merj.dev/test-block-page"}}'
+    headers:
+      Content-Type:
+      - application/json; charset=utf-8
+    method: POST
+    uri: https://ssl.bing.com/webmaster/api.svc/json/RemoveBlockedUrl
+  response:
+    body:
+      string: '{"d":null}'
+    headers:
+      Accept-CH:
+      - Sec-CH-UA-Arch, Sec-CH-UA-Bitness, Sec-CH-UA-Full-Version, Sec-CH-UA-Full-Version-List,
+        Sec-CH-UA-Mobile, Sec-CH-UA-Model, Sec-CH-UA-Platform, Sec-CH-UA-Platform-Version
+      Cache-Control:
+      - private
+      Content-Length:
+      - '10'
+      Content-Type:
+      - application/json; charset=utf-8
+      Date:
+      - Fri, 08 Nov 2024 10:33:00 GMT
+      X-AspNet-Version:
+      - 4.0.30319
+      X-Cache:
+      - CONFIG_NOCACHE
+      X-MSEdge-Ref:
+      - 'Ref A: 7A9693FBF5994F4D854EB1BD476F0139 Ref B: SGN30EDGE0307 Ref C: 2024-11-08T10:32:59Z'
+      X-Powered-By:
+      - ASP.NET
+    status:
+      code: 200
+      message: OK
+version: 1
