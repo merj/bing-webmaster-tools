@@ -1,6 +1,6 @@
 import logging
-from datetime import datetime
-from typing import List
+from datetime import datetime, timezone
+from typing import List, Optional
 
 from pydantic import validate_call
 
@@ -58,6 +58,7 @@ class ContentBlockingService:
         site_url: str,
         blocked_url: str,
         entity_type: BlockedUrl.BlockedUrlEntityType = BlockedUrl.BlockedUrlEntityType.PAGE,
+        date: Optional[datetime] = None,
     ) -> None:
         """Add a blocked URL to a site.
 
@@ -73,9 +74,9 @@ class ContentBlockingService:
         """
         self._logger.debug(f"Adding blocked URL: {blocked_url}")
 
+        # The API seems to always ignore the date field, so we make it optional
         blocked_url_data = BlockedUrl(
-            # The API seems to always ignore the date field
-            date=datetime.now(),
+            date=date or datetime.now(timezone.utc),
             entity_type=entity_type,
             request_type=BlockedUrl.BlockedUrlRequestType.ADD,
             url=blocked_url,
@@ -92,6 +93,7 @@ class ContentBlockingService:
         site_url: str,
         blocked_url: str,
         entity_type: BlockedUrl.BlockedUrlEntityType = BlockedUrl.BlockedUrlEntityType.PAGE,
+        date: Optional[datetime] = None,
     ) -> None:
         """Remove a blocked URL from a site.
 
@@ -99,6 +101,7 @@ class ContentBlockingService:
             site_url: The URL of the site
             blocked_url: The URL to be unblocked
             entity_type: The type of entity to unblock (Page or Directory)
+            date: The date the URL was blocked
 
         Raises:
             BingWebmasterError: If URL cannot be unblocked
@@ -106,9 +109,9 @@ class ContentBlockingService:
         """
         self._logger.debug(f"Removing blocked URL: {blocked_url}")
 
+        # The API seems to always ignore the date field, so we make it optional
         blocked_url_data = BlockedUrl(
-            # The API seems to always ignore the date field
-            date=datetime.now(),
+            date=date or datetime.now(timezone.utc),
             entity_type=entity_type,
             request_type=BlockedUrl.BlockedUrlRequestType.REMOVE,
             url=blocked_url,
