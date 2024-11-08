@@ -77,7 +77,10 @@ class CrawlingService:
         }
         await self._client.request("POST", "SaveCrawlSettings", data=data)
 
-        if crawl_settings_model.crawl_boost_available is True or crawl_settings_model.crawl_boost_enabled is True:
+        if (
+            crawl_settings_model.crawl_boost_available is True
+            or crawl_settings_model.crawl_boost_enabled is True
+        ):
             # Validate that crawl boost settings are available for the site
             settings = await self.get_crawl_settings(site_url)
 

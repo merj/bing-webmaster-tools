@@ -218,8 +218,9 @@ class BingWebmasterClient:
             )
 
         """
-
-        if self.settings.disable_destructive_operations and self._is_destructive_operation(method, endpoint):
+        if self.settings.disable_destructive_operations and self._is_destructive_operation(
+            method, endpoint
+        ):
             raise BingWebmasterError(
                 "Destructive operations are disabled. Set 'disable_destructive_operations' to False."
             )
