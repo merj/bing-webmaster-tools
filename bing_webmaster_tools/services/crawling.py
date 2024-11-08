@@ -75,17 +75,18 @@ class CrawlingService:
             "siteUrl": site_url,
             "crawlSettings": crawl_settings_model.model_dump(by_alias=True),
         }
+        await self._client.request("POST", "SaveCrawlSettings", data=data)
 
-        if crawl_settings.crawl_boost_available is True or crawl_settings.crawl_boost_enabled is True:
+        if crawl_settings_model.crawl_boost_available is True or crawl_settings_model.crawl_boost_enabled is True:
             # Validate that crawl boost settings are available for the site
             settings = await self.get_crawl_settings(site_url)
 
-            if settings.crawl_boost_available != crawl_settings.crawl_boost_available:
+            if settings.crawl_boost_available != crawl_settings_model.crawl_boost_available:
                 self._logger.warning(
                     "Crawl boost available setting was not saved because it is not available for this site."
                 )
 
-            if settings.crawl_boost_enabled != crawl_settings.crawl_boost_enabled:
+            if settings.crawl_boost_enabled != crawl_settings_model.crawl_boost_enabled:
                 self._logger.warning(
                     "Crawl boost enabled setting was not saved because it is not available for this site."
                 )
