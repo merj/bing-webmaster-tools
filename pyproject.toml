@@ -74,7 +74,7 @@ warn_required_dynamic_aliases = true
 
 [tool.ruff]
 target-version = "py39"
-line-length = 100
+line-length = 120
 
 [tool.ruff.lint]
 select = ["E", "F", "B", "I", "W", "C", "D"]
