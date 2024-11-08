@@ -74,13 +74,8 @@ class BingWebmasterClient:
         self.settings = settings
         self._rate_limiter: Optional[RateLimiter] = None
 
-        if (
-            self.settings.rate_limit_calls is not None
-            and self.settings.rate_limit_period is not None
-        ):
-            self._rate_limiter = RateLimiter(
-                self.settings.rate_limit_calls, self.settings.rate_limit_period
-            )
+        if self.settings.rate_limit_calls is not None and self.settings.rate_limit_period is not None:
+            self._rate_limiter = RateLimiter(self.settings.rate_limit_calls, self.settings.rate_limit_period)
 
         # The retry config waits for 1s, 2s, 4s
         self._retry_decorator = get_retry_decorator(
@@ -218,9 +213,7 @@ class BingWebmasterClient:
             )
 
         """
-        if self.settings.disable_destructive_operations and self._is_destructive_operation(
-            method, endpoint
-        ):
+        if self.settings.disable_destructive_operations and self._is_destructive_operation(method, endpoint):
             raise BingWebmasterError(
                 "Destructive operations are disabled. Set 'disable_destructive_operations' to False."
             )
@@ -378,16 +371,12 @@ class BingWebmasterClient:
             error_message = error_data.get("Message", content)
 
             if error_code == ApiErrorCode.INVALID_API_KEY:
-                raise AuthenticationError(
-                    error_message, status_code=status_code, error_code=error_code
-                )
+                raise AuthenticationError(error_message, status_code=status_code, error_code=error_code)
 
             if error_code in {ApiErrorCode.THROTTLE_USER, ApiErrorCode.THROTTLE_HOST}:
                 raise RateLimitError(error_message, status_code=status_code, error_code=error_code)
 
-            raise BingWebmasterError(
-                message=error_message, status_code=status_code, error_code=error_code
-            )
+            raise BingWebmasterError(message=error_message, status_code=status_code, error_code=error_code)
         else:
             raise BingWebmasterError(
                 message=f"Invalid error response format. Raw content: {content}",

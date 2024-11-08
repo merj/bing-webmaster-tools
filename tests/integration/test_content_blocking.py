@@ -54,9 +54,7 @@ class TestContentBlockingService:
         test_url = f"{test_site}/test-preview-{datetime.now().timestamp()}"
 
         # Add preview block
-        await client.blocking.add_page_preview_block(
-            site_url=test_site, url=test_url, reason=BlockReason.OTHER
-        )
+        await client.blocking.add_page_preview_block(site_url=test_site, url=test_url, reason=BlockReason.OTHER)
 
         # Verify block exists
         preview_blocks = await client.blocking.get_active_page_preview_blocks(test_site)
@@ -86,9 +84,7 @@ class TestContentBlockingService:
 
         try:
             # Add blocked URL
-            await client.blocking.add_blocked_url(
-                site_url=test_site, blocked_url=test_url, entity_type=entity_type
-            )
+            await client.blocking.add_blocked_url(site_url=test_site, blocked_url=test_url, entity_type=entity_type)
 
             # Verify URL is blocked with correct entity type
             blocked_urls = await client.blocking.get_blocked_urls(test_site)
@@ -98,6 +94,4 @@ class TestContentBlockingService:
 
         finally:
             # Cleanup
-            await client.blocking.remove_blocked_url(
-                site_url=test_site, blocked_url=test_url, entity_type=entity_type
-            )
+            await client.blocking.remove_blocked_url(site_url=test_site, blocked_url=test_url, entity_type=entity_type)

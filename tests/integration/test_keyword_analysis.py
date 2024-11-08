@@ -16,9 +16,7 @@ class TestKeywordAnalysisService:
         country = "us"
         language = "en-US"
 
-        stats = await client.keywords.get_keyword_stats(
-            query=test_query, country=country, language=language
-        )
+        stats = await client.keywords.get_keyword_stats(query=test_query, country=country, language=language)
 
         assert isinstance(stats, list)
         if stats:  # If there are any stats
@@ -86,15 +84,11 @@ class TestKeywordAnalysisService:
             ("au", "en-AU"),
         ],
     )
-    async def test_keyword_stats_different_locales(
-        self, client, test_site, country: str, language: str
-    ):
+    async def test_keyword_stats_different_locales(self, client, test_site, country: str, language: str):
         """Test keyword stats with different country/language combinations."""
         test_query = "python"
 
-        stats = await client.keywords.get_keyword_stats(
-            query=test_query, country=country, language=language
-        )
+        stats = await client.keywords.get_keyword_stats(query=test_query, country=country, language=language)
 
         assert isinstance(stats, list)
         # Note: Some locales might not have data, so we don't assert length
@@ -133,9 +127,7 @@ class TestKeywordAnalysisService:
         language = "en-US"
 
         for query in test_queries:
-            stats = await client.keywords.get_keyword_stats(
-                query=query, country=country, language=language
-            )
+            stats = await client.keywords.get_keyword_stats(query=query, country=country, language=language)
             assert isinstance(stats, list)
 
     async def test_invalid_date_range(self, client, test_site):

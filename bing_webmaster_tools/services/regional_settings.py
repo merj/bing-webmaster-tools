@@ -45,21 +45,15 @@ class RegionalSettingsService:
 
         """
         self._logger.debug(f"Retrieving country/region settings for {site_url}")
-        response = await self._client.request(
-            "GET", "GetCountryRegionSettings", params={"siteUrl": site_url}
-        )
+        response = await self._client.request("GET", "GetCountryRegionSettings", params={"siteUrl": site_url})
 
-        api_response = ApiResponse.from_api_response(
-            response=response, model=CountryRegionSettings, is_list=True
-        )
+        api_response = ApiResponse.from_api_response(response=response, model=CountryRegionSettings, is_list=True)
 
         self._logger.info(f"Retrieved {len(api_response.data)} country/region settings")
         return api_response.data
 
     @validate_call
-    async def add_country_region_settings(
-        self, site_url: str, settings: ModelLike[CountryRegionSettings]
-    ) -> None:
+    async def add_country_region_settings(self, site_url: str, settings: ModelLike[CountryRegionSettings]) -> None:
         """Add country/region settings for a specific site.
 
         Args:
@@ -81,9 +75,7 @@ class RegionalSettingsService:
         self._logger.info("Successfully added country/region settings")
 
     @validate_call
-    async def remove_country_region_settings(
-        self, site_url: str, settings: ModelLike[CountryRegionSettings]
-    ) -> None:
+    async def remove_country_region_settings(self, site_url: str, settings: ModelLike[CountryRegionSettings]) -> None:
         """Remove country/region settings from a specific site.
 
         Args:

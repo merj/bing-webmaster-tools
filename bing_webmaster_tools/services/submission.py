@@ -79,9 +79,7 @@ class SubmissionService:
             raise ValueError("Cannot submit more than 500 URLs in one batch")
 
         self._logger.debug(f"Submitting batch of {len(url_list)} URLs")
-        await self._client.request(
-            "POST", "SubmitUrlBatch", data={"siteUrl": site_url, "urlList": url_list}
-        )
+        await self._client.request("POST", "SubmitUrlBatch", data={"siteUrl": site_url, "urlList": url_list})
         self._logger.info(f"Successfully submitted {len(url_list)} URLs")
 
     @validate_call
@@ -99,9 +97,7 @@ class SubmissionService:
 
         """
         self._logger.debug(f"Retrieving URL submission quota for {site_url}")
-        response = await self._client.request(
-            "GET", "GetUrlSubmissionQuota", params={"siteUrl": site_url}
-        )
+        response = await self._client.request("GET", "GetUrlSubmissionQuota", params={"siteUrl": site_url})
 
         api_response = ApiResponse.from_api_response(response=response, model=UrlSubmissionQuota)
 
@@ -123,13 +119,9 @@ class SubmissionService:
 
         """
         self._logger.debug(f"Retrieving content submission quota for {site_url}")
-        response = await self._client.request(
-            "GET", "GetContentSubmissionQuota", params={"siteUrl": site_url}
-        )
+        response = await self._client.request("GET", "GetContentSubmissionQuota", params={"siteUrl": site_url})
 
-        api_response = ApiResponse.from_api_response(
-            response=response, model=ContentSubmissionQuota
-        )
+        api_response = ApiResponse.from_api_response(response=response, model=ContentSubmissionQuota)
 
         self._logger.info(f"Retrieved content submission quota for {site_url}")
         return api_response.data
@@ -147,9 +139,7 @@ class SubmissionService:
 
         """
         self._logger.debug(f"Submitting feed: {feed_url}")
-        await self._client.request(
-            "POST", "SubmitFeed", data={"siteUrl": site_url, "feedUrl": feed_url}
-        )
+        await self._client.request("POST", "SubmitFeed", data={"siteUrl": site_url, "feedUrl": feed_url})
         self._logger.info(f"Successfully submitted feed: {feed_url}")
 
     @validate_call
@@ -165,9 +155,7 @@ class SubmissionService:
 
         """
         self._logger.debug(f"Removing feed: {feed_url}")
-        await self._client.request(
-            "POST", "RemoveFeed", data={"siteUrl": site_url, "feedUrl": feed_url}
-        )
+        await self._client.request("POST", "RemoveFeed", data={"siteUrl": site_url, "feedUrl": feed_url})
         self._logger.info(f"Successfully removed feed: {feed_url}")
 
     @validate_call
@@ -250,9 +238,7 @@ class SubmissionService:
         self._logger.debug(f"Retrieving fetched URLs for {site_url}")
         response = await self._client.request("GET", "GetFetchedUrls", params={"siteUrl": site_url})
 
-        api_response = ApiResponse.from_api_response(
-            response=response, model=FetchedUrl, is_list=True
-        )
+        api_response = ApiResponse.from_api_response(response=response, model=FetchedUrl, is_list=True)
 
         self._logger.info(f"Retrieved {len(api_response.data)} fetched URLs")
         return api_response.data
@@ -273,9 +259,7 @@ class SubmissionService:
 
         """
         self._logger.debug(f"Retrieving fetch details for URL: {url}")
-        response = await self._client.request(
-            "GET", "GetFetchedUrlDetails", params={"siteUrl": site_url, "url": url}
-        )
+        response = await self._client.request("GET", "GetFetchedUrlDetails", params={"siteUrl": site_url, "url": url})
 
         api_response = ApiResponse.from_api_response(response=response, model=FetchedUrlDetails)
 

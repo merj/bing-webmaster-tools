@@ -47,9 +47,7 @@ class ContentBlockingService:
         self._logger.debug(f"Retrieving blocked URLs for {site_url}")
         response = await self._client.request("GET", "GetBlockedUrls", params={"siteUrl": site_url})
 
-        api_response = ApiResponse.from_api_response(
-            response=response, model=BlockedUrl, is_list=True
-        )
+        api_response = ApiResponse.from_api_response(response=response, model=BlockedUrl, is_list=True)
 
         self._logger.info(f"Retrieved {len(api_response.data)} blocked URLs")
         return api_response.data
@@ -136,13 +134,9 @@ class ContentBlockingService:
 
         """
         self._logger.debug(f"Retrieving page preview blocks for {site_url}")
-        response = await self._client.request(
-            "GET", "GetActivePagePreviewBlocks", params={"siteUrl": site_url}
-        )
+        response = await self._client.request("GET", "GetActivePagePreviewBlocks", params={"siteUrl": site_url})
 
-        api_response = ApiResponse.from_api_response(
-            response=response, model=PagePreview, is_list=True
-        )
+        api_response = ApiResponse.from_api_response(response=response, model=PagePreview, is_list=True)
 
         self._logger.info(f"Retrieved {len(api_response.data)} page preview blocks")
         return api_response.data

@@ -46,9 +46,7 @@ class CrawlingService:
 
         """
         self._logger.debug(f"Retrieving crawl settings for {site_url}")
-        response = await self._client.request(
-            "GET", "GetCrawlSettings", params={"siteUrl": site_url}
-        )
+        response = await self._client.request("GET", "GetCrawlSettings", params={"siteUrl": site_url})
 
         api_response = ApiResponse.from_api_response(response=response, model=CrawlSettings)
 
@@ -56,9 +54,7 @@ class CrawlingService:
         return api_response.data
 
     @validate_call
-    async def save_crawl_settings(
-        self, site_url: str, crawl_settings: ModelLike[CrawlSettings]
-    ) -> None:
+    async def save_crawl_settings(self, site_url: str, crawl_settings: ModelLike[CrawlSettings]) -> None:
         """Save new crawl settings for a specific site.
 
         Args:
@@ -77,10 +73,7 @@ class CrawlingService:
         }
         await self._client.request("POST", "SaveCrawlSettings", data=data)
 
-        if (
-            crawl_settings_model.crawl_boost_available is True
-            or crawl_settings_model.crawl_boost_enabled is True
-        ):
+        if crawl_settings_model.crawl_boost_available is True or crawl_settings_model.crawl_boost_enabled is True:
             # Validate that crawl boost settings are available for the site
             settings = await self.get_crawl_settings(site_url)
 
@@ -97,9 +90,7 @@ class CrawlingService:
         self._logger.info(f"Successfully saved crawl settings for {site_url}")
 
     @validate_call
-    async def get_crawl_stats(
-        self, site_url: str, start_date: datetime, end_date: datetime
-    ) -> List[CrawlStats]:
+    async def get_crawl_stats(self, site_url: str, start_date: datetime, end_date: datetime) -> List[CrawlStats]:
         """Retrieve crawl statistics for a specific site within a date range.
 
         Args:
@@ -114,10 +105,7 @@ class CrawlingService:
             BingWebmasterError: If statistics cannot be retrieved
 
         """
-        self._logger.debug(
-            f"Retrieving crawl stats for {site_url} "
-            f"from {start_date.date()} to {end_date.date()}"
-        )
+        self._logger.debug(f"Retrieving crawl stats for {site_url} " f"from {start_date.date()} to {end_date.date()}")
 
         params = {
             "siteUrl": site_url,
@@ -127,9 +115,7 @@ class CrawlingService:
 
         response = await self._client.request("GET", "GetCrawlStats", params=params)
 
-        api_response = ApiResponse.from_api_response(
-            response=response, model=CrawlStats, is_list=True
-        )
+        api_response = ApiResponse.from_api_response(response=response, model=CrawlStats, is_list=True)
 
         self._logger.info(f"Retrieved {len(api_response.data)} days of crawl statistics")
         return api_response.data
@@ -154,9 +140,7 @@ class CrawlingService:
         self._logger.debug(f"Retrieving crawl issues for {site_url}")
         response = await self._client.request("GET", "GetCrawlIssues", params={"siteUrl": site_url})
 
-        api_response = ApiResponse.from_api_response(
-            response=response, model=UrlWithCrawlIssues, is_list=True
-        )
+        api_response = ApiResponse.from_api_response(response=response, model=UrlWithCrawlIssues, is_list=True)
 
         self._logger.info(f"Retrieved {len(api_response.data)} URLs with crawl issues")
         return api_response.data

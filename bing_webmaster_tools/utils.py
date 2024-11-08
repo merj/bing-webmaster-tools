@@ -84,9 +84,7 @@ def to_model_instance(input_params: Any, model_cls: Type[TModel]) -> TModel:
     if isinstance(params, dict):
         return model_cls(**params)
 
-    raise ValueError(
-        f"The 'params' property should be an instance of {model_cls.__name__} or a dictionary."
-    )
+    raise ValueError(f"The 'params' property should be an instance of {model_cls.__name__} or a dictionary.")
 
 
 P = ParamSpec("P")
@@ -113,9 +111,7 @@ def deprecated(
     def decorator(func: Callable[P, Awaitable[T]]) -> Callable[P, Awaitable[T]]:
         @functools.wraps(func)
         async def wrapper(*args: P.args, **kwargs: P.kwargs) -> T:
-            warning_message = (
-                message or f"{func.__name__} is deprecated and will be removed in a future version."
-            )
+            warning_message = message or f"{func.__name__} is deprecated and will be removed in a future version."
             warnings.warn(warning_message, DeprecationWarning, stacklevel=2)
             logger.warning(f"Called deprecated method {func.__name__}: {warning_message}")
             return await func(*args, **kwargs)

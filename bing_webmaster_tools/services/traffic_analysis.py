@@ -51,9 +51,7 @@ class TrafficAnalysisService:
         self._logger.debug(f"Retrieving page stats for {site_url}")
         response = await self._client.request("GET", "GetPageStats", params={"siteUrl": site_url})
 
-        api_response = ApiResponse.from_api_response(
-            response=response, model=QueryStats, is_list=True
-        )
+        api_response = ApiResponse.from_api_response(response=response, model=QueryStats, is_list=True)
 
         self._logger.info(f"Retrieved stats for {len(api_response.data)} pages")
         return api_response.data
@@ -74,13 +72,9 @@ class TrafficAnalysisService:
 
         """
         self._logger.debug(f"Retrieving query stats for page {page}")
-        response = await self._client.request(
-            "GET", "GetPageQueryStats", params={"siteUrl": site_url, "page": page}
-        )
+        response = await self._client.request("GET", "GetPageQueryStats", params={"siteUrl": site_url, "page": page})
 
-        api_response = ApiResponse.from_api_response(
-            response=response, model=QueryStats, is_list=True
-        )
+        api_response = ApiResponse.from_api_response(response=response, model=QueryStats, is_list=True)
 
         self._logger.info(f"Retrieved {len(api_response.data)} query stats for page {page}")
         return api_response.data
@@ -102,9 +96,7 @@ class TrafficAnalysisService:
         self._logger.debug(f"Retrieving query stats for {site_url}")
         response = await self._client.request("GET", "GetQueryStats", params={"siteUrl": site_url})
 
-        api_response = ApiResponse.from_api_response(
-            response=response, model=QueryStats, is_list=True
-        )
+        api_response = ApiResponse.from_api_response(response=response, model=QueryStats, is_list=True)
 
         self._logger.info(f"Retrieved stats for {len(api_response.data)} queries")
         return api_response.data
@@ -125,21 +117,15 @@ class TrafficAnalysisService:
 
         """
         self._logger.debug(f"Retrieving page stats for query: {query}")
-        response = await self._client.request(
-            "GET", "GetQueryPageStats", params={"siteUrl": site_url, "query": query}
-        )
+        response = await self._client.request("GET", "GetQueryPageStats", params={"siteUrl": site_url, "query": query})
 
-        api_response = ApiResponse.from_api_response(
-            response=response, model=QueryStats, is_list=True
-        )
+        api_response = ApiResponse.from_api_response(response=response, model=QueryStats, is_list=True)
 
         self._logger.info(f"Retrieved {len(api_response.data)} page stats for query: {query}")
         return api_response.data
 
     @validate_call
-    async def get_query_page_detail_stats(
-        self, site_url: str, query: str, page: str
-    ) -> List[DetailedQueryStats]:
+    async def get_query_page_detail_stats(self, site_url: str, query: str, page: str) -> List[DetailedQueryStats]:
         """Get detailed statistics for a specific query and page combination.
 
         Args:
@@ -161,9 +147,7 @@ class TrafficAnalysisService:
             params={"siteUrl": site_url, "query": query, "page": page},
         )
 
-        api_response = ApiResponse.from_api_response(
-            response=response, model=DetailedQueryStats, is_list=True
-        )
+        api_response = ApiResponse.from_api_response(response=response, model=DetailedQueryStats, is_list=True)
 
         self._logger.info(f"Retrieved {len(api_response.data)} detailed stats")
         return api_response.data
@@ -183,13 +167,9 @@ class TrafficAnalysisService:
 
         """
         self._logger.debug(f"Retrieving rank and traffic stats for {site_url}")
-        response = await self._client.request(
-            "GET", "GetRankAndTrafficStats", params={"siteUrl": site_url}
-        )
+        response = await self._client.request("GET", "GetRankAndTrafficStats", params={"siteUrl": site_url})
 
-        api_response = ApiResponse.from_api_response(
-            response=response, model=RankAndTrafficStats, is_list=True
-        )
+        api_response = ApiResponse.from_api_response(response=response, model=RankAndTrafficStats, is_list=True)
 
         self._logger.info(f"Retrieved {len(api_response.data)} rank and traffic stats")
         return api_response.data
@@ -214,9 +194,7 @@ class TrafficAnalysisService:
             "GET", "GetQueryTrafficStats", params={"siteUrl": site_url, "query": query}
         )
 
-        api_response = ApiResponse.from_api_response(
-            response=response, model=RankAndTrafficStats, is_list=True
-        )
+        api_response = ApiResponse.from_api_response(response=response, model=RankAndTrafficStats, is_list=True)
 
         self._logger.info(f"Retrieved {len(api_response.data)} traffic stats for query: {query}")
         return api_response.data

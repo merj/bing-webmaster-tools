@@ -81,16 +81,12 @@ class SiteManagementService:
         response = await self._client.request("POST", "VerifySite", data={"siteUrl": site_url})
 
         is_verified = response.get("d", False)
-        self._logger.info(
-            f"Site verification {'successful' if is_verified else 'failed'}: {site_url}"
-        )
+        self._logger.info(f"Site verification {'successful' if is_verified else 'failed'}: {site_url}")
 
         return cast(bool, is_verified)
 
     @validate_call
-    async def get_site_roles(
-        self, site_url: str, include_all_subdomains: bool = False
-    ) -> List[SiteRole]:
+    async def get_site_roles(self, site_url: str, include_all_subdomains: bool = False) -> List[SiteRole]:
         """Get all roles assigned for a specific site.
 
         Args:
@@ -108,9 +104,7 @@ class SiteManagementService:
         params = {"siteUrl": site_url, "includeAllSubdomains": include_all_subdomains}
         response = await self._client.request("GET", "GetSiteRoles", params=params)
 
-        api_response = ApiResponse.from_api_response(
-            response=response, model=SiteRole, is_list=True
-        )
+        api_response = ApiResponse.from_api_response(response=response, model=SiteRole, is_list=True)
 
         self._logger.info(f"Retrieved {len(api_response.data)} roles for site: {site_url}")
         return api_response.data
@@ -219,9 +213,7 @@ class SiteManagementService:
         self._logger.debug(f"Retrieving site moves for {site_url}")
         response = await self._client.request("GET", "GetSiteMoves", params={"siteUrl": site_url})
 
-        api_response = ApiResponse.from_api_response(
-            response=response, model=SiteMoveSettings, is_list=True
-        )
+        api_response = ApiResponse.from_api_response(response=response, model=SiteMoveSettings, is_list=True)
 
         self._logger.info(f"Retrieved {len(api_response.data)} site moves for {site_url}")
         return api_response.data

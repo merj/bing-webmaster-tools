@@ -48,13 +48,9 @@ class UrlManagementService:
 
         """
         self._logger.debug(f"Retrieving query parameters for {site_url}")
-        response = await self._client.request(
-            "GET", "GetQueryParameters", params={"siteUrl": site_url}
-        )
+        response = await self._client.request("GET", "GetQueryParameters", params={"siteUrl": site_url})
 
-        api_response = ApiResponse.from_api_response(
-            response=response, model=QueryParameter, is_list=True
-        )
+        api_response = ApiResponse.from_api_response(response=response, model=QueryParameter, is_list=True)
 
         self._logger.info(f"Retrieved {len(api_response.data)} query parameters")
         return api_response.data
@@ -73,9 +69,7 @@ class UrlManagementService:
         """
         # API docs mention unreserved letters and colon only
         if not all(c.isalnum() or c == ":" for c in query_parameter):
-            raise ValueError(
-                "Query parameter may contain only unreserved letters and colon symbol (:)"
-            )
+            raise ValueError("Query parameter may contain only unreserved letters and colon symbol (:)")
 
         self._logger.debug(f"Adding query parameter '{query_parameter}' for {site_url}")
         data = {"siteUrl": site_url, "queryParameter": query_parameter}
@@ -102,9 +96,7 @@ class UrlManagementService:
         self._logger.info(f"Successfully removed query parameter: {query_parameter}")
 
     @validate_call
-    async def enable_disable_query_parameter(
-        self, site_url: str, query_parameter: str, is_enabled: bool
-    ) -> None:
+    async def enable_disable_query_parameter(self, site_url: str, query_parameter: str, is_enabled: bool) -> None:
         """Enable or disable a URL normalization parameter for a site.
 
         Args:
@@ -117,13 +109,11 @@ class UrlManagementService:
 
         """
         self._logger.debug(
-            f"{'Enabling' if is_enabled else 'Disabling'} "
-            f"query parameter '{query_parameter}' for {site_url}"
+            f"{'Enabling' if is_enabled else 'Disabling'} " f"query parameter '{query_parameter}' for {site_url}"
         )
         data = {"siteUrl": site_url, "queryParameter": query_parameter, "isEnabled": is_enabled}
 
         await self._client.request("POST", "EnableDisableQueryParameter", data=data)
         self._logger.info(
-            f"Successfully {'enabled' if is_enabled else 'disabled'} "
-            f"query parameter: {query_parameter}"
+            f"Successfully {'enabled' if is_enabled else 'disabled'} " f"query parameter: {query_parameter}"
         )

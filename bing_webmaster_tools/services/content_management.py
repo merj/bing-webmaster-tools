@@ -51,9 +51,7 @@ class ContentManagementService:
 
         """
         self._logger.debug(f"Retrieving URL info for {url} on {site_url}")
-        response = await self._client.request(
-            "GET", "GetUrlInfo", params={"siteUrl": site_url, "url": url}
-        )
+        response = await self._client.request("GET", "GetUrlInfo", params={"siteUrl": site_url, "url": url})
 
         api_response = ApiResponse.from_api_response(response=response, model=UrlInfo)
 
@@ -116,9 +114,7 @@ class ContentManagementService:
 
         """
         self._logger.debug(f"Retrieving traffic info for {url} on {site_url}")
-        response = await self._client.request(
-            "GET", "GetUrlTrafficInfo", params={"siteUrl": site_url, "url": url}
-        )
+        response = await self._client.request("GET", "GetUrlTrafficInfo", params={"siteUrl": site_url, "url": url})
 
         api_response = ApiResponse.from_api_response(response=response, model=UrlTrafficInfo)
 
@@ -150,13 +146,9 @@ class ContentManagementService:
             params={"siteUrl": site_url, "url": url, "page": page},
         )
 
-        api_response = ApiResponse.from_api_response(
-            response=response, model=UrlTrafficInfo, is_list=True
-        )
+        api_response = ApiResponse.from_api_response(response=response, model=UrlTrafficInfo, is_list=True)
 
-        self._logger.info(
-            f"Retrieved traffic info for {len(api_response.data)} child URLs of {url}"
-        )
+        self._logger.info(f"Retrieved traffic info for {len(api_response.data)} child URLs of {url}")
         return api_response.data
 
     @validate_call

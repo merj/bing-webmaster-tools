@@ -72,9 +72,7 @@ class KeywordAnalysisService:
         return api_response.data
 
     @validate_call
-    async def get_keyword_stats(
-        self, query: str, country: str, language: str
-    ) -> List[KeywordStats]:
+    async def get_keyword_stats(self, query: str, country: str, language: str) -> List[KeywordStats]:
         """Retrieve keyword statistics for a specific query.
 
         Args:
@@ -94,9 +92,7 @@ class KeywordAnalysisService:
 
         response = await self._client.request("GET", "GetKeywordStats", params=params)
 
-        api_response = ApiResponse.from_api_response(
-            response=response, model=KeywordStats, is_list=True
-        )
+        api_response = ApiResponse.from_api_response(response=response, model=KeywordStats, is_list=True)
 
         self._logger.info(f"Retrieved {len(api_response.data)} keyword stats for '{query}'")
         return api_response.data

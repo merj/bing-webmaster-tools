@@ -34,9 +34,7 @@ def get_retry_decorator(config: RetryConfig) -> Callable[[Callable[P, T]], Calla
             multiplier=config.multiplier,
             exp_base=config.exp_base,
         ),
-        after=lambda retry_state: _log_retry_error_attempt(
-            retry_state, num_retries=config.num_retries
-        ),
+        after=lambda retry_state: _log_retry_error_attempt(retry_state, num_retries=config.num_retries),
         reraise=True,
     )
 
@@ -50,6 +48,5 @@ def _log_retry_error_attempt(retry_state: tc.RetryCallState, num_retries: int) -
     if retry_state.attempt_number < num_retries:
         current_attempt, num_attempts = retry_state.attempt_number + 1, num_retries
         logger.warning(
-            f"Retrying (attempt {current_attempt}/{num_attempts}), "
-            f"waiting for {retry_state.upcoming_sleep}s"
+            f"Retrying (attempt {current_attempt}/{num_attempts}), " f"waiting for {retry_state.upcoming_sleep}s"
         )

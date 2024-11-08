@@ -82,9 +82,7 @@ class TestLinkAnalysisService:
     @pytest.mark.parametrize("page_number", [0, 1, 2])
     async def test_url_links_pagination(self, client, test_site, page_number: int):
         """Test URL links pagination."""
-        link_details = await client.links.get_url_links(
-            site_url=test_site, link=test_site, page=page_number
-        )
+        link_details = await client.links.get_url_links(site_url=test_site, link=test_site, page=page_number)
 
         assert isinstance(link_details, LinkDetails)
         assert isinstance(link_details.total_pages, int)

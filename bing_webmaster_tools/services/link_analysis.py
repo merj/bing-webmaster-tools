@@ -54,9 +54,7 @@ class LinkAnalysisService:
 
         """
         self._logger.debug(f"Retrieving link counts for {site_url}")
-        response = await self._client.request(
-            "GET", "GetLinkCounts", params={"siteUrl": site_url, "page": page}
-        )
+        response = await self._client.request("GET", "GetLinkCounts", params={"siteUrl": site_url, "page": page})
 
         api_response = ApiResponse.from_api_response(response=response, model=LinkCounts)
 
@@ -64,9 +62,7 @@ class LinkAnalysisService:
         return api_response.data
 
     @validate_call
-    async def get_url_links(
-        self, site_url: str, link: str, page: NonNegativeInt = 0
-    ) -> LinkDetails:
+    async def get_url_links(self, site_url: str, link: str, page: NonNegativeInt = 0) -> LinkDetails:
         """Retrieve inbound links for a specific URL.
 
         Args:
@@ -106,13 +102,9 @@ class LinkAnalysisService:
 
         """
         self._logger.debug(f"Retrieving connected pages for {site_url}")
-        response = await self._client.request(
-            "GET", "GetConnectedPages", params={"siteUrl": site_url}
-        )
+        response = await self._client.request("GET", "GetConnectedPages", params={"siteUrl": site_url})
 
-        api_response = ApiResponse.from_api_response(
-            response=response, model=ConnectedSite, is_list=True
-        )
+        api_response = ApiResponse.from_api_response(response=response, model=ConnectedSite, is_list=True)
 
         self._logger.info(f"Retrieved {len(api_response.data)} connected pages")
         return api_response.data
@@ -149,21 +141,15 @@ class LinkAnalysisService:
 
         """
         self._logger.debug(f"Retrieving deep link blocks for {site_url}")
-        response = await self._client.request(
-            "GET", "GetDeepLinkBlocks", params={"siteUrl": site_url}
-        )
+        response = await self._client.request("GET", "GetDeepLinkBlocks", params={"siteUrl": site_url})
 
-        api_response = ApiResponse.from_api_response(
-            response=response, model=DeepLinkBlock, is_list=True
-        )
+        api_response = ApiResponse.from_api_response(response=response, model=DeepLinkBlock, is_list=True)
 
         self._logger.info(f"Retrieved {len(api_response.data)} deep link blocks")
         return api_response.data
 
     @validate_call
-    async def add_deep_link_block(
-        self, site_url: str, market: str, search_url: str, deep_link_url: str
-    ) -> None:
+    async def add_deep_link_block(self, site_url: str, market: str, search_url: str, deep_link_url: str) -> None:
         """Add a deep link block.
 
         Args:
@@ -187,9 +173,7 @@ class LinkAnalysisService:
         self._logger.info(f"Successfully added deep link block for {deep_link_url}")
 
     @validate_call
-    async def remove_deep_link_block(
-        self, site_url: str, market: str, search_url: str, deep_link_url: str
-    ) -> None:
+    async def remove_deep_link_block(self, site_url: str, market: str, search_url: str, deep_link_url: str) -> None:
         """Remove a deep link block.
 
         Args:
@@ -212,10 +196,7 @@ class LinkAnalysisService:
         await self._client.request("POST", "RemoveDeepLinkBlock", data=data)
         self._logger.info(f"Successfully removed deep link block for {deep_link_url}")
 
-    @deprecated(
-        "Get deep link functionality is deprecated in Bing Webmaster API. "
-        "Use get_deep_link_block instead."
-    )
+    @deprecated("Get deep link functionality is deprecated in Bing Webmaster API. " "Use get_deep_link_block instead.")
     @validate_call
     async def get_deep_link(self, site_url: str, url: str) -> List[DeepLink]:
         """Get deep links for a specific algo URL. (Deprecated)
@@ -232,13 +213,9 @@ class LinkAnalysisService:
 
         """
         self._logger.debug(f"Retrieving deep links for {url}")
-        response = await self._client.request(
-            "GET", "GetDeepLink", params={"siteUrl": site_url, "url": url}
-        )
+        response = await self._client.request("GET", "GetDeepLink", params={"siteUrl": site_url, "url": url})
 
-        api_response = ApiResponse.from_api_response(
-            response=response, model=DeepLink, is_list=True
-        )
+        api_response = ApiResponse.from_api_response(response=response, model=DeepLink, is_list=True)
 
         self._logger.info(f"Retrieved {len(api_response.data)} deep links")
         return api_response.data
@@ -259,25 +236,18 @@ class LinkAnalysisService:
 
         """
         self._logger.debug(f"Retrieving deep link algo URLs for {site_url}")
-        response = await self._client.request(
-            "GET", "GetDeepLinkAlgoUrls", params={"siteUrl": site_url}
-        )
+        response = await self._client.request("GET", "GetDeepLinkAlgoUrls", params={"siteUrl": site_url})
 
-        api_response = ApiResponse.from_api_response(
-            response=response, model=DeepLinkAlgoUrl, is_list=True
-        )
+        api_response = ApiResponse.from_api_response(response=response, model=DeepLinkAlgoUrl, is_list=True)
 
         self._logger.info(f"Retrieved {len(api_response.data)} deep link algo URLs")
         return api_response.data
 
     @deprecated(
-        "Update deep link functionality is deprecated in Bing Webmaster API. "
-        "Use add_deep_link_block instead."
+        "Update deep link functionality is deprecated in Bing Webmaster API. " "Use add_deep_link_block instead."
     )
     @validate_call
-    async def update_deep_link(
-        self, site_url: str, algo_url: str, deep_link: str, weight: DeepLinkWeight
-    ) -> None:
+    async def update_deep_link(self, site_url: str, algo_url: str, deep_link: str, weight: DeepLinkWeight) -> None:
         """Update deep link weight. (Deprecated)
 
         Args:
