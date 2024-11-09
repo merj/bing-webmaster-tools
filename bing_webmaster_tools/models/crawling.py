@@ -1,3 +1,4 @@
+from datetime import datetime
 from enum import IntEnum
 from typing import List
 
@@ -33,7 +34,7 @@ class CrawlStats(BingModel):
     contains_malware: int
     crawl_errors: int
     crawled_pages: int
-    date: str
+    date: datetime
     in_index: int
     in_links: int
 
