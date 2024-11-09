@@ -225,7 +225,7 @@ url_info = await client.content.get_url_info(site_url, page_url)
 # Get child URLs information
 children = await client.content.get_children_url_info(
     site_url,
-    parent_url,
+    page_url,
     page=0,
     filter_properties=FilterProperties(
         crawl_date_filter=CrawlDateFilter.LAST_WEEK,
