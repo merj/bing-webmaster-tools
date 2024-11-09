@@ -62,7 +62,7 @@ class KeywordAnalysisService:
         response = await self._client.request("GET", "GetKeyword", params=params)
         keyword_data = response.get("d", {})
 
-        if not keyword_data or not keyword_data.get("query"):
+        if not keyword_data or not keyword_data.get("Query"):
             self._logger.warning(f"No keyword data returned for query: {query}")
             return None
 
