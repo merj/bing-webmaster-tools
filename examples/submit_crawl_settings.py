@@ -37,7 +37,7 @@ async def display_crawl_settings(client: BingWebmasterClient, site_url: str) -> 
 async def update_settings(
     site_url: str,
     rate: List[int],
-    enable_boost: bool = None,
+    enable_boost: bool,
 ) -> None:
     """Update crawl settings for a site."""
     try:
@@ -48,7 +48,6 @@ async def update_settings(
 
             # Prepare new settings
             new_settings = CrawlSettings(
-                type="CrawlSettings:#Microsoft.Bing.Webmaster.Api",
                 crawl_boost_available=current_settings.crawl_boost_available,
                 crawl_boost_enabled=enable_boost if enable_boost is not None else current_settings.crawl_boost_enabled,
                 crawl_rate=rate if rate else current_settings.crawl_rate,
@@ -61,8 +60,8 @@ async def update_settings(
             print(f"Crawl Boost Available: {new_settings.crawl_boost_available}")
             print(f"Crawl Boost Enabled: {new_settings.crawl_boost_enabled}")
             print("Crawl Rate by Hour (1-10):")
-            for hour, rate in enumerate(new_settings.crawl_rate):
-                print(f"{hour:02d}:00 - {rate}")
+            for hour, new_rate in enumerate(new_settings.crawl_rate):
+                print(f"{hour:02d}:00 - {new_rate}")
 
     except Exception as e:
         print(f"Error updating crawl settings: {e}", file=sys.stderr)

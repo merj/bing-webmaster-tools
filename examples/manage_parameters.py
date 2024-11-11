@@ -35,7 +35,7 @@ async def get_query_parameters(site_url: str, verbose: bool = False) -> None:  #
                 return
 
             # Calculate statistics
-            stats: Dict[str, Dict[str, Any]] = {
+            stats: Dict[str, Any] = {
                 "enabled": {"count": 0, "params": []},
                 "disabled": {"count": 0, "params": []},
                 "total": len(params),

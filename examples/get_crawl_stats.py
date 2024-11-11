@@ -3,42 +3,30 @@ import argparse
 import asyncio
 import logging
 import sys
-from datetime import datetime, timedelta
-from typing import Optional
+from datetime import datetime
 
 from bing_webmaster_tools import BingWebmasterClient
 from bing_webmaster_tools.config import Settings
 
 
-async def get_crawl_stats(
-    site_url: str, start_date: Optional[datetime] = None, end_date: Optional[datetime] = None
-) -> None:
+async def get_crawl_stats(site_url: str) -> None:
     """Get crawl statistics for a site within a date range.
 
     Args:
         site_url: The site URL to get crawl stats for
-        start_date: Start date for stats (defaults to 30 days ago)
-        end_date: End date for stats (defaults to today)
 
     Requires BING_WEBMASTER_API_KEY environment variable to be set.
 
     """
     try:
-        # Set default date range if not provided
-        if not end_date:
-            end_date = datetime.now()
-        if not start_date:
-            start_date = end_date - timedelta(days=30)
-
         async with BingWebmasterClient(Settings.from_env()) as client:
             # Get crawl statistics
-            stats = await client.crawling.get_crawl_stats(site_url, start_date=start_date, end_date=end_date)
+            stats = await client.crawling.get_crawl_stats(site_url)
 
             if not stats:
                 print("\nNo crawl statistics found")
                 return
 
-            print(f"\nFound crawl statistics from {start_date.date()} to {end_date.date()}:")
             for stat in stats:
                 print(f"\nDate: {stat.date}")
                 print("Crawl Statistics:")
@@ -89,15 +77,12 @@ def main() -> None:
     parser = argparse.ArgumentParser(description="Get crawl statistics from Bing Webmaster Tools")
 
     parser.add_argument("-s", "--site-url", type=str, required=True, help="Site URL in Bing Webmaster Tools")
-    parser.add_argument("--start-date", type=valid_date, help="Start date in YYYY-MM-DD format (default: 30 days ago)")
-    parser.add_argument("--end-date", type=valid_date, help="End date in YYYY-MM-DD format (default: today)")
-
     args = parser.parse_args()
 
     logging.basicConfig(level=logging.INFO, format="%(asctime)s - %(name)s - %(levelname)s - %(message)s")
 
     try:
-        asyncio.run(get_crawl_stats(args.site_url, start_date=args.start_date, end_date=args.end_date))
+        asyncio.run(get_crawl_stats(args.site_url))
     except KeyboardInterrupt:
         print("\nOperation cancelled by user", file=sys.stderr)
         sys.exit(1)

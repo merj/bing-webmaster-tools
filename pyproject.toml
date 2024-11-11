@@ -54,7 +54,7 @@ mkdocstrings = { extras = ["python"], version = "^0.24.0" }
 
 [tool.mypy]
 plugins = ["pydantic.mypy"]
-files = ["bing_webmaster_tools/**/*.py"]
+files = ["bing_webmaster_tools/**/*.py", "examples/**/*.py"]
 check_untyped_defs = true
 disallow_untyped_defs = true
 disallow_incomplete_defs = true
@@ -99,6 +99,7 @@ line-ending = "auto"
 
 [tool.ruff.lint.per-file-ignores]
 "tests/*" = ["D"]
+"examples/*" = ["D"]
 
 [tool.pytest.ini_options]
 addopts = "-vv -s"

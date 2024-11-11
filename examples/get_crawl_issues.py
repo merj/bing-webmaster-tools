@@ -7,6 +7,7 @@ from typing import Dict, List
 
 from bing_webmaster_tools import BingWebmasterClient
 from bing_webmaster_tools.config import Settings
+from bing_webmaster_tools.models import UrlWithCrawlIssues
 
 
 async def get_crawl_issues(site_url: str) -> None:
@@ -28,7 +29,7 @@ async def get_crawl_issues(site_url: str) -> None:
                 return
 
             # Group issues by type
-            issues_by_type: Dict[UrlWithCrawlIssues.CrawlIssues, List[str]] = {}  # noqa: F821
+            issues_by_type: Dict[UrlWithCrawlIssues.CrawlIssues, List[str]] = {}
 
             print(f"\nFound {len(issues)} issues:")
             for issue in issues:

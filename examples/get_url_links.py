@@ -8,11 +8,12 @@ from urllib.parse import urlparse
 
 from bing_webmaster_tools import BingWebmasterClient
 from bing_webmaster_tools.config import Settings
+from bing_webmaster_tools.models import LinkDetail
 
 
 async def get_all_url_links(
     client: BingWebmasterClient, site_url: str, link_url: str, page: int = 0, max_pages: int = 100
-) -> List[dict]:
+) -> List[LinkDetail]:
     """Get all inbound links
 
     Args:
