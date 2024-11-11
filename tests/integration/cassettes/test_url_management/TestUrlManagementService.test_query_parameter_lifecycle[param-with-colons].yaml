@@ -1,0 +1,307 @@
+interactions:
+- request:
+    body: null
+    headers:
+      Content-Type:
+      - application/json; charset=utf-8
+    method: GET
+    uri: https://ssl.bing.com/webmaster/api.svc/json/GetQueryParameters?siteUrl=https%3A%2F%2Fexample.test
+  response:
+    body:
+      string: '{"d": []}'
+    headers:
+      Accept-CH:
+      - Sec-CH-UA-Arch, Sec-CH-UA-Bitness, Sec-CH-UA-Full-Version, Sec-CH-UA-Full-Version-List,
+        Sec-CH-UA-Mobile, Sec-CH-UA-Model, Sec-CH-UA-Platform, Sec-CH-UA-Platform-Version
+      Cache-Control:
+      - private
+      Content-Length:
+      - '8'
+      Content-Type:
+      - application/json; charset=utf-8
+      Date:
+      - Mon, 11 Nov 2024 15:06:21 GMT
+      X-AspNet-Version:
+      - 4.0.30319
+      X-Cache:
+      - CONFIG_NOCACHE
+      X-MSEdge-Ref:
+      - 'Ref A: B1EC4F1354004046BBA11F51C68C6F63 Ref B: HKBEDGE0508 Ref C: 2024-11-11T15:06:21Z'
+      X-Powered-By:
+      - ASP.NET
+    status:
+      code: 200
+      message: OK
+- request:
+    body: '{"siteUrl": "https://example.test", "queryParameter": "param:with:colons"}'
+    headers:
+      Content-Type:
+      - application/json; charset=utf-8
+    method: POST
+    uri: https://ssl.bing.com/webmaster/api.svc/json/AddQueryParameter
+  response:
+    body:
+      string: '{"d": null}'
+    headers:
+      Accept-CH:
+      - Sec-CH-UA-Arch, Sec-CH-UA-Bitness, Sec-CH-UA-Full-Version, Sec-CH-UA-Full-Version-List,
+        Sec-CH-UA-Mobile, Sec-CH-UA-Model, Sec-CH-UA-Platform, Sec-CH-UA-Platform-Version
+      Cache-Control:
+      - private
+      Content-Length:
+      - '10'
+      Content-Type:
+      - application/json; charset=utf-8
+      Date:
+      - Mon, 11 Nov 2024 15:06:22 GMT
+      X-AspNet-Version:
+      - 4.0.30319
+      X-Cache:
+      - CONFIG_NOCACHE
+      X-MSEdge-Ref:
+      - 'Ref A: 75E913BEDFDB42A597081521C989F1B4 Ref B: HKBEDGE0508 Ref C: 2024-11-11T15:06:22Z'
+      X-Powered-By:
+      - ASP.NET
+    status:
+      code: 200
+      message: OK
+- request:
+    body: null
+    headers:
+      Content-Type:
+      - application/json; charset=utf-8
+    method: GET
+    uri: https://ssl.bing.com/webmaster/api.svc/json/GetQueryParameters?siteUrl=https%3A%2F%2Fexample.test
+  response:
+    body:
+      string: '{"d": [{"__type": "QueryParameter:#Microsoft.Bing.Webmaster.Api", "Date":
+        "/Date(1731337582802)/", "IsEnabled": true, "Parameter": "param:with:colons",
+        "Source": 0}]}'
+    headers:
+      Accept-CH:
+      - Sec-CH-UA-Arch, Sec-CH-UA-Bitness, Sec-CH-UA-Full-Version, Sec-CH-UA-Full-Version-List,
+        Sec-CH-UA-Mobile, Sec-CH-UA-Model, Sec-CH-UA-Platform, Sec-CH-UA-Platform-Version
+      Cache-Control:
+      - private
+      Content-Length:
+      - '158'
+      Content-Type:
+      - application/json; charset=utf-8
+      Date:
+      - Mon, 11 Nov 2024 15:06:23 GMT
+      X-AspNet-Version:
+      - 4.0.30319
+      X-Cache:
+      - CONFIG_NOCACHE
+      X-MSEdge-Ref:
+      - 'Ref A: 58D785515D81407CA50091B7D9B6E827 Ref B: HKBEDGE0508 Ref C: 2024-11-11T15:06:23Z'
+      X-Powered-By:
+      - ASP.NET
+    status:
+      code: 200
+      message: OK
+- request:
+    body: '{"siteUrl": "https://example.test", "queryParameter": "param:with:colons",
+      "isEnabled": false}'
+    headers:
+      Content-Type:
+      - application/json; charset=utf-8
+    method: POST
+    uri: https://ssl.bing.com/webmaster/api.svc/json/EnableDisableQueryParameter
+  response:
+    body:
+      string: '{"d": null}'
+    headers:
+      Accept-CH:
+      - Sec-CH-UA-Arch, Sec-CH-UA-Bitness, Sec-CH-UA-Full-Version, Sec-CH-UA-Full-Version-List,
+        Sec-CH-UA-Mobile, Sec-CH-UA-Model, Sec-CH-UA-Platform, Sec-CH-UA-Platform-Version
+      Cache-Control:
+      - private
+      Content-Length:
+      - '10'
+      Content-Type:
+      - application/json; charset=utf-8
+      Date:
+      - Mon, 11 Nov 2024 15:06:23 GMT
+      X-AspNet-Version:
+      - 4.0.30319
+      X-Cache:
+      - CONFIG_NOCACHE
+      X-MSEdge-Ref:
+      - 'Ref A: 13C9853177714D15A7794E438D6B760F Ref B: HKBEDGE0508 Ref C: 2024-11-11T15:06:23Z'
+      X-Powered-By:
+      - ASP.NET
+    status:
+      code: 200
+      message: OK
+- request:
+    body: null
+    headers:
+      Content-Type:
+      - application/json; charset=utf-8
+    method: GET
+    uri: https://ssl.bing.com/webmaster/api.svc/json/GetQueryParameters?siteUrl=https%3A%2F%2Fexample.test
+  response:
+    body:
+      string: '{"d": [{"__type": "QueryParameter:#Microsoft.Bing.Webmaster.Api", "Date":
+        "/Date(1731337582802)/", "IsEnabled": false, "Parameter": "param:with:colons",
+        "Source": 0}]}'
+    headers:
+      Accept-CH:
+      - Sec-CH-UA-Arch, Sec-CH-UA-Bitness, Sec-CH-UA-Full-Version, Sec-CH-UA-Full-Version-List,
+        Sec-CH-UA-Mobile, Sec-CH-UA-Model, Sec-CH-UA-Platform, Sec-CH-UA-Platform-Version
+      Cache-Control:
+      - private
+      Content-Length:
+      - '159'
+      Content-Type:
+      - application/json; charset=utf-8
+      Date:
+      - Mon, 11 Nov 2024 15:06:24 GMT
+      X-AspNet-Version:
+      - 4.0.30319
+      X-Cache:
+      - CONFIG_NOCACHE
+      X-MSEdge-Ref:
+      - 'Ref A: 5AFCEE4543734122A0770D2372EF16EE Ref B: HKBEDGE0508 Ref C: 2024-11-11T15:06:24Z'
+      X-Powered-By:
+      - ASP.NET
+    status:
+      code: 200
+      message: OK
+- request:
+    body: '{"siteUrl": "https://example.test", "queryParameter": "param:with:colons",
+      "isEnabled": true}'
+    headers:
+      Content-Type:
+      - application/json; charset=utf-8
+    method: POST
+    uri: https://ssl.bing.com/webmaster/api.svc/json/EnableDisableQueryParameter
+  response:
+    body:
+      string: '{"d": null}'
+    headers:
+      Accept-CH:
+      - Sec-CH-UA-Arch, Sec-CH-UA-Bitness, Sec-CH-UA-Full-Version, Sec-CH-UA-Full-Version-List,
+        Sec-CH-UA-Mobile, Sec-CH-UA-Model, Sec-CH-UA-Platform, Sec-CH-UA-Platform-Version
+      Cache-Control:
+      - private
+      Content-Length:
+      - '10'
+      Content-Type:
+      - application/json; charset=utf-8
+      Date:
+      - Mon, 11 Nov 2024 15:06:25 GMT
+      X-AspNet-Version:
+      - 4.0.30319
+      X-Cache:
+      - CONFIG_NOCACHE
+      X-MSEdge-Ref:
+      - 'Ref A: 4800B64954324D77ADF4413F763D1C6D Ref B: HKBEDGE0508 Ref C: 2024-11-11T15:06:24Z'
+      X-Powered-By:
+      - ASP.NET
+    status:
+      code: 200
+      message: OK
+- request:
+    body: null
+    headers:
+      Content-Type:
+      - application/json; charset=utf-8
+    method: GET
+    uri: https://ssl.bing.com/webmaster/api.svc/json/GetQueryParameters?siteUrl=https%3A%2F%2Fexample.test
+  response:
+    body:
+      string: '{"d": [{"__type": "QueryParameter:#Microsoft.Bing.Webmaster.Api", "Date":
+        "/Date(1731337582802)/", "IsEnabled": true, "Parameter": "param:with:colons",
+        "Source": 0}]}'
+    headers:
+      Accept-CH:
+      - Sec-CH-UA-Arch, Sec-CH-UA-Bitness, Sec-CH-UA-Full-Version, Sec-CH-UA-Full-Version-List,
+        Sec-CH-UA-Mobile, Sec-CH-UA-Model, Sec-CH-UA-Platform, Sec-CH-UA-Platform-Version
+      Cache-Control:
+      - private
+      Content-Length:
+      - '158'
+      Content-Type:
+      - application/json; charset=utf-8
+      Date:
+      - Mon, 11 Nov 2024 15:06:25 GMT
+      X-AspNet-Version:
+      - 4.0.30319
+      X-Cache:
+      - CONFIG_NOCACHE
+      X-MSEdge-Ref:
+      - 'Ref A: F27EFF2F711A48C5A6F00F149D5D49B7 Ref B: HKBEDGE0508 Ref C: 2024-11-11T15:06:25Z'
+      X-Powered-By:
+      - ASP.NET
+    status:
+      code: 200
+      message: OK
+- request:
+    body: '{"siteUrl": "https://example.test", "queryParameter": "param:with:colons"}'
+    headers:
+      Content-Type:
+      - application/json; charset=utf-8
+    method: POST
+    uri: https://ssl.bing.com/webmaster/api.svc/json/RemoveQueryParameter
+  response:
+    body:
+      string: '{"d": null}'
+    headers:
+      Accept-CH:
+      - Sec-CH-UA-Arch, Sec-CH-UA-Bitness, Sec-CH-UA-Full-Version, Sec-CH-UA-Full-Version-List,
+        Sec-CH-UA-Mobile, Sec-CH-UA-Model, Sec-CH-UA-Platform, Sec-CH-UA-Platform-Version
+      Cache-Control:
+      - private
+      Content-Length:
+      - '10'
+      Content-Type:
+      - application/json; charset=utf-8
+      Date:
+      - Mon, 11 Nov 2024 15:06:26 GMT
+      X-AspNet-Version:
+      - 4.0.30319
+      X-Cache:
+      - CONFIG_NOCACHE
+      X-MSEdge-Ref:
+      - 'Ref A: 8C716F90F7514B5C9F819D65C9E53999 Ref B: HKBEDGE0508 Ref C: 2024-11-11T15:06:25Z'
+      X-Powered-By:
+      - ASP.NET
+    status:
+      code: 200
+      message: OK
+- request:
+    body: null
+    headers:
+      Content-Type:
+      - application/json; charset=utf-8
+    method: GET
+    uri: https://ssl.bing.com/webmaster/api.svc/json/GetQueryParameters?siteUrl=https%3A%2F%2Fexample.test
+  response:
+    body:
+      string: '{"d": []}'
+    headers:
+      Accept-CH:
+      - Sec-CH-UA-Arch, Sec-CH-UA-Bitness, Sec-CH-UA-Full-Version, Sec-CH-UA-Full-Version-List,
+        Sec-CH-UA-Mobile, Sec-CH-UA-Model, Sec-CH-UA-Platform, Sec-CH-UA-Platform-Version
+      Cache-Control:
+      - private
+      Content-Length:
+      - '8'
+      Content-Type:
+      - application/json; charset=utf-8
+      Date:
+      - Mon, 11 Nov 2024 15:06:26 GMT
+      X-AspNet-Version:
+      - 4.0.30319
+      X-Cache:
+      - CONFIG_NOCACHE
+      X-MSEdge-Ref:
+      - 'Ref A: 5BE1DD831CEC40BF9C4F2CC9169663DA Ref B: HKBEDGE0508 Ref C: 2024-11-11T15:06:26Z'
+      X-Powered-By:
+      - ASP.NET
+    status:
+      code: 200
+      message: OK
+version: 1
