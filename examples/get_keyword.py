@@ -23,8 +23,8 @@ async def get_keyword_stats(query: str, country: str = "gb", language: str = "en
     try:
         async with BingWebmasterClient(Settings.from_env()) as client:
             # Get date range
-            end_date = (datetime.now() - timedelta(days=2)).strftime("%Y-%m-%d")
-            start_date = (datetime.now() - timedelta(days=32)).strftime("%Y-%m-%d")
+            end_date = datetime.now() - timedelta(days=2)
+            start_date = datetime.now() - timedelta(days=32)
 
             keyword = await client.keywords.get_keyword(
                 query=query, country=country, language=language, start_date=start_date, end_date=end_date
