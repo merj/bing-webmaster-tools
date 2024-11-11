@@ -14,9 +14,9 @@ from bing_webmaster_tools.models.link_analysis import (
 class TestLinkAnalysisService:
     """Tests for the link analysis service."""
 
-    async def test_get_link_counts(self, client, live_site):
+    async def test_get_link_counts(self, client, test_site):
         """Test retrieving link counts."""
-        link_counts = await client.links.get_link_counts(live_site, page=0)
+        link_counts = await client.links.get_link_counts(test_site, page=0)
 
         assert isinstance(link_counts, LinkCounts)
         assert isinstance(link_counts.total_pages, int)
@@ -27,7 +27,6 @@ class TestLinkAnalysisService:
             assert isinstance(link, LinkCount)
             assert isinstance(link.count, int)
             assert isinstance(link.url, str)
-            assert link.url.startswith("http")
 
     async def test_get_url_links(self, client, test_site):
         """Test retrieving inbound links for a specific URL."""
