@@ -4,7 +4,7 @@ from typing import List
 from pydantic import validate_call
 
 from bing_webmaster_tools.models.base import ApiResponse
-from bing_webmaster_tools.models.url_management import QueryParameter
+from bing_webmaster_tools.models.url_management import QueryParameter, QueryParamStr
 from bing_webmaster_tools.services.api_client import ApiClient
 
 logger = logging.getLogger(__name__)
@@ -56,7 +56,7 @@ class UrlManagementService:
         return api_response.data
 
     @validate_call
-    async def add_query_parameter(self, site_url: str, query_parameter: str) -> None:
+    async def add_query_parameter(self, site_url: str, query_parameter: QueryParamStr) -> None:
         """Add a URL normalization parameter for a site.
 
         Args:
@@ -67,10 +67,6 @@ class UrlManagementService:
             BingWebmasterError: If parameter cannot be added
 
         """
-        # API docs mention unreserved letters and colon only
-        if not all(c.isalnum() or c == ":" for c in query_parameter):
-            raise ValueError("Query parameter may contain only unreserved letters and colon symbol (:)")
-
         self._logger.debug(f"Adding query parameter '{query_parameter}' for {site_url}")
         data = {"siteUrl": site_url, "queryParameter": query_parameter}
 
