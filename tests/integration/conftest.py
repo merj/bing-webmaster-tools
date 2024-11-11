@@ -113,6 +113,6 @@ async def _verify_site(client: BingWebmasterClient, site_url: str) -> None:
 @pytest_asyncio.fixture(scope="session")
 async def test_site(client: BingWebmasterClient) -> str:
     """Fixture providing a test site URL from the account."""
-    site = get_required_env_var("BING_WEBMASTER_TEST_DEV_SITE")
+    site = get_required_env_var("BING_WEBMASTER_TEST_SITE")
     await _verify_site(client, site)
     return site.rstrip("/")
