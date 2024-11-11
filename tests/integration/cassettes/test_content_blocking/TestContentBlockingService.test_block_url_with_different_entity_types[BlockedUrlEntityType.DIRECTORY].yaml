@@ -1,8 +1,8 @@
 interactions:
 - request:
-    body: '{"siteUrl": "https://merj.dev", "blockedUrl": {"__type": "BlockedUrl:#Microsoft.Bing.Webmaster.Api",
+    body: '{"siteUrl": "https://example.test", "blockedUrl": {"__type": "BlockedUrl:#Microsoft.Bing.Webmaster.Api",
       "Date": "/Date(1704067200000+0000)/", "EntityType": 1, "RequestType": 0, "Url":
-      "https://merj.dev/test-block-directory/"}}'
+      "https://example.test/test-block-directory/"}}'
     headers:
       Content-Type:
       - application/json; charset=utf-8
@@ -10,7 +10,7 @@ interactions:
     uri: https://ssl.bing.com/webmaster/api.svc/json/AddBlockedUrl
   response:
     body:
-      string: '{"d":null}'
+      string: '{"d": null}'
     headers:
       Accept-CH:
       - Sec-CH-UA-Arch, Sec-CH-UA-Bitness, Sec-CH-UA-Full-Version, Sec-CH-UA-Full-Version-List,
@@ -22,13 +22,13 @@ interactions:
       Content-Type:
       - application/json; charset=utf-8
       Date:
-      - Fri, 08 Nov 2024 10:33:00 GMT
+      - Mon, 11 Nov 2024 03:13:15 GMT
       X-AspNet-Version:
       - 4.0.30319
       X-Cache:
       - CONFIG_NOCACHE
       X-MSEdge-Ref:
-      - 'Ref A: AEF53E5CB24E4BF8B0BEA0747B236A79 Ref B: SGN30EDGE0307 Ref C: 2024-11-08T10:33:00Z'
+      - 'Ref A: C29DB067FF7149AC8757148C55D4D4AC Ref B: SGN30EDGE0506 Ref C: 2024-11-11T03:13:15Z'
       X-Powered-By:
       - ASP.NET
     status:
@@ -40,10 +40,28 @@ interactions:
       Content-Type:
       - application/json; charset=utf-8
     method: GET
-    uri: https://ssl.bing.com/webmaster/api.svc/json/GetBlockedUrls?siteUrl=https%3A%2F%2Fmerj.dev
+    uri: https://ssl.bing.com/webmaster/api.svc/json/GetBlockedUrls?siteUrl=https%3A%2F%2Fexample.test
   response:
     body:
-      string: '{"d":[{"__type":"BlockedUrl:#Microsoft.Bing.Webmaster.Api","Date":"\/Date(1730173887265)\/","DaysToExpire":80,"EntityType":0,"RequestType":0,"Url":"https:\/\/merj.dev\/\/test-block-1730173886.947705"},{"__type":"BlockedUrl:#Microsoft.Bing.Webmaster.Api","Date":"\/Date(1730797669445)\/","DaysToExpire":87,"EntityType":1,"RequestType":0,"Url":"https:\/\/merj.dev\/test-block-directory-1730797669.062881\/"},{"__type":"BlockedUrl:#Microsoft.Bing.Webmaster.Api","Date":"\/Date(1730794076085)\/","DaysToExpire":87,"EntityType":1,"RequestType":0,"Url":"https:\/\/merj.dev\/test-block-directory-1730794075.535982\/"},{"__type":"BlockedUrl:#Microsoft.Bing.Webmaster.Api","Date":"\/Date(1730173674007)\/","DaysToExpire":80,"EntityType":0,"RequestType":0,"Url":"https:\/\/merj.dev\/\/test-block-1730173673.697091"},{"__type":"BlockedUrl:#Microsoft.Bing.Webmaster.Api","Date":"\/Date(1730794102834)\/","DaysToExpire":87,"EntityType":1,"RequestType":0,"Url":"https:\/\/merj.dev\/test-block-directory-1730794102.346603\/"},{"__type":"BlockedUrl:#Microsoft.Bing.Webmaster.Api","Date":"\/Date(1730173868174)\/","DaysToExpire":80,"EntityType":0,"RequestType":0,"Url":"https:\/\/merj.dev\/\/test-block-1730173867.881925"},{"__type":"BlockedUrl:#Microsoft.Bing.Webmaster.Api","Date":"\/Date(1731061980812)\/","DaysToExpire":90,"EntityType":1,"RequestType":0,"Url":"https:\/\/merj.dev\/test-block-directory\/"},{"__type":"BlockedUrl:#Microsoft.Bing.Webmaster.Api","Date":"\/Date(1730173944074)\/","DaysToExpire":80,"EntityType":0,"RequestType":0,"Url":"https:\/\/merj.dev\/\/test-block-1730173943.760593"},{"__type":"BlockedUrl:#Microsoft.Bing.Webmaster.Api","Date":"\/Date(1730174130189)\/","DaysToExpire":80,"EntityType":1,"RequestType":0,"Url":"https:\/\/merj.dev\/\/test-block-directory-1730174129.865993\/"}]}'
+      string: '{"d": [{"__type": "BlockedUrl:#Microsoft.Bing.Webmaster.Api", "Date":
+        "/Date(1730173887265)/", "DaysToExpire": 78, "EntityType": 0, "RequestType":
+        0, "Url": "https://example.test//test-block-1730173886.947705"}, {"__type":
+        "BlockedUrl:#Microsoft.Bing.Webmaster.Api", "Date": "/Date(1730797669445)/",
+        "DaysToExpire": 85, "EntityType": 1, "RequestType": 0, "Url": "https://example.test/test-block-directory-1730797669.062881/"},
+        {"__type": "BlockedUrl:#Microsoft.Bing.Webmaster.Api", "Date": "/Date(1730794076085)/",
+        "DaysToExpire": 85, "EntityType": 1, "RequestType": 0, "Url": "https://example.test/test-block-directory-1730794075.535982/"},
+        {"__type": "BlockedUrl:#Microsoft.Bing.Webmaster.Api", "Date": "/Date(1730173674007)/",
+        "DaysToExpire": 78, "EntityType": 0, "RequestType": 0, "Url": "https://example.test//test-block-1730173673.697091"},
+        {"__type": "BlockedUrl:#Microsoft.Bing.Webmaster.Api", "Date": "/Date(1730794102834)/",
+        "DaysToExpire": 85, "EntityType": 1, "RequestType": 0, "Url": "https://example.test/test-block-directory-1730794102.346603/"},
+        {"__type": "BlockedUrl:#Microsoft.Bing.Webmaster.Api", "Date": "/Date(1730173868174)/",
+        "DaysToExpire": 78, "EntityType": 0, "RequestType": 0, "Url": "https://example.test//test-block-1730173867.881925"},
+        {"__type": "BlockedUrl:#Microsoft.Bing.Webmaster.Api", "Date": "/Date(1731294795376)/",
+        "DaysToExpire": 90, "EntityType": 1, "RequestType": 0, "Url": "https://example.test/test-block-directory/"},
+        {"__type": "BlockedUrl:#Microsoft.Bing.Webmaster.Api", "Date": "/Date(1730173944074)/",
+        "DaysToExpire": 78, "EntityType": 0, "RequestType": 0, "Url": "https://example.test//test-block-1730173943.760593"},
+        {"__type": "BlockedUrl:#Microsoft.Bing.Webmaster.Api", "Date": "/Date(1730174130189)/",
+        "DaysToExpire": 78, "EntityType": 1, "RequestType": 0, "Url": "https://example.test//test-block-directory-1730174129.865993/"}]}'
     headers:
       Accept-CH:
       - Sec-CH-UA-Arch, Sec-CH-UA-Bitness, Sec-CH-UA-Full-Version, Sec-CH-UA-Full-Version-List,
@@ -55,22 +73,22 @@ interactions:
       Content-Type:
       - application/json; charset=utf-8
       Date:
-      - Fri, 08 Nov 2024 10:33:01 GMT
+      - Mon, 11 Nov 2024 03:13:15 GMT
       X-AspNet-Version:
       - 4.0.30319
       X-Cache:
       - CONFIG_NOCACHE
       X-MSEdge-Ref:
-      - 'Ref A: 166C8A9549E146609FB29A255F4C6759 Ref B: SGN30EDGE0307 Ref C: 2024-11-08T10:33:00Z'
+      - 'Ref A: 7E25C5D273834FF9A43DFDA5421C5B7A Ref B: SGN30EDGE0506 Ref C: 2024-11-11T03:13:15Z'
       X-Powered-By:
       - ASP.NET
     status:
       code: 200
       message: OK
 - request:
-    body: '{"siteUrl": "https://merj.dev", "blockedUrl": {"__type": "BlockedUrl:#Microsoft.Bing.Webmaster.Api",
+    body: '{"siteUrl": "https://example.test", "blockedUrl": {"__type": "BlockedUrl:#Microsoft.Bing.Webmaster.Api",
       "Date": "/Date(1704067200000+0000)/", "EntityType": 1, "RequestType": 1, "Url":
-      "https://merj.dev/test-block-directory/"}}'
+      "https://example.test/test-block-directory/"}}'
     headers:
       Content-Type:
       - application/json; charset=utf-8
@@ -78,7 +96,7 @@ interactions:
     uri: https://ssl.bing.com/webmaster/api.svc/json/RemoveBlockedUrl
   response:
     body:
-      string: '{"d":null}'
+      string: '{"d": null}'
     headers:
       Accept-CH:
       - Sec-CH-UA-Arch, Sec-CH-UA-Bitness, Sec-CH-UA-Full-Version, Sec-CH-UA-Full-Version-List,
@@ -90,13 +108,13 @@ interactions:
       Content-Type:
       - application/json; charset=utf-8
       Date:
-      - Fri, 08 Nov 2024 10:33:01 GMT
+      - Mon, 11 Nov 2024 03:13:16 GMT
       X-AspNet-Version:
       - 4.0.30319
       X-Cache:
       - CONFIG_NOCACHE
       X-MSEdge-Ref:
-      - 'Ref A: 1860F56C9CEE46979C5F2A1EFACC153B Ref B: SGN30EDGE0307 Ref C: 2024-11-08T10:33:01Z'
+      - 'Ref A: F6D944270ED04EA8A32E23F1E76BBA55 Ref B: SGN30EDGE0506 Ref C: 2024-11-11T03:13:16Z'
       X-Powered-By:
       - ASP.NET
     status:
