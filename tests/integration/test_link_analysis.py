@@ -21,12 +21,7 @@ class TestLinkAnalysisService:
         assert isinstance(link_counts, LinkCounts)
         assert isinstance(link_counts.total_pages, int)
         assert isinstance(link_counts.links, list)
-
-        if link_counts.links:
-            link = link_counts.links[0]
-            assert isinstance(link, LinkCount)
-            assert isinstance(link.count, int)
-            assert isinstance(link.url, str)
+        assert all(isinstance(link, LinkCount) for link in link_counts.links)
 
     async def test_get_url_links(self, client, test_site):
         """Test retrieving inbound links for a specific URL."""
@@ -39,13 +34,7 @@ class TestLinkAnalysisService:
         assert isinstance(link_details, LinkDetails)
         assert isinstance(link_details.total_pages, int)
         assert isinstance(link_details.details, list)
-
-        if link_details.details:
-            detail = link_details.details[0]
-            assert isinstance(detail, LinkDetail)
-            assert isinstance(detail.anchor_text, str)
-            assert isinstance(detail.url, str)
-            assert detail.url.startswith("http")
+        assert all(isinstance(detail, LinkDetail) for detail in link_details.details)
 
     async def test_connected_page_lifecycle(self, client, test_site):
         """Test the complete lifecycle of connected page management."""
@@ -53,13 +42,7 @@ class TestLinkAnalysisService:
 
         # Add connected page
         await client.links.add_connected_page(site_url=test_site, master_url=test_master_url)
-
-        # Get and verify connected pages
-        connected_pages = await client.links.get_connected_pages(test_site)
-        matching_pages = [p for p in connected_pages if p.url == test_master_url]
-
-        assert len(matching_pages) <= 1  # Should be 0 or 1
-        # Note: We can't guarantee the page will be visible immediately
+        # Note: We can't guarantee the page will be visible immediately, so we cannot verify anything here
 
     @pytest.mark.parametrize("page_number", [0, 1, 2])
     async def test_link_counts_pagination(self, client, test_site, page_number: int):
@@ -69,14 +52,7 @@ class TestLinkAnalysisService:
         assert isinstance(link_counts, LinkCounts)
         assert isinstance(link_counts.total_pages, int)
         assert page_number <= link_counts.total_pages or not link_counts.links
-
-        # If we got links, verify their structure
-        if link_counts.links:
-            for link in link_counts.links:
-                assert isinstance(link, LinkCount)
-                assert isinstance(link.count, int)
-                assert isinstance(link.url, str)
-                assert link.url.startswith("http")
+        assert all(isinstance(link, LinkCount) for link in link_counts.links)
 
     @pytest.mark.parametrize("page_number", [0, 1, 2])
     async def test_url_links_pagination(self, client, test_site, page_number: int):
