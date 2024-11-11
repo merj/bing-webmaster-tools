@@ -341,11 +341,7 @@ await client.crawling.save_crawl_settings(
 )
 
 # Get crawl statistics
-stats = await client.crawling.get_crawl_stats(
-    site_url,
-    start_date=datetime.now() - timedelta(days=30),
-    end_date=datetime.now()
-)
+stats = await client.crawling.get_crawl_stats(site_url)
 
 # Get crawl issues
 issues = await client.crawling.get_crawl_issues(site_url)

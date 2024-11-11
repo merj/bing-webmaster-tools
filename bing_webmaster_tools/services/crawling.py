@@ -1,5 +1,4 @@
 import logging
-from datetime import datetime
 from typing import List
 
 from pydantic import validate_call
@@ -90,13 +89,11 @@ class CrawlingService:
         self._logger.info(f"Successfully saved crawl settings for {site_url}")
 
     @validate_call
-    async def get_crawl_stats(self, site_url: str, start_date: datetime, end_date: datetime) -> List[CrawlStats]:
+    async def get_crawl_stats(self, site_url: str) -> List[CrawlStats]:
         """Retrieve crawl statistics for a specific site within a date range.
 
         Args:
             site_url: The URL of the site
-            start_date: The start date of the period
-            end_date: The end date of the period
 
         Returns:
             List[CrawlStats]: List of daily crawl statistics
@@ -105,15 +102,9 @@ class CrawlingService:
             BingWebmasterError: If statistics cannot be retrieved
 
         """
-        self._logger.debug(f"Retrieving crawl stats for {site_url} " f"from {start_date.date()} to {end_date.date()}")
+        self._logger.debug(f"Retrieving crawl stats for {site_url}")
 
-        params = {
-            "siteUrl": site_url,
-            "startDate": start_date.strftime("%Y-%m-%d"),
-            "endDate": end_date.strftime("%Y-%m-%d"),
-        }
-
-        response = await self._client.request("GET", "GetCrawlStats", params=params)
+        response = await self._client.request("GET", "GetCrawlStats", params={"siteUrl": site_url})
 
         api_response = ApiResponse.from_api_response(response=response, model=CrawlStats, is_list=True)
 
