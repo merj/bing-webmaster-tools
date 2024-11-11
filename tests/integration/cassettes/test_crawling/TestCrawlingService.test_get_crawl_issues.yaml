@@ -1,0 +1,35 @@
+interactions:
+- request:
+    body: null
+    headers:
+      Content-Type:
+      - application/json; charset=utf-8
+    method: GET
+    uri: https://ssl.bing.com/webmaster/api.svc/json/GetCrawlIssues?siteUrl=https%3A%2F%2Fexample.test
+  response:
+    body:
+      string: '{"d": []}'
+    headers:
+      Accept-CH:
+      - Sec-CH-UA-Arch, Sec-CH-UA-Bitness, Sec-CH-UA-Full-Version, Sec-CH-UA-Full-Version-List,
+        Sec-CH-UA-Mobile, Sec-CH-UA-Model, Sec-CH-UA-Platform, Sec-CH-UA-Platform-Version
+      Cache-Control:
+      - private
+      Content-Length:
+      - '8'
+      Content-Type:
+      - application/json; charset=utf-8
+      Date:
+      - Mon, 11 Nov 2024 03:14:00 GMT
+      X-AspNet-Version:
+      - 4.0.30319
+      X-Cache:
+      - CONFIG_NOCACHE
+      X-MSEdge-Ref:
+      - 'Ref A: 3649A96F0FD243BBB4290C7CBBDB4E9A Ref B: SGN30EDGE0119 Ref C: 2024-11-11T03:14:01Z'
+      X-Powered-By:
+      - ASP.NET
+    status:
+      code: 200
+      message: OK
+version: 1

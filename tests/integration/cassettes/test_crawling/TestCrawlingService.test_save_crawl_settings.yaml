@@ -1,0 +1,107 @@
+interactions:
+- request:
+    body: '{"siteUrl": "https://example.test", "crawlSettings": {"__type": "CrawlSettings:#Microsoft.Bing.Webmaster.Api",
+      "CrawlBoostAvailable": true, "CrawlBoostEnabled": true, "CrawlRate": [2, 1,
+      5, 4, 4, 3, 2, 9, 2, 10, 7, 1, 1, 2, 4, 4, 9, 10, 1, 9, 4, 9, 7, 4]}}'
+    headers:
+      Content-Type:
+      - application/json; charset=utf-8
+    method: POST
+    uri: https://ssl.bing.com/webmaster/api.svc/json/SaveCrawlSettings
+  response:
+    body:
+      string: '{"d": null}'
+    headers:
+      Accept-CH:
+      - Sec-CH-UA-Arch, Sec-CH-UA-Bitness, Sec-CH-UA-Full-Version, Sec-CH-UA-Full-Version-List,
+        Sec-CH-UA-Mobile, Sec-CH-UA-Model, Sec-CH-UA-Platform, Sec-CH-UA-Platform-Version
+      Cache-Control:
+      - private
+      Content-Length:
+      - '10'
+      Content-Type:
+      - application/json; charset=utf-8
+      Date:
+      - Mon, 11 Nov 2024 03:13:59 GMT
+      X-AspNet-Version:
+      - 4.0.30319
+      X-Cache:
+      - CONFIG_NOCACHE
+      X-MSEdge-Ref:
+      - 'Ref A: F7D09E0EFAA7400E9F7ADF1ABD5A83F5 Ref B: SGN30EDGE0119 Ref C: 2024-11-11T03:13:59Z'
+      X-Powered-By:
+      - ASP.NET
+    status:
+      code: 200
+      message: OK
+- request:
+    body: null
+    headers:
+      Content-Type:
+      - application/json; charset=utf-8
+    method: GET
+    uri: https://ssl.bing.com/webmaster/api.svc/json/GetCrawlSettings?siteUrl=https%3A%2F%2Fexample.test
+  response:
+    body:
+      string: '{"d": {"__type": "CrawlSettings:#Microsoft.Bing.Webmaster.Api", "CrawlBoostAvailable":
+        false, "CrawlBoostEnabled": false, "CrawlRate": [2, 1, 5, 4, 4, 3, 2, 9, 2,
+        10, 7, 1, 1, 2, 4, 4, 9, 10, 1, 9, 4, 9, 7, 4]}}'
+    headers:
+      Accept-CH:
+      - Sec-CH-UA-Arch, Sec-CH-UA-Bitness, Sec-CH-UA-Full-Version, Sec-CH-UA-Full-Version-List,
+        Sec-CH-UA-Mobile, Sec-CH-UA-Model, Sec-CH-UA-Platform, Sec-CH-UA-Platform-Version
+      Cache-Control:
+      - private
+      Content-Length:
+      - '180'
+      Content-Type:
+      - application/json; charset=utf-8
+      Date:
+      - Mon, 11 Nov 2024 03:13:59 GMT
+      X-AspNet-Version:
+      - 4.0.30319
+      X-Cache:
+      - CONFIG_NOCACHE
+      X-MSEdge-Ref:
+      - 'Ref A: 77B9EC24513247ABB1C0EA1AD57E30E1 Ref B: SGN30EDGE0119 Ref C: 2024-11-11T03:14:00Z'
+      X-Powered-By:
+      - ASP.NET
+    status:
+      code: 200
+      message: OK
+- request:
+    body: null
+    headers:
+      Content-Type:
+      - application/json; charset=utf-8
+    method: GET
+    uri: https://ssl.bing.com/webmaster/api.svc/json/GetCrawlSettings?siteUrl=https%3A%2F%2Fexample.test
+  response:
+    body:
+      string: '{"d": {"__type": "CrawlSettings:#Microsoft.Bing.Webmaster.Api", "CrawlBoostAvailable":
+        false, "CrawlBoostEnabled": false, "CrawlRate": [2, 1, 5, 4, 4, 3, 2, 9, 2,
+        10, 7, 1, 1, 2, 4, 4, 9, 10, 1, 9, 4, 9, 7, 4]}}'
+    headers:
+      Accept-CH:
+      - Sec-CH-UA-Arch, Sec-CH-UA-Bitness, Sec-CH-UA-Full-Version, Sec-CH-UA-Full-Version-List,
+        Sec-CH-UA-Mobile, Sec-CH-UA-Model, Sec-CH-UA-Platform, Sec-CH-UA-Platform-Version
+      Cache-Control:
+      - private
+      Content-Length:
+      - '180'
+      Content-Type:
+      - application/json; charset=utf-8
+      Date:
+      - Mon, 11 Nov 2024 03:14:00 GMT
+      X-AspNet-Version:
+      - 4.0.30319
+      X-Cache:
+      - CONFIG_NOCACHE
+      X-MSEdge-Ref:
+      - 'Ref A: 579167D21E664DE498DD2E741DE54C7F Ref B: SGN30EDGE0119 Ref C: 2024-11-11T03:14:00Z'
+      X-Powered-By:
+      - ASP.NET
+    status:
+      code: 200
+      message: OK
+version: 1

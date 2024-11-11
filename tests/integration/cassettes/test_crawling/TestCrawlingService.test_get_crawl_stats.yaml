@@ -1,0 +1,143 @@
+interactions:
+- request:
+    body: null
+    headers:
+      Content-Type:
+      - application/json; charset=utf-8
+    method: GET
+    uri: https://ssl.bing.com/webmaster/api.svc/json/GetCrawlStats?siteUrl=https%3A%2F%2Fexample.test
+  response:
+    body:
+      string: '{"d": [{"__type": "CrawlStats:#Microsoft.Bing.Webmaster.Api", "AllOtherCodes":
+        1, "BlockedByRobotsTxt": 0, "Code2xx": 0, "Code301": 0, "Code302": 0, "Code4xx":
+        0, "Code5xx": 0, "ConnectionTimeout": 0, "ContainsMalware": 0, "CrawlErrors":
+        0, "CrawledPages": 0, "Date": "/Date(1728975600000-0700)/", "DnsFailures":
+        0, "InIndex": 0, "InLinks": 0}, {"__type": "CrawlStats:#Microsoft.Bing.Webmaster.Api",
+        "AllOtherCodes": 1, "BlockedByRobotsTxt": 0, "Code2xx": 0, "Code301": 0, "Code302":
+        0, "Code4xx": 0, "Code5xx": 0, "ConnectionTimeout": 0, "ContainsMalware":
+        0, "CrawlErrors": 5, "CrawledPages": 0, "Date": "/Date(1729062000000-0700)/",
+        "DnsFailures": 0, "InIndex": 0, "InLinks": 0}, {"__type": "CrawlStats:#Microsoft.Bing.Webmaster.Api",
+        "AllOtherCodes": 1, "BlockedByRobotsTxt": 0, "Code2xx": 0, "Code301": 0, "Code302":
+        0, "Code4xx": 0, "Code5xx": 0, "ConnectionTimeout": 0, "ContainsMalware":
+        0, "CrawlErrors": 15, "CrawledPages": 0, "Date": "/Date(1729148400000-0700)/",
+        "DnsFailures": 0, "InIndex": 0, "InLinks": 0}, {"__type": "CrawlStats:#Microsoft.Bing.Webmaster.Api",
+        "AllOtherCodes": 1, "BlockedByRobotsTxt": 0, "Code2xx": 0, "Code301": 0, "Code302":
+        0, "Code4xx": 0, "Code5xx": 0, "ConnectionTimeout": 0, "ContainsMalware":
+        0, "CrawlErrors": 0, "CrawledPages": 0, "Date": "/Date(1729234800000-0700)/",
+        "DnsFailures": 0, "InIndex": 0, "InLinks": 0}, {"__type": "CrawlStats:#Microsoft.Bing.Webmaster.Api",
+        "AllOtherCodes": 1, "BlockedByRobotsTxt": 0, "Code2xx": 0, "Code301": 0, "Code302":
+        0, "Code4xx": 0, "Code5xx": 0, "ConnectionTimeout": 0, "ContainsMalware":
+        0, "CrawlErrors": 0, "CrawledPages": 0, "Date": "/Date(1729321200000-0700)/",
+        "DnsFailures": 0, "InIndex": 0, "InLinks": 0}, {"__type": "CrawlStats:#Microsoft.Bing.Webmaster.Api",
+        "AllOtherCodes": 1, "BlockedByRobotsTxt": 0, "Code2xx": 0, "Code301": 0, "Code302":
+        0, "Code4xx": 0, "Code5xx": 0, "ConnectionTimeout": 0, "ContainsMalware":
+        0, "CrawlErrors": 16, "CrawledPages": 0, "Date": "/Date(1729407600000-0700)/",
+        "DnsFailures": 0, "InIndex": 0, "InLinks": 0}, {"__type": "CrawlStats:#Microsoft.Bing.Webmaster.Api",
+        "AllOtherCodes": 1, "BlockedByRobotsTxt": 0, "Code2xx": 0, "Code301": 0, "Code302":
+        0, "Code4xx": 0, "Code5xx": 0, "ConnectionTimeout": 0, "ContainsMalware":
+        0, "CrawlErrors": 0, "CrawledPages": 0, "Date": "/Date(1729494000000-0700)/",
+        "DnsFailures": 0, "InIndex": 0, "InLinks": 0}, {"__type": "CrawlStats:#Microsoft.Bing.Webmaster.Api",
+        "AllOtherCodes": 1, "BlockedByRobotsTxt": 0, "Code2xx": 0, "Code301": 0, "Code302":
+        0, "Code4xx": 0, "Code5xx": 0, "ConnectionTimeout": 0, "ContainsMalware":
+        0, "CrawlErrors": 0, "CrawledPages": 0, "Date": "/Date(1729580400000-0700)/",
+        "DnsFailures": 0, "InIndex": 0, "InLinks": 0}, {"__type": "CrawlStats:#Microsoft.Bing.Webmaster.Api",
+        "AllOtherCodes": 1, "BlockedByRobotsTxt": 0, "Code2xx": 0, "Code301": 0, "Code302":
+        0, "Code4xx": 0, "Code5xx": 0, "ConnectionTimeout": 0, "ContainsMalware":
+        0, "CrawlErrors": 0, "CrawledPages": 0, "Date": "/Date(1729666800000-0700)/",
+        "DnsFailures": 0, "InIndex": 0, "InLinks": 0}, {"__type": "CrawlStats:#Microsoft.Bing.Webmaster.Api",
+        "AllOtherCodes": 1, "BlockedByRobotsTxt": 0, "Code2xx": 0, "Code301": 0, "Code302":
+        0, "Code4xx": 0, "Code5xx": 0, "ConnectionTimeout": 0, "ContainsMalware":
+        0, "CrawlErrors": 0, "CrawledPages": 0, "Date": "/Date(1729753200000-0700)/",
+        "DnsFailures": 0, "InIndex": 0, "InLinks": 0}, {"__type": "CrawlStats:#Microsoft.Bing.Webmaster.Api",
+        "AllOtherCodes": 1, "BlockedByRobotsTxt": 0, "Code2xx": 0, "Code301": 0, "Code302":
+        0, "Code4xx": 0, "Code5xx": 0, "ConnectionTimeout": 0, "ContainsMalware":
+        0, "CrawlErrors": 0, "CrawledPages": 0, "Date": "/Date(1729839600000-0700)/",
+        "DnsFailures": 0, "InIndex": 0, "InLinks": 0}, {"__type": "CrawlStats:#Microsoft.Bing.Webmaster.Api",
+        "AllOtherCodes": 1, "BlockedByRobotsTxt": 0, "Code2xx": 0, "Code301": 0, "Code302":
+        0, "Code4xx": 0, "Code5xx": 0, "ConnectionTimeout": 0, "ContainsMalware":
+        0, "CrawlErrors": 0, "CrawledPages": 0, "Date": "/Date(1729926000000-0700)/",
+        "DnsFailures": 0, "InIndex": 0, "InLinks": 0}, {"__type": "CrawlStats:#Microsoft.Bing.Webmaster.Api",
+        "AllOtherCodes": 1, "BlockedByRobotsTxt": 0, "Code2xx": 0, "Code301": 0, "Code302":
+        0, "Code4xx": 0, "Code5xx": 0, "ConnectionTimeout": 0, "ContainsMalware":
+        0, "CrawlErrors": 0, "CrawledPages": 0, "Date": "/Date(1730012400000-0700)/",
+        "DnsFailures": 0, "InIndex": 0, "InLinks": 0}, {"__type": "CrawlStats:#Microsoft.Bing.Webmaster.Api",
+        "AllOtherCodes": 1, "BlockedByRobotsTxt": 0, "Code2xx": 0, "Code301": 0, "Code302":
+        0, "Code4xx": 0, "Code5xx": 0, "ConnectionTimeout": 0, "ContainsMalware":
+        0, "CrawlErrors": 0, "CrawledPages": 0, "Date": "/Date(1730098800000-0700)/",
+        "DnsFailures": 0, "InIndex": 0, "InLinks": 0}, {"__type": "CrawlStats:#Microsoft.Bing.Webmaster.Api",
+        "AllOtherCodes": 1, "BlockedByRobotsTxt": 0, "Code2xx": 0, "Code301": 0, "Code302":
+        0, "Code4xx": 0, "Code5xx": 0, "ConnectionTimeout": 0, "ContainsMalware":
+        0, "CrawlErrors": 0, "CrawledPages": 0, "Date": "/Date(1730185200000-0700)/",
+        "DnsFailures": 0, "InIndex": 0, "InLinks": 0}, {"__type": "CrawlStats:#Microsoft.Bing.Webmaster.Api",
+        "AllOtherCodes": 1, "BlockedByRobotsTxt": 0, "Code2xx": 0, "Code301": 0, "Code302":
+        0, "Code4xx": 0, "Code5xx": 0, "ConnectionTimeout": 0, "ContainsMalware":
+        0, "CrawlErrors": 0, "CrawledPages": 0, "Date": "/Date(1730271600000-0700)/",
+        "DnsFailures": 0, "InIndex": 0, "InLinks": 0}, {"__type": "CrawlStats:#Microsoft.Bing.Webmaster.Api",
+        "AllOtherCodes": 1, "BlockedByRobotsTxt": 0, "Code2xx": 0, "Code301": 0, "Code302":
+        0, "Code4xx": 0, "Code5xx": 0, "ConnectionTimeout": 0, "ContainsMalware":
+        0, "CrawlErrors": 0, "CrawledPages": 0, "Date": "/Date(1730358000000-0700)/",
+        "DnsFailures": 0, "InIndex": 0, "InLinks": 0}, {"__type": "CrawlStats:#Microsoft.Bing.Webmaster.Api",
+        "AllOtherCodes": 1, "BlockedByRobotsTxt": 0, "Code2xx": 0, "Code301": 0, "Code302":
+        0, "Code4xx": 0, "Code5xx": 0, "ConnectionTimeout": 0, "ContainsMalware":
+        0, "CrawlErrors": 0, "CrawledPages": 0, "Date": "/Date(1730444400000-0700)/",
+        "DnsFailures": 0, "InIndex": 0, "InLinks": 0}, {"__type": "CrawlStats:#Microsoft.Bing.Webmaster.Api",
+        "AllOtherCodes": 1, "BlockedByRobotsTxt": 0, "Code2xx": 0, "Code301": 0, "Code302":
+        0, "Code4xx": 0, "Code5xx": 0, "ConnectionTimeout": 0, "ContainsMalware":
+        0, "CrawlErrors": 0, "CrawledPages": 0, "Date": "/Date(1730530800000-0700)/",
+        "DnsFailures": 0, "InIndex": 0, "InLinks": 0}, {"__type": "CrawlStats:#Microsoft.Bing.Webmaster.Api",
+        "AllOtherCodes": 1, "BlockedByRobotsTxt": 0, "Code2xx": 0, "Code301": 0, "Code302":
+        0, "Code4xx": 0, "Code5xx": 0, "ConnectionTimeout": 0, "ContainsMalware":
+        0, "CrawlErrors": 0, "CrawledPages": 0, "Date": "/Date(1730617200000-0700)/",
+        "DnsFailures": 0, "InIndex": 0, "InLinks": 0}, {"__type": "CrawlStats:#Microsoft.Bing.Webmaster.Api",
+        "AllOtherCodes": 1, "BlockedByRobotsTxt": 0, "Code2xx": 0, "Code301": 0, "Code302":
+        0, "Code4xx": 0, "Code5xx": 0, "ConnectionTimeout": 0, "ContainsMalware":
+        0, "CrawlErrors": 0, "CrawledPages": 0, "Date": "/Date(1730707200000-0800)/",
+        "DnsFailures": 0, "InIndex": 0, "InLinks": 0}, {"__type": "CrawlStats:#Microsoft.Bing.Webmaster.Api",
+        "AllOtherCodes": 1, "BlockedByRobotsTxt": 0, "Code2xx": 0, "Code301": 0, "Code302":
+        0, "Code4xx": 0, "Code5xx": 0, "ConnectionTimeout": 0, "ContainsMalware":
+        0, "CrawlErrors": 0, "CrawledPages": 0, "Date": "/Date(1730793600000-0800)/",
+        "DnsFailures": 0, "InIndex": 0, "InLinks": 0}, {"__type": "CrawlStats:#Microsoft.Bing.Webmaster.Api",
+        "AllOtherCodes": 1, "BlockedByRobotsTxt": 0, "Code2xx": 0, "Code301": 0, "Code302":
+        0, "Code4xx": 0, "Code5xx": 0, "ConnectionTimeout": 0, "ContainsMalware":
+        0, "CrawlErrors": 0, "CrawledPages": 0, "Date": "/Date(1730880000000-0800)/",
+        "DnsFailures": 0, "InIndex": 0, "InLinks": 0}, {"__type": "CrawlStats:#Microsoft.Bing.Webmaster.Api",
+        "AllOtherCodes": 1, "BlockedByRobotsTxt": 0, "Code2xx": 0, "Code301": 0, "Code302":
+        0, "Code4xx": 0, "Code5xx": 0, "ConnectionTimeout": 0, "ContainsMalware":
+        0, "CrawlErrors": 0, "CrawledPages": 0, "Date": "/Date(1730966400000-0800)/",
+        "DnsFailures": 0, "InIndex": 0, "InLinks": 0}, {"__type": "CrawlStats:#Microsoft.Bing.Webmaster.Api",
+        "AllOtherCodes": 1, "BlockedByRobotsTxt": 0, "Code2xx": 0, "Code301": 0, "Code302":
+        0, "Code4xx": 0, "Code5xx": 0, "ConnectionTimeout": 0, "ContainsMalware":
+        0, "CrawlErrors": 0, "CrawledPages": 0, "Date": "/Date(1731052800000-0800)/",
+        "DnsFailures": 0, "InIndex": 0, "InLinks": 0}, {"__type": "CrawlStats:#Microsoft.Bing.Webmaster.Api",
+        "AllOtherCodes": 1, "BlockedByRobotsTxt": 0, "Code2xx": 0, "Code301": 0, "Code302":
+        0, "Code4xx": 0, "Code5xx": 0, "ConnectionTimeout": 0, "ContainsMalware":
+        0, "CrawlErrors": 0, "CrawledPages": 0, "Date": "/Date(1731139200000-0800)/",
+        "DnsFailures": 0, "InIndex": 0, "InLinks": 0}, {"__type": "CrawlStats:#Microsoft.Bing.Webmaster.Api",
+        "AllOtherCodes": 1, "BlockedByRobotsTxt": 0, "Code2xx": 0, "Code301": 0, "Code302":
+        0, "Code4xx": 0, "Code5xx": 0, "ConnectionTimeout": 0, "ContainsMalware":
+        0, "CrawlErrors": 0, "CrawledPages": 0, "Date": "/Date(1731225600000-0800)/",
+        "DnsFailures": 0, "InIndex": 0, "InLinks": 0}]}'
+    headers:
+      Accept-CH:
+      - Sec-CH-UA-Arch, Sec-CH-UA-Bitness, Sec-CH-UA-Full-Version, Sec-CH-UA-Full-Version-List,
+        Sec-CH-UA-Mobile, Sec-CH-UA-Model, Sec-CH-UA-Platform, Sec-CH-UA-Platform-Version
+      Cache-Control:
+      - private
+      Content-Length:
+      - '8325'
+      Content-Type:
+      - application/json; charset=utf-8
+      Date:
+      - Mon, 11 Nov 2024 03:14:01 GMT
+      X-AspNet-Version:
+      - 4.0.30319
+      X-Cache:
+      - CONFIG_NOCACHE
+      X-MSEdge-Ref:
+      - 'Ref A: 80E03DCE0AD843A0A0ED7E2300C2430D Ref B: SGN30EDGE0119 Ref C: 2024-11-11T03:14:01Z'
+      X-Powered-By:
+      - ASP.NET
+    status:
+      code: 200
+      message: OK
+version: 1
