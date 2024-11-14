@@ -63,10 +63,11 @@ def vcr_config(test_site) -> Dict[str, Any]:  # noqa: C901
 
         try:
             body = json.loads(response["body"]["string"])
-            response["body"]["string"] = json.dumps(_process_json(body))
+            processed_body = json.dumps(_process_json(body))
+            response["body"]["string"] = processed_body.encode("utf-8")
         except json.JSONDecodeError:
             # If not JSON, try to anonymize the raw string
-            response["body"]["string"] = _replace_domain(response["body"]["string"])
+            response["body"]["string"] = _replace_domain(response["body"]["string"]).encode("utf-8")
 
         return response
 
