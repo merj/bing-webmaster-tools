@@ -20,13 +20,13 @@ interactions:
       Content-Type:
       - application/json; charset=utf-8
       Date:
-      - Thu, 14 Nov 2024 09:23:01 GMT
+      - Thu, 14 Nov 2024 12:38:04 GMT
       X-AspNet-Version:
       - 4.0.30319
       X-Cache:
       - CONFIG_NOCACHE
       X-MSEdge-Ref:
-      - 'Ref A: F8DD3B46A8F24AE7B13BF18EA40E7892 Ref B: SGN30EDGE0410 Ref C: 2024-11-14T09:23:01Z'
+      - 'Ref A: 482007B2096A400E9357103D38AB15EE Ref B: SGN30EDGE0519 Ref C: 2024-11-14T12:38:04Z'
       X-Powered-By:
       - ASP.NET
     status:
@@ -53,13 +53,13 @@ interactions:
       Content-Type:
       - application/json; charset=utf-8
       Date:
-      - Thu, 14 Nov 2024 09:23:02 GMT
+      - Thu, 14 Nov 2024 12:38:05 GMT
       X-AspNet-Version:
       - 4.0.30319
       X-Cache:
       - CONFIG_NOCACHE
       X-MSEdge-Ref:
-      - 'Ref A: 850146C4DF4E4FF0ACF71864855BDEB6 Ref B: SGN30EDGE0410 Ref C: 2024-11-14T09:23:01Z'
+      - 'Ref A: 9C7CFC79EC78466696A63CF20CF61A06 Ref B: SGN30EDGE0519 Ref C: 2024-11-14T12:38:05Z'
       X-Powered-By:
       - ASP.NET
     status:
@@ -75,7 +75,7 @@ interactions:
   response:
     body:
       string: '{"d": [{"__type": "QueryParameter:#Microsoft.Bing.Webmaster.Api", "Date":
-        "/Date(1731576182320)/", "IsEnabled": true, "Parameter": "param:with:colons",
+        "/Date(1731587885662)/", "IsEnabled": true, "Parameter": "param:with:colons",
         "Source": 0}]}'
     headers:
       Accept-CH:
@@ -88,13 +88,13 @@ interactions:
       Content-Type:
       - application/json; charset=utf-8
       Date:
-      - Thu, 14 Nov 2024 09:23:02 GMT
+      - Thu, 14 Nov 2024 12:38:05 GMT
       X-AspNet-Version:
       - 4.0.30319
       X-Cache:
       - CONFIG_NOCACHE
       X-MSEdge-Ref:
-      - 'Ref A: CA86DFE43BBD41B8B71ACBE2FBAB9A06 Ref B: SGN30EDGE0410 Ref C: 2024-11-14T09:23:02Z'
+      - 'Ref A: B1BA17ED2750428A8CCD65E6010BADD5 Ref B: SGN30EDGE0519 Ref C: 2024-11-14T12:38:05Z'
       X-Powered-By:
       - ASP.NET
     status:
@@ -122,13 +122,13 @@ interactions:
       Content-Type:
       - application/json; charset=utf-8
       Date:
-      - Thu, 14 Nov 2024 09:23:03 GMT
+      - Thu, 14 Nov 2024 12:38:06 GMT
       X-AspNet-Version:
       - 4.0.30319
       X-Cache:
       - CONFIG_NOCACHE
       X-MSEdge-Ref:
-      - 'Ref A: A0A46B385B99443387E72EE63D1A52AD Ref B: SGN30EDGE0410 Ref C: 2024-11-14T09:23:03Z'
+      - 'Ref A: 40D277A10D5B47C3B430E305FFABF768 Ref B: SGN30EDGE0519 Ref C: 2024-11-14T12:38:06Z'
       X-Powered-By:
       - ASP.NET
     status:
@@ -144,7 +144,7 @@ interactions:
   response:
     body:
       string: '{"d": [{"__type": "QueryParameter:#Microsoft.Bing.Webmaster.Api", "Date":
-        "/Date(1731576182320)/", "IsEnabled": false, "Parameter": "param:with:colons",
+        "/Date(1731587885662)/", "IsEnabled": false, "Parameter": "param:with:colons",
         "Source": 0}]}'
     headers:
       Accept-CH:
@@ -157,13 +157,13 @@ interactions:
       Content-Type:
       - application/json; charset=utf-8
       Date:
-      - Thu, 14 Nov 2024 09:23:04 GMT
+      - Thu, 14 Nov 2024 12:38:06 GMT
       X-AspNet-Version:
       - 4.0.30319
       X-Cache:
       - CONFIG_NOCACHE
       X-MSEdge-Ref:
-      - 'Ref A: 4C43C62A5448451FB82BD8324F6D467E Ref B: SGN30EDGE0410 Ref C: 2024-11-14T09:23:03Z'
+      - 'Ref A: 204428BC70E542DC87D2EF0817E28E12 Ref B: SGN30EDGE0519 Ref C: 2024-11-14T12:38:07Z'
       X-Powered-By:
       - ASP.NET
     status:
@@ -191,13 +191,13 @@ interactions:
       Content-Type:
       - application/json; charset=utf-8
       Date:
-      - Thu, 14 Nov 2024 09:23:04 GMT
+      - Thu, 14 Nov 2024 12:38:07 GMT
       X-AspNet-Version:
       - 4.0.30319
       X-Cache:
       - CONFIG_NOCACHE
       X-MSEdge-Ref:
-      - 'Ref A: 17FEC1C569E5485B9DB4A6974D14FD63 Ref B: SGN30EDGE0410 Ref C: 2024-11-14T09:23:04Z'
+      - 'Ref A: B0603B62FC6343CDA2C76611F407356E Ref B: SGN30EDGE0519 Ref C: 2024-11-14T12:38:07Z'
       X-Powered-By:
       - ASP.NET
     status:
@@ -213,7 +213,7 @@ interactions:
   response:
     body:
       string: '{"d": [{"__type": "QueryParameter:#Microsoft.Bing.Webmaster.Api", "Date":
-        "/Date(1731576182320)/", "IsEnabled": true, "Parameter": "param:with:colons",
+        "/Date(1731587885662)/", "IsEnabled": true, "Parameter": "param:with:colons",
         "Source": 0}]}'
     headers:
       Accept-CH:
@@ -226,13 +226,13 @@ interactions:
       Content-Type:
       - application/json; charset=utf-8
       Date:
-      - Thu, 14 Nov 2024 09:23:05 GMT
+      - Thu, 14 Nov 2024 12:38:08 GMT
       X-AspNet-Version:
       - 4.0.30319
       X-Cache:
       - CONFIG_NOCACHE
       X-MSEdge-Ref:
-      - 'Ref A: 9A6DC93E52D34E1ABAC88693D3B15077 Ref B: SGN30EDGE0410 Ref C: 2024-11-14T09:23:04Z'
+      - 'Ref A: FF68C02991DA48D4BF40CFC7BEBCBBA0 Ref B: SGN30EDGE0519 Ref C: 2024-11-14T12:38:08Z'
       X-Powered-By:
       - ASP.NET
     status:
@@ -259,13 +259,13 @@ interactions:
       Content-Type:
       - application/json; charset=utf-8
       Date:
-      - Thu, 14 Nov 2024 09:23:05 GMT
+      - Thu, 14 Nov 2024 12:38:08 GMT
       X-AspNet-Version:
       - 4.0.30319
       X-Cache:
       - CONFIG_NOCACHE
       X-MSEdge-Ref:
-      - 'Ref A: 94C5B21B45C645869E9B09CD541C260D Ref B: SGN30EDGE0410 Ref C: 2024-11-14T09:23:05Z'
+      - 'Ref A: CB8FF91124A94A91B870013E42107886 Ref B: SGN30EDGE0519 Ref C: 2024-11-14T12:38:08Z'
       X-Powered-By:
       - ASP.NET
     status:
@@ -292,13 +292,13 @@ interactions:
       Content-Type:
       - application/json; charset=utf-8
       Date:
-      - Thu, 14 Nov 2024 09:23:06 GMT
+      - Thu, 14 Nov 2024 12:38:09 GMT
       X-AspNet-Version:
       - 4.0.30319
       X-Cache:
       - CONFIG_NOCACHE
       X-MSEdge-Ref:
-      - 'Ref A: DA2335D969564F738456D3CC8E5FAC7F Ref B: SGN30EDGE0410 Ref C: 2024-11-14T09:23:05Z'
+      - 'Ref A: 11449794E83F4A799DE5A5199B7A8D76 Ref B: SGN30EDGE0519 Ref C: 2024-11-14T12:38:09Z'
       X-Powered-By:
       - ASP.NET
     status:

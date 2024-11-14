@@ -18,6 +18,6 @@ QueryParamStr = Annotated[
     str,
     StringConstraints(
         min_length=1,
-        pattern=r"^[a-zA-Z0-9:]+$",  # Only alphanumeric and colon
+        pattern=r"^[A-Za-z0-9\-_.~:]+$",  # Only unreserved letter and colon
     ),
 ]
