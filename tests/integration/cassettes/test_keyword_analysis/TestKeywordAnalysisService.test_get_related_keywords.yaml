@@ -1,0 +1,180 @@
+interactions:
+- request:
+    body: null
+    headers:
+      Content-Type:
+      - application/json; charset=utf-8
+    method: GET
+    uri: https://ssl.bing.com/webmaster/api.svc/json/GetRelatedKeywords?country=us&endDate=2024-11-14&language=en-US&q=python+programming&startDate=2024-10-15
+  response:
+    body:
+      string: '{"d": [{"__type": "Keyword:#Microsoft.Bing.Webmaster.Api", "BroadImpressions":
+        376, "Impressions": 281, "Query": "programiz python"}, {"__type": "Keyword:#Microsoft.Bing.Webmaster.Api",
+        "BroadImpressions": 47, "Impressions": 47, "Query": "learn basic python"},
+        {"__type": "Keyword:#Microsoft.Bing.Webmaster.Api", "BroadImpressions": 32,
+        "Impressions": 32, "Query": "python beginners"}, {"__type": "Keyword:#Microsoft.Bing.Webmaster.Api",
+        "BroadImpressions": 2196, "Impressions": 2133, "Query": "python online compiler"},
+        {"__type": "Keyword:#Microsoft.Bing.Webmaster.Api", "BroadImpressions": 870,
+        "Impressions": 196, "Query": "getting started"}, {"__type": "Keyword:#Microsoft.Bing.Webmaster.Api",
+        "BroadImpressions": 1050, "Impressions": 719, "Query": "python interpreter"},
+        {"__type": "Keyword:#Microsoft.Bing.Webmaster.Api", "BroadImpressions": 18,
+        "Impressions": 18, "Query": "online python compiler programiz"}, {"__type":
+        "Keyword:#Microsoft.Bing.Webmaster.Api", "BroadImpressions": 233, "Impressions":
+        123, "Query": "coding python"}, {"__type": "Keyword:#Microsoft.Bing.Webmaster.Api",
+        "BroadImpressions": 241, "Impressions": 213, "Query": "python basics"}, {"__type":
+        "Keyword:#Microsoft.Bing.Webmaster.Api", "BroadImpressions": 2, "Impressions":
+        2, "Query": "online python programming"}, {"__type": "Keyword:#Microsoft.Bing.Webmaster.Api",
+        "BroadImpressions": 31, "Impressions": 31, "Query": "how to learn python programming"},
+        {"__type": "Keyword:#Microsoft.Bing.Webmaster.Api", "BroadImpressions": 32,
+        "Impressions": 32, "Query": "python guide"}, {"__type": "Keyword:#Microsoft.Bing.Webmaster.Api",
+        "BroadImpressions": 117, "Impressions": 117, "Query": "python programming
+        language online compiler"}, {"__type": "Keyword:#Microsoft.Bing.Webmaster.Api",
+        "BroadImpressions": 71, "Impressions": 71, "Query": "python programming language
+        books"}, {"__type": "Keyword:#Microsoft.Bing.Webmaster.Api", "BroadImpressions":
+        411, "Impressions": 276, "Query": "piton"}, {"__type": "Keyword:#Microsoft.Bing.Webmaster.Api",
+        "BroadImpressions": 14, "Impressions": 14, "Query": "site www.programiz.com"},
+        {"__type": "Keyword:#Microsoft.Bing.Webmaster.Api", "BroadImpressions": 140,
+        "Impressions": 140, "Query": "what is python used for"}, {"__type": "Keyword:#Microsoft.Bing.Webmaster.Api",
+        "BroadImpressions": 17, "Impressions": 17, "Query": "python programming for
+        beginners"}, {"__type": "Keyword:#Microsoft.Bing.Webmaster.Api", "BroadImpressions":
+        78297, "Impressions": 1684, "Query": "programming"}, {"__type": "Keyword:#Microsoft.Bing.Webmaster.Api",
+        "BroadImpressions": 31, "Impressions": 31, "Query": "general-purpose programming
+        language wikipedia"}, {"__type": "Keyword:#Microsoft.Bing.Webmaster.Api",
+        "BroadImpressions": 132, "Impressions": 49, "Query": "python program"}, {"__type":
+        "Keyword:#Microsoft.Bing.Webmaster.Api", "BroadImpressions": 449, "Impressions":
+        423, "Query": "python code runner"}, {"__type": "Keyword:#Microsoft.Bing.Webmaster.Api",
+        "BroadImpressions": 7, "Impressions": 7, "Query": "python programming pdf"},
+        {"__type": "Keyword:#Microsoft.Bing.Webmaster.Api", "BroadImpressions": 2462,
+        "Impressions": 2457, "Query": "python programming language download"}, {"__type":
+        "Keyword:#Microsoft.Bing.Webmaster.Api", "BroadImpressions": 145, "Impressions":
+        135, "Query": "what is python programming"}, {"__type": "Keyword:#Microsoft.Bing.Webmaster.Api",
+        "BroadImpressions": 2393, "Impressions": 573, "Query": "python code"}, {"__type":
+        "Keyword:#Microsoft.Bing.Webmaster.Api", "BroadImpressions": 275655, "Impressions":
+        47134, "Query": "python"}, {"__type": "Keyword:#Microsoft.Bing.Webmaster.Api",
+        "BroadImpressions": 1079, "Impressions": 1029, "Query": "w3schools python"},
+        {"__type": "Keyword:#Microsoft.Bing.Webmaster.Api", "BroadImpressions": 3124,
+        "Impressions": 1708, "Query": "py"}, {"__type": "Keyword:#Microsoft.Bing.Webmaster.Api",
+        "BroadImpressions": 110, "Impressions": 25, "Query": "python site"}, {"__type":
+        "Keyword:#Microsoft.Bing.Webmaster.Api", "BroadImpressions": 264, "Impressions":
+        195, "Query": "how to learn python"}, {"__type": "Keyword:#Microsoft.Bing.Webmaster.Api",
+        "BroadImpressions": 73, "Impressions": 73, "Query": "programiz python compiler"},
+        {"__type": "Keyword:#Microsoft.Bing.Webmaster.Api", "BroadImpressions": 23,
+        "Impressions": 23, "Query": "introduction to python programming"}, {"__type":
+        "Keyword:#Microsoft.Bing.Webmaster.Api", "BroadImpressions": 15, "Impressions":
+        15, "Query": "python programming tutorial"}, {"__type": "Keyword:#Microsoft.Bing.Webmaster.Api",
+        "BroadImpressions": 53, "Impressions": 53, "Query": "help python"}, {"__type":
+        "Keyword:#Microsoft.Bing.Webmaster.Api", "BroadImpressions": 1, "Impressions":
+        1, "Query": "python programming online compiler"}, {"__type": "Keyword:#Microsoft.Bing.Webmaster.Api",
+        "BroadImpressions": 1, "Impressions": 1, "Query": "advanced python programming"},
+        {"__type": "Keyword:#Microsoft.Bing.Webmaster.Api", "BroadImpressions": 199,
+        "Impressions": 199, "Query": "python programming language tutorials"}, {"__type":
+        "Keyword:#Microsoft.Bing.Webmaster.Api", "BroadImpressions": 197, "Impressions":
+        176, "Query": "python language"}, {"__type": "Keyword:#Microsoft.Bing.Webmaster.Api",
+        "BroadImpressions": 423, "Impressions": 272, "Query": "learning python"},
+        {"__type": "Keyword:#Microsoft.Bing.Webmaster.Api", "BroadImpressions": 133,
+        "Impressions": 133, "Query": "python tutorial for beginners"}, {"__type":
+        "Keyword:#Microsoft.Bing.Webmaster.Api", "BroadImpressions": 207, "Impressions":
+        146, "Query": "python learning"}, {"__type": "Keyword:#Microsoft.Bing.Webmaster.Api",
+        "BroadImpressions": 69, "Impressions": 25, "Query": "programming python"},
+        {"__type": "Keyword:#Microsoft.Bing.Webmaster.Api", "BroadImpressions": 652,
+        "Impressions": 300, "Query": "python3"}, {"__type": "Keyword:#Microsoft.Bing.Webmaster.Api",
+        "BroadImpressions": 177, "Impressions": 39, "Query": "python web"}, {"__type":
+        "Keyword:#Microsoft.Bing.Webmaster.Api", "BroadImpressions": 9, "Impressions":
+        9, "Query": "programiz.com python"}, {"__type": "Keyword:#Microsoft.Bing.Webmaster.Api",
+        "BroadImpressions": 4792, "Impressions": 1655, "Query": "python programming
+        language"}, {"__type": "Keyword:#Microsoft.Bing.Webmaster.Api", "BroadImpressions":
+        119, "Impressions": 119, "Query": "python programming language history"},
+        {"__type": "Keyword:#Microsoft.Bing.Webmaster.Api", "BroadImpressions": 123,
+        "Impressions": 123, "Query": "python programming language documentation"},
+        {"__type": "Keyword:#Microsoft.Bing.Webmaster.Api", "BroadImpressions": 1889,
+        "Impressions": 911, "Query": "python 3"}, {"__type": "Keyword:#Microsoft.Bing.Webmaster.Api",
+        "BroadImpressions": 47, "Impressions": 47, "Query": "when was python created"},
+        {"__type": "Keyword:#Microsoft.Bing.Webmaster.Api", "BroadImpressions": 76,
+        "Impressions": 52, "Query": "introduction to python"}, {"__type": "Keyword:#Microsoft.Bing.Webmaster.Api",
+        "BroadImpressions": 33, "Impressions": 33, "Query": "python definition"},
+        {"__type": "Keyword:#Microsoft.Bing.Webmaster.Api", "BroadImpressions": 513,
+        "Impressions": 257, "Query": "pythons"}, {"__type": "Keyword:#Microsoft.Bing.Webmaster.Api",
+        "BroadImpressions": 46, "Impressions": 46, "Query": "python wiki"}, {"__type":
+        "Keyword:#Microsoft.Bing.Webmaster.Api", "BroadImpressions": 11, "Impressions":
+        11, "Query": "python programming examples"}, {"__type": "Keyword:#Microsoft.Bing.Webmaster.Api",
+        "BroadImpressions": 65, "Impressions": 65, "Query": "python programming courses"},
+        {"__type": "Keyword:#Microsoft.Bing.Webmaster.Api", "BroadImpressions": 5133,
+        "Impressions": 2489, "Query": "python compiler"}, {"__type": "Keyword:#Microsoft.Bing.Webmaster.Api",
+        "BroadImpressions": 48550, "Impressions": 1535, "Query": "tutorial"}, {"__type":
+        "Keyword:#Microsoft.Bing.Webmaster.Api", "BroadImpressions": 129, "Impressions":
+        12, "Query": "python programming language online"}, {"__type": "Keyword:#Microsoft.Bing.Webmaster.Api",
+        "BroadImpressions": 1124, "Impressions": 1082, "Query": "python tutor"}, {"__type":
+        "Keyword:#Microsoft.Bing.Webmaster.Api", "BroadImpressions": 86, "Impressions":
+        59, "Query": "python codes"}, {"__type": "Keyword:#Microsoft.Bing.Webmaster.Api",
+        "BroadImpressions": 37, "Impressions": 19, "Query": "python compiler programiz"},
+        {"__type": "Keyword:#Microsoft.Bing.Webmaster.Api", "BroadImpressions": 100,
+        "Impressions": 100, "Query": "is python free"}, {"__type": "Keyword:#Microsoft.Bing.Webmaster.Api",
+        "BroadImpressions": 46, "Impressions": 46, "Query": "itz4all.online"}, {"__type":
+        "Keyword:#Microsoft.Bing.Webmaster.Api", "BroadImpressions": 97, "Impressions":
+        75, "Query": "learn python online"}, {"__type": "Keyword:#Microsoft.Bing.Webmaster.Api",
+        "BroadImpressions": 10, "Impressions": 10, "Query": "what is python programming
+        language"}, {"__type": "Keyword:#Microsoft.Bing.Webmaster.Api", "BroadImpressions":
+        454, "Impressions": 454, "Query": "online python ide"}, {"__type": "Keyword:#Microsoft.Bing.Webmaster.Api",
+        "BroadImpressions": 32843, "Impressions": 3660, "Query": "idle"}, {"__type":
+        "Keyword:#Microsoft.Bing.Webmaster.Api", "BroadImpressions": 4, "Impressions":
+        4, "Query": "python online programiz"}, {"__type": "Keyword:#Microsoft.Bing.Webmaster.Api",
+        "BroadImpressions": 2688, "Impressions": 1428, "Query": "programiz"}, {"__type":
+        "Keyword:#Microsoft.Bing.Webmaster.Api", "BroadImpressions": 3998, "Impressions":
+        998, "Query": "online python"}, {"__type": "Keyword:#Microsoft.Bing.Webmaster.Api",
+        "BroadImpressions": 5, "Impressions": 4, "Query": "python programming online"},
+        {"__type": "Keyword:#Microsoft.Bing.Webmaster.Api", "BroadImpressions": 1711,
+        "Impressions": 808, "Query": "learn python"}, {"__type": "Keyword:#Microsoft.Bing.Webmaster.Api",
+        "BroadImpressions": 4655, "Impressions": 1677, "Query": "python online"},
+        {"__type": "Keyword:#Microsoft.Bing.Webmaster.Api", "BroadImpressions": 86,
+        "Impressions": 80, "Query": "python for dummies"}, {"__type": "Keyword:#Microsoft.Bing.Webmaster.Api",
+        "BroadImpressions": 126, "Impressions": 126, "Query": "how to code in python"},
+        {"__type": "Keyword:#Microsoft.Bing.Webmaster.Api", "BroadImpressions": 281,
+        "Impressions": 47, "Query": "code python"}, {"__type": "Keyword:#Microsoft.Bing.Webmaster.Api",
+        "BroadImpressions": 1301, "Impressions": 1076, "Query": "python tutorial"},
+        {"__type": "Keyword:#Microsoft.Bing.Webmaster.Api", "BroadImpressions": 2106,
+        "Impressions": 2056, "Query": "online python compiler"}, {"__type": "Keyword:#Microsoft.Bing.Webmaster.Api",
+        "BroadImpressions": 203, "Impressions": 135, "Query": "python meaning"}, {"__type":
+        "Keyword:#Microsoft.Bing.Webmaster.Api", "BroadImpressions": 515, "Impressions":
+        417, "Query": "w3school"}, {"__type": "Keyword:#Microsoft.Bing.Webmaster.Api",
+        "BroadImpressions": 8, "Impressions": 8, "Query": "python programming language
+        pdf"}, {"__type": "Keyword:#Microsoft.Bing.Webmaster.Api", "BroadImpressions":
+        183, "Impressions": 106, "Query": "python software"}, {"__type": "Keyword:#Microsoft.Bing.Webmaster.Api",
+        "BroadImpressions": 5, "Impressions": 5, "Query": "programist"}, {"__type":
+        "Keyword:#Microsoft.Bing.Webmaster.Api", "BroadImpressions": 828, "Impressions":
+        561, "Query": "python coding"}, {"__type": "Keyword:#Microsoft.Bing.Webmaster.Api",
+        "BroadImpressions": 355, "Impressions": 248, "Query": "python for beginners"},
+        {"__type": "Keyword:#Microsoft.Bing.Webmaster.Api", "BroadImpressions": 905,
+        "Impressions": 599, "Query": "what is python"}, {"__type": "Keyword:#Microsoft.Bing.Webmaster.Api",
+        "BroadImpressions": 31, "Impressions": 31, "Query": "where to learn python"},
+        {"__type": "Keyword:#Microsoft.Bing.Webmaster.Api", "BroadImpressions": 237,
+        "Impressions": 143, "Query": "how to use python"}, {"__type": "Keyword:#Microsoft.Bing.Webmaster.Api",
+        "BroadImpressions": 990, "Impressions": 636, "Query": "python.org"}, {"__type":
+        "Keyword:#Microsoft.Bing.Webmaster.Api", "BroadImpressions": 4, "Impressions":
+        4, "Query": "python practice programs"}, {"__type": "Keyword:#Microsoft.Bing.Webmaster.Api",
+        "BroadImpressions": 233, "Impressions": 233, "Query": "what is in python"},
+        {"__type": "Keyword:#Microsoft.Bing.Webmaster.Api", "BroadImpressions": 16,
+        "Impressions": 13, "Query": "python online compiler programiz"}]}'
+    headers:
+      Accept-CH:
+      - Sec-CH-UA-Arch, Sec-CH-UA-Bitness, Sec-CH-UA-Full-Version, Sec-CH-UA-Full-Version-List,
+        Sec-CH-UA-Mobile, Sec-CH-UA-Model, Sec-CH-UA-Platform, Sec-CH-UA-Platform-Version
+      Cache-Control:
+      - private
+      Content-Length:
+      - '11461'
+      Content-Type:
+      - application/json; charset=utf-8
+      Date:
+      - Thu, 14 Nov 2024 09:28:30 GMT
+      X-AspNet-Version:
+      - 4.0.30319
+      X-Cache:
+      - CONFIG_NOCACHE
+      X-MSEdge-Ref:
+      - 'Ref A: 10B4CAB0407F4C1DA7589075FBEE409D Ref B: HKBEDGE0919 Ref C: 2024-11-14T09:28:30Z'
+      X-Powered-By:
+      - ASP.NET
+    status:
+      code: 200
+      message: OK
+version: 1

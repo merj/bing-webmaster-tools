@@ -116,6 +116,18 @@ interactions:
         "AllOtherCodes": 1, "BlockedByRobotsTxt": 0, "Code2xx": 0, "Code301": 0, "Code302":
         0, "Code4xx": 0, "Code5xx": 0, "ConnectionTimeout": 0, "ContainsMalware":
         0, "CrawlErrors": 0, "CrawledPages": 0, "Date": "/Date(1731225600000-0800)/",
+        "DnsFailures": 0, "InIndex": 0, "InLinks": 0}, {"__type": "CrawlStats:#Microsoft.Bing.Webmaster.Api",
+        "AllOtherCodes": 1, "BlockedByRobotsTxt": 0, "Code2xx": 0, "Code301": 0, "Code302":
+        0, "Code4xx": 0, "Code5xx": 0, "ConnectionTimeout": 0, "ContainsMalware":
+        0, "CrawlErrors": 0, "CrawledPages": 0, "Date": "/Date(1731312000000-0800)/",
+        "DnsFailures": 0, "InIndex": 0, "InLinks": 0}, {"__type": "CrawlStats:#Microsoft.Bing.Webmaster.Api",
+        "AllOtherCodes": 1, "BlockedByRobotsTxt": 0, "Code2xx": 0, "Code301": 0, "Code302":
+        0, "Code4xx": 0, "Code5xx": 0, "ConnectionTimeout": 0, "ContainsMalware":
+        0, "CrawlErrors": 0, "CrawledPages": 0, "Date": "/Date(1731398400000-0800)/",
+        "DnsFailures": 0, "InIndex": 0, "InLinks": 0}, {"__type": "CrawlStats:#Microsoft.Bing.Webmaster.Api",
+        "AllOtherCodes": 1, "BlockedByRobotsTxt": 0, "Code2xx": 0, "Code301": 0, "Code302":
+        0, "Code4xx": 0, "Code5xx": 0, "ConnectionTimeout": 0, "ContainsMalware":
+        0, "CrawlErrors": 0, "CrawledPages": 0, "Date": "/Date(1731484800000-0800)/",
         "DnsFailures": 0, "InIndex": 0, "InLinks": 0}]}'
     headers:
       Accept-CH:
@@ -124,17 +136,17 @@ interactions:
       Cache-Control:
       - private
       Content-Length:
-      - '8325'
+      - '9249'
       Content-Type:
       - application/json; charset=utf-8
       Date:
-      - Mon, 11 Nov 2024 03:14:01 GMT
+      - Thu, 14 Nov 2024 09:22:32 GMT
       X-AspNet-Version:
       - 4.0.30319
       X-Cache:
       - CONFIG_NOCACHE
       X-MSEdge-Ref:
-      - 'Ref A: 80E03DCE0AD843A0A0ED7E2300C2430D Ref B: SGN30EDGE0119 Ref C: 2024-11-11T03:14:01Z'
+      - 'Ref A: B937DD56DF36477391529490DBE586AB Ref B: SGN30EDGE0517 Ref C: 2024-11-14T09:22:33Z'
       X-Powered-By:
       - ASP.NET
     status:
