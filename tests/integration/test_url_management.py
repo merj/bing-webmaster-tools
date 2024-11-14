@@ -13,6 +13,8 @@ class TestUrlManagementService:
             "sort",
             "order",
             "param:with:colons",
+            "param-with-dashes",
+            "param_with_underscores",
         ],
     )
     @pytest.mark.vcr
@@ -72,6 +74,7 @@ class TestUrlManagementService:
         [
             "invalid@param",  # Contains invalid character
             "",  # Empty string
+            " ",  # Whitespace
         ],
     )
     @pytest.mark.vcr
