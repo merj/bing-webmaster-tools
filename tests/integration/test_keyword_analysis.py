@@ -9,6 +9,7 @@ from bing_webmaster_tools.models.keyword_analysis import Keyword, KeywordStats
 class TestKeywordAnalysisService:
     """Tests for the keyword analysis service."""
 
+    @pytest.mark.vcr
     async def test_get_keyword_stats(self, client):
         """Test retrieving keyword statistics."""
         # Test parameters
@@ -22,6 +23,7 @@ class TestKeywordAnalysisService:
         assert len(stats) > 0
         assert all(isinstance(stat, KeywordStats) for stat in stats)
 
+    @pytest.mark.vcr
     async def test_get_keyword(self, client, test_site):
         """Test retrieving keyword data for a specific period."""
         # Test parameters
@@ -42,6 +44,7 @@ class TestKeywordAnalysisService:
         assert isinstance(keyword_data, Keyword)
         assert keyword_data.query == test_query
 
+    @pytest.mark.vcr
     async def test_get_related_keywords(self, client, test_site):
         """Test retrieving related keywords."""
         # Test parameters
@@ -71,6 +74,7 @@ class TestKeywordAnalysisService:
             ("au", "en-AU"),
         ],
     )
+    @pytest.mark.vcr
     async def test_keyword_stats_different_locales(self, client, test_site, country: str, language: str):
         """Test keyword stats with different country/language combinations."""
         test_query = "python"
@@ -81,6 +85,7 @@ class TestKeywordAnalysisService:
         assert len(stats) > 0
         assert all(isinstance(stat, KeywordStats) for stat in stats)
 
+    @pytest.mark.vcr
     async def test_invalid_date_range(self, client, test_site):
         """Test behavior with invalid date range (future dates)."""
         test_query = "python"

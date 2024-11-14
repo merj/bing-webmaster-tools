@@ -7,7 +7,6 @@ from bing_webmaster_tools.client import BingWebmasterClient
 class TestUrlManagementService:
     """Tests for the URL management service."""
 
-    @pytest.mark.vcr
     @pytest.mark.parametrize(
         "query_parameter",
         [
@@ -16,6 +15,7 @@ class TestUrlManagementService:
             "param:with:colons",
         ],
     )
+    @pytest.mark.vcr
     async def test_query_parameter_lifecycle(
         self,
         client: BingWebmasterClient,
@@ -67,7 +67,6 @@ class TestUrlManagementService:
             parameters = await client.urls.get_query_parameters(test_site)
             assert len(parameters) == 0
 
-    @pytest.mark.vcr
     @pytest.mark.parametrize(
         "invalid_parameter",
         [
@@ -75,6 +74,7 @@ class TestUrlManagementService:
             "",  # Empty string
         ],
     )
+    @pytest.mark.vcr
     async def test_add_invalid_parameter(
         self,
         client: BingWebmasterClient,
