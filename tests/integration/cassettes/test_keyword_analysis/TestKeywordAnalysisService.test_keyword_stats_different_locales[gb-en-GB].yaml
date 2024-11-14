@@ -1,0 +1,84 @@
+interactions:
+- request:
+    body: null
+    headers:
+      Content-Type:
+      - application/json; charset=utf-8
+    method: GET
+    uri: https://ssl.bing.com/webmaster/api.svc/json/GetKeywordStats?country=gb&language=en-GB&q=python
+  response:
+    body:
+      string: '{"d": [{"__type": "KeywordStats:#Microsoft.Bing.Webmaster.Api", "BroadImpressions":
+        11610, "Date": "/Date(1716015600000)/", "Impressions": 2655, "Query": "python"},
+        {"__type": "KeywordStats:#Microsoft.Bing.Webmaster.Api", "BroadImpressions":
+        11381, "Date": "/Date(1716620400000)/", "Impressions": 2642, "Query": "python"},
+        {"__type": "KeywordStats:#Microsoft.Bing.Webmaster.Api", "BroadImpressions":
+        8322, "Date": "/Date(1717225200000)/", "Impressions": 2063, "Query": "python"},
+        {"__type": "KeywordStats:#Microsoft.Bing.Webmaster.Api", "BroadImpressions":
+        10390, "Date": "/Date(1717830000000)/", "Impressions": 2587, "Query": "python"},
+        {"__type": "KeywordStats:#Microsoft.Bing.Webmaster.Api", "BroadImpressions":
+        10950, "Date": "/Date(1718434800000)/", "Impressions": 2637, "Query": "python"},
+        {"__type": "KeywordStats:#Microsoft.Bing.Webmaster.Api", "BroadImpressions":
+        9400, "Date": "/Date(1719039600000)/", "Impressions": 2458, "Query": "python"},
+        {"__type": "KeywordStats:#Microsoft.Bing.Webmaster.Api", "BroadImpressions":
+        9626, "Date": "/Date(1719644400000)/", "Impressions": 2434, "Query": "python"},
+        {"__type": "KeywordStats:#Microsoft.Bing.Webmaster.Api", "BroadImpressions":
+        9978, "Date": "/Date(1720854000000)/", "Impressions": 2364, "Query": "python"},
+        {"__type": "KeywordStats:#Microsoft.Bing.Webmaster.Api", "BroadImpressions":
+        9358, "Date": "/Date(1721458800000)/", "Impressions": 2088, "Query": "python"},
+        {"__type": "KeywordStats:#Microsoft.Bing.Webmaster.Api", "BroadImpressions":
+        14290, "Date": "/Date(1722063600000)/", "Impressions": 1739, "Query": "python"},
+        {"__type": "KeywordStats:#Microsoft.Bing.Webmaster.Api", "BroadImpressions":
+        9319, "Date": "/Date(1722668400000)/", "Impressions": 1625, "Query": "python"},
+        {"__type": "KeywordStats:#Microsoft.Bing.Webmaster.Api", "BroadImpressions":
+        7951, "Date": "/Date(1723273200000)/", "Impressions": 1584, "Query": "python"},
+        {"__type": "KeywordStats:#Microsoft.Bing.Webmaster.Api", "BroadImpressions":
+        7326, "Date": "/Date(1723878000000)/", "Impressions": 1527, "Query": "python"},
+        {"__type": "KeywordStats:#Microsoft.Bing.Webmaster.Api", "BroadImpressions":
+        7250, "Date": "/Date(1724482800000)/", "Impressions": 1616, "Query": "python"},
+        {"__type": "KeywordStats:#Microsoft.Bing.Webmaster.Api", "BroadImpressions":
+        7544, "Date": "/Date(1725087600000)/", "Impressions": 1662, "Query": "python"},
+        {"__type": "KeywordStats:#Microsoft.Bing.Webmaster.Api", "BroadImpressions":
+        12510, "Date": "/Date(1725692400000)/", "Impressions": 2533, "Query": "python"},
+        {"__type": "KeywordStats:#Microsoft.Bing.Webmaster.Api", "BroadImpressions":
+        12608, "Date": "/Date(1726297200000)/", "Impressions": 2889, "Query": "python"},
+        {"__type": "KeywordStats:#Microsoft.Bing.Webmaster.Api", "BroadImpressions":
+        14386, "Date": "/Date(1726902000000)/", "Impressions": 3053, "Query": "python"},
+        {"__type": "KeywordStats:#Microsoft.Bing.Webmaster.Api", "BroadImpressions":
+        14177, "Date": "/Date(1727506800000)/", "Impressions": 3276, "Query": "python"},
+        {"__type": "KeywordStats:#Microsoft.Bing.Webmaster.Api", "BroadImpressions":
+        16215, "Date": "/Date(1728111600000)/", "Impressions": 3638, "Query": "python"},
+        {"__type": "KeywordStats:#Microsoft.Bing.Webmaster.Api", "BroadImpressions":
+        15550, "Date": "/Date(1728716400000)/", "Impressions": 3316, "Query": "python"},
+        {"__type": "KeywordStats:#Microsoft.Bing.Webmaster.Api", "BroadImpressions":
+        14885, "Date": "/Date(1729321200000)/", "Impressions": 3068, "Query": "python"},
+        {"__type": "KeywordStats:#Microsoft.Bing.Webmaster.Api", "BroadImpressions":
+        13396, "Date": "/Date(1729926000000)/", "Impressions": 2746, "Query": "python"},
+        {"__type": "KeywordStats:#Microsoft.Bing.Webmaster.Api", "BroadImpressions":
+        10318, "Date": "/Date(1730530800000)/", "Impressions": 2045, "Query": "python"},
+        {"__type": "KeywordStats:#Microsoft.Bing.Webmaster.Api", "BroadImpressions":
+        13277, "Date": "/Date(1731139200000)/", "Impressions": 2744, "Query": "python"}]}'
+    headers:
+      Accept-CH:
+      - Sec-CH-UA-Arch, Sec-CH-UA-Bitness, Sec-CH-UA-Full-Version, Sec-CH-UA-Full-Version-List,
+        Sec-CH-UA-Mobile, Sec-CH-UA-Model, Sec-CH-UA-Platform, Sec-CH-UA-Platform-Version
+      Cache-Control:
+      - private
+      Content-Length:
+      - '3747'
+      Content-Type:
+      - application/json; charset=utf-8
+      Date:
+      - Thu, 14 Nov 2024 09:28:32 GMT
+      X-AspNet-Version:
+      - 4.0.30319
+      X-Cache:
+      - CONFIG_NOCACHE
+      X-MSEdge-Ref:
+      - 'Ref A: 045CDC3D8FF44E86B6607B269BC46577 Ref B: HKBEDGE0919 Ref C: 2024-11-14T09:28:31Z'
+      X-Powered-By:
+      - ASP.NET
+    status:
+      code: 200
+      message: OK
+version: 1

@@ -9,8 +9,8 @@ interactions:
   response:
     body:
       string: '{"d": {"__type": "CrawlSettings:#Microsoft.Bing.Webmaster.Api", "CrawlBoostAvailable":
-        false, "CrawlBoostEnabled": false, "CrawlRate": [2, 1, 5, 4, 4, 3, 2, 9, 2,
-        10, 7, 1, 1, 2, 4, 4, 9, 10, 1, 9, 4, 9, 7, 4]}}'
+        false, "CrawlBoostEnabled": false, "CrawlRate": [10, 10, 10, 10, 10, 10, 10,
+        10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10]}}'
     headers:
       Accept-CH:
       - Sec-CH-UA-Arch, Sec-CH-UA-Bitness, Sec-CH-UA-Full-Version, Sec-CH-UA-Full-Version-List,
@@ -18,17 +18,17 @@ interactions:
       Cache-Control:
       - private
       Content-Length:
-      - '180'
+      - '202'
       Content-Type:
       - application/json; charset=utf-8
       Date:
-      - Mon, 11 Nov 2024 03:13:58 GMT
+      - Thu, 14 Nov 2024 09:22:30 GMT
       X-AspNet-Version:
       - 4.0.30319
       X-Cache:
       - CONFIG_NOCACHE
       X-MSEdge-Ref:
-      - 'Ref A: 7CD4AA6947974EAE8EB5E30A1C823CE6 Ref B: SGN30EDGE0119 Ref C: 2024-11-11T03:13:58Z'
+      - 'Ref A: 8B740C9016564A3FAC8F485B5C01131D Ref B: SGN30EDGE0517 Ref C: 2024-11-14T09:22:30Z'
       X-Powered-By:
       - ASP.NET
     status:
