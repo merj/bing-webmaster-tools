@@ -1,0 +1,42 @@
+version: 2
+updates:
+  - package-ecosystem: "pip"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+      day: "monday"
+      time: "09:00"
+      timezone: "Etc/UTC"
+
+    # Labels on pull requests
+    labels:
+      - "dependencies"
+      - "security"
+
+    # Assign reviewers
+    reviewers:
+      - "org/maintainers"
+
+    # Configure version updates
+    versioning-strategy: "widen"
+
+    # Allow up to 10 open pull requests at a time
+    open-pull-requests-limit: 10
+
+    # Configure commit message
+    commit-message:
+      prefix: "deps"
+      include: "scope"
+
+    allow:
+      - dependency-type: "direct"
+      - dependency-type: "indirect"
+
+    # Group dependencies into a single PR
+    groups:
+      dev-dependencies:
+        patterns:
+          - "*"
+        update-types:
+          - "minor"
+          - "patch"
