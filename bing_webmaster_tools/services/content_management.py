@@ -10,6 +10,8 @@ from bing_webmaster_tools.models.content_management import (
     UrlTrafficInfo,
 )
 from bing_webmaster_tools.services.api_client import ApiClient
+from bing_webmaster_tools.services.submission import SubmissionService
+from bing_webmaster_tools.utils import deprecated
 
 logger = logging.getLogger(__name__)
 
@@ -34,6 +36,7 @@ class ContentManagementService:
         """
         self._client = client
         self._logger = logging.getLogger(__name__)
+        self._submission_service = SubmissionService(client)
 
     @validate_call
     async def get_url_info(self, site_url: str, url: str) -> UrlInfo:
@@ -151,11 +154,18 @@ class ContentManagementService:
         self._logger.info(f"Retrieved traffic info for {len(api_response.data)} child URLs of {url}")
         return api_response.data
 
+    @deprecated(
+        "ContentManagementService.submit_content() is deprecated and will be removed in a future version. "
+        "Please use SubmissionService.submit_content() instead."
+    )
     @validate_call
     async def submit_content(
         self, site_url: str, url: str, http_message: str, structured_data: str, dynamic_serving: int
     ) -> None:
         """Submit content for a specific URL.
+
+        DEPRECATED: This method is deprecated and will be removed in a future version.
+        Please use SubmissionService.submit_content() instead.
 
         Args:
             site_url: The URL of the site
@@ -168,14 +178,11 @@ class ContentManagementService:
             BingWebmasterError: If content submission fails
 
         """
-        self._logger.debug(f"Submitting content for {url} on {site_url}")
-        data = {
-            "siteUrl": site_url,
-            "url": url,
-            "httpMessage": http_message,
-            "structuredData": structured_data,
-            "dynamicServing": dynamic_serving,
-        }
-
-        await self._client.request("POST", "SubmitContent", data=data)
-        self._logger.info(f"Successfully submitted content for {url}")
+        # Proxy to the SubmissionService's method
+        await self._submission_service.submit_content(
+            site_url=site_url,
+            url=url,
+            http_message=http_message,
+            structured_data=structured_data,
+            dynamic_serving=dynamic_serving,
+        )
