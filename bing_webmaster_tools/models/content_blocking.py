@@ -26,8 +26,8 @@ class BlockedUrl(BingModel):
         DIRECTORY = 1
 
     class BlockedUrlRequestType(IntEnum):
-        ADD = 0
-        REMOVE = 1
+        CACHE_ONLY = 0
+        FULL_REMOVAL = 1
 
 
 class PagePreview(BingModel):
