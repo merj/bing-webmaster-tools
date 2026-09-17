@@ -1,6 +1,6 @@
 interactions:
 - request:
-    body: '{"siteUrl": "https://example.test", "masterUrl": "http://example.com/test-1731575508.953791"}'
+    body: '{"siteUrl": "https://example.test", "masterUrl": "http://example.com/test-connected-page"}'
     headers:
       Content-Type:
       - application/json; charset=utf-8
