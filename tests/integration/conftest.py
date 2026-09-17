@@ -1,4 +1,3 @@
-import asyncio
 import json
 import os
 from typing import Any, AsyncGenerator, Dict
@@ -78,15 +77,6 @@ def vcr_config(test_site) -> Dict[str, Any]:  # noqa: C901
         "before_record_response": _anonymize_test_site_response,
         "match_on": ["method", "scheme", "host", "port", "path", "query", "body"],
     }
-
-
-@pytest.fixture(scope="session", autouse=True)
-def event_loop():
-    """Create an instance of the default event loop for each test case."""
-    policy = asyncio.get_event_loop_policy()
-    loop = policy.new_event_loop()
-    yield loop
-    loop.close()
 
 
 @pytest_asyncio.fixture(scope="session")

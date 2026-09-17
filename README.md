@@ -24,7 +24,7 @@ The Bing Webmaster API Client is a modern, async Python library that provides a 
 - **Production-ready** - Extensive logging, testing, and error handling
 
 ### Requirements
-- Python 3.9 or higher
+- Python 3.10 or higher
 - Bing Webmaster API key (follow the instructions [here](https://learn.microsoft.com/en-us/bingwebmaster/getting-access#using-api-key))
 
 ## Installation
