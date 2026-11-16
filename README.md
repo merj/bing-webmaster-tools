@@ -136,10 +136,10 @@ BING_WEBMASTER_MAX_RETRIES=5
 The client provides structured error handling:
 
 ```python
-from bing_webmaster_tools.exceptions import (
-    BingWebmasterError,
+from bing_webmaster_tools import (
     AuthenticationError,
-    RateLimitError
+    BingWebmasterError,
+    RateLimitError,
 )
 
 
@@ -154,7 +154,7 @@ async def handle_api_calls():
         print("Too many requests")
     except BingWebmasterError as e:
         # Handle other API errors
-        print(f"API error: {e.message}, Status: {e.status_code}")
+        print(f"API error: {e}, Status: {e.status_code}")
 ```
 
 ### Rate Limiting
