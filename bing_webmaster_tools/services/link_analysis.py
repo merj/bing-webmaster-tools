@@ -196,7 +196,7 @@ class LinkAnalysisService:
         await self._client.request("POST", "RemoveDeepLinkBlock", data=data)
         self._logger.info(f"Successfully removed deep link block for {deep_link_url}")
 
-    @deprecated("Get deep link functionality is deprecated in Bing Webmaster API. " "Use get_deep_link_block instead.")
+    @deprecated("Get deep link functionality is deprecated in Bing Webmaster API. Use get_deep_link_block instead.")
     @validate_call
     async def get_deep_link(self, site_url: str, url: str) -> List[DeepLink]:
         """Get deep links for a specific algo URL. (Deprecated)
@@ -243,9 +243,7 @@ class LinkAnalysisService:
         self._logger.info(f"Retrieved {len(api_response.data)} deep link algo URLs")
         return api_response.data
 
-    @deprecated(
-        "Update deep link functionality is deprecated in Bing Webmaster API. " "Use add_deep_link_block instead."
-    )
+    @deprecated("Update deep link functionality is deprecated in Bing Webmaster API. Use add_deep_link_block instead.")
     @validate_call
     async def update_deep_link(self, site_url: str, algo_url: str, deep_link: str, weight: DeepLinkWeight) -> None:
         """Update deep link weight. (Deprecated)
