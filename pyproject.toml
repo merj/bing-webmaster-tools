@@ -15,9 +15,11 @@ classifiers = [
     "Intended Audience :: Developers",
     "License :: OSI Approved :: MIT License",
     "Programming Language :: Python :: 3",
-    "Programming Language :: Python :: 3.10",
     "Programming Language :: Python :: 3.11",
     "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Programming Language :: Python :: 3.14",
+    "Programming Language :: Python :: 3.15",
     "Topic :: Software Development :: Libraries :: Python Modules",
     "Topic :: Internet :: WWW/HTTP"
 ]
@@ -26,7 +28,7 @@ readme = "README.md"
 packages = [{ include = "bing_webmaster_tools" }]
 
 [tool.poetry.dependencies]
-python = "^3.10"
+python = "^3.11"
 pydantic = "^2.9.2"
 tenacity = "^9.0.0"
 aiohttp = "^3.14.3"
@@ -65,8 +67,8 @@ warn_unused_ignores = true
 warn_return_any = true
 warn_unreachable = true
 ignore_missing_imports = true
-# Suppress errors since pydantic_settings uses X | Y typing
-python_version = "3.10"
+# Type-check against the minimum supported Python version
+python_version = "3.11"
 
 [tool.pydantic-mypy]
 init_forbid_extra = true
@@ -74,7 +76,7 @@ init_typed = true
 warn_required_dynamic_aliases = true
 
 [tool.ruff]
-target-version = "py310"
+target-version = "py311"
 line-length = 120
 
 [tool.ruff.lint]
