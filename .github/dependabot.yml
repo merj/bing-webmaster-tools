@@ -40,3 +40,23 @@ updates:
         update-types:
           - "minor"
           - "patch"
+
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+      day: "monday"
+      time: "09:00"
+      timezone: "Etc/UTC"
+
+    labels:
+      - "dependencies"
+
+    commit-message:
+      prefix: "ci"
+
+    # Group all action updates, including major versions, into a single PR
+    groups:
+      github-actions:
+        patterns:
+          - "*"
