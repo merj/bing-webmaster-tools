@@ -9,7 +9,9 @@ from dotenv import find_dotenv, load_dotenv
 
 from bing_webmaster_tools import BingWebmasterClient, Settings
 
-load_dotenv(find_dotenv(raise_error_if_not_found=True))
+# Load settings from a .env file if there is one. Variables already set in the
+# environment take precedence, so they can also come from the shell or CI secrets.
+load_dotenv(find_dotenv())
 
 
 @pytest.fixture(scope="session")
