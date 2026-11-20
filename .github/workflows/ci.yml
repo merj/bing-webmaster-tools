@@ -48,3 +48,7 @@ jobs:
 
       - name: Run type checking
         run: poetry run mypy
+
+      # Replays the recorded cassettes; needs no API key, and any live request fails
+      - name: Run tests
+        run: poetry run pytest --block-network
