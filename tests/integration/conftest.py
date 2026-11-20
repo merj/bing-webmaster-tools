@@ -13,13 +13,27 @@ from bing_webmaster_tools import BingWebmasterClient, Settings
 # environment take precedence, so they can also come from the shell or CI secrets.
 load_dotenv(find_dotenv())
 
+# The site URL the cassettes are recorded with: the real test site is replaced with it before
+# anything is saved, so cassettes never contain the real site.
+ANONYMIZED_SITE = "https://example.test"
+
+
+@pytest.fixture(scope="session")
+def replaying(record_mode: str, disable_recording: bool) -> bool:
+    """Whether the tests replay recorded cassettes instead of calling the live API.
+
+    This is the default: pytest-recording's default record mode, "none", only replays cassettes.
+    Recording needs another mode, such as `--record-mode=rewrite`.
+    """
+    return record_mode == "none" and not disable_recording
+
 
 @pytest.fixture(scope="session")
 def vcr_config(test_site) -> Dict[str, Any]:  # noqa: C901
     """VCR configuration fixture."""
     parsed_test_site = urlparse(test_site)
     test_domain = parsed_test_site.netloc
-    anonymized_domain = "example.test"
+    anonymized_domain = urlparse(ANONYMIZED_SITE).netloc
 
     def _replace_domain(text: str) -> str:
         """Replace domain in any string."""
@@ -82,9 +96,15 @@ def vcr_config(test_site) -> Dict[str, Any]:  # noqa: C901
 
 
 @pytest_asyncio.fixture(scope="session")
-async def client() -> AsyncGenerator[BingWebmasterClient, None]:
-    """Fixture providing a configured BingWebmasterClient."""
-    async with BingWebmasterClient(settings=Settings.from_env()) as client:
+async def client(replaying: bool) -> AsyncGenerator[BingWebmasterClient, None]:
+    """Fixture providing a configured BingWebmasterClient.
+
+    When replaying, the client uses a placeholder API key instead of BING_WEBMASTER_API_KEY. The
+    cassettes don't contain the key, so replaying doesn't need a real one, and a request that
+    isn't replayed fails with InvalidApiKey instead of acting on a real account.
+    """
+    settings = Settings(api_key="placeholder-api-key-for-replay") if replaying else Settings.from_env()
+    async with BingWebmasterClient(settings=settings) as client:
         yield client
 
 
@@ -104,8 +124,16 @@ async def _verify_site(client: BingWebmasterClient, site_url: str) -> None:
 
 
 @pytest_asyncio.fixture(scope="session")
-async def test_site(client: BingWebmasterClient) -> str:
-    """Fixture providing a test site URL from the account."""
+async def test_site(client: BingWebmasterClient, replaying: bool) -> str:
+    """Fixture providing the URL of the test site.
+
+    When replaying, this is the anonymized site the cassettes were recorded with, so the
+    replayed responses contain the same URLs the tests build, and no live check is needed.
+    When recording, it is BING_WEBMASTER_TEST_SITE, checked against the account first.
+    """
+    if replaying:
+        return ANONYMIZED_SITE
+
     site = get_required_env_var("BING_WEBMASTER_TEST_SITE")
     await _verify_site(client, site)
     return site.rstrip("/")
