@@ -105,11 +105,9 @@ class UrlManagementService:
 
         """
         self._logger.debug(
-            f"{'Enabling' if is_enabled else 'Disabling'} " f"query parameter '{query_parameter}' for {site_url}"
+            f"{'Enabling' if is_enabled else 'Disabling'} query parameter '{query_parameter}' for {site_url}"
         )
         data = {"siteUrl": site_url, "queryParameter": query_parameter, "isEnabled": is_enabled}
 
         await self._client.request("POST", "EnableDisableQueryParameter", data=data)
-        self._logger.info(
-            f"Successfully {'enabled' if is_enabled else 'disabled'} " f"query parameter: {query_parameter}"
-        )
+        self._logger.info(f"Successfully {'enabled' if is_enabled else 'disabled'} query parameter: {query_parameter}")

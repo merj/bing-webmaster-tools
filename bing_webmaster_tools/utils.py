@@ -52,7 +52,7 @@ def parse_timestamp_from_api(value: Any) -> datetime:
 
 def format_date_for_api(dt: datetime) -> str:
     """Format datetime in .NET JSON date format."""
-    return f"/Date({int(dt.timestamp()*1000)}+0000)/"
+    return f"/Date({int(dt.timestamp() * 1000)}+0000)/"
 
 
 TModel = TypeVar("TModel", bound=BaseModel)

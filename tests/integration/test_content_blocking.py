@@ -79,6 +79,9 @@ class TestContentBlockingService:
     @pytest.mark.parametrize(
         "entity_type",
         [BlockedUrl.BlockedUrlEntityType.PAGE, BlockedUrl.BlockedUrlEntityType.DIRECTORY],
+        # Explicit IDs keep the cassette names stable: since Python 3.11, str() of an IntEnum
+        # member is its value ("0"), not "BlockedUrlEntityType.PAGE"
+        ids=["BlockedUrlEntityType.PAGE", "BlockedUrlEntityType.DIRECTORY"],
     )
     @pytest.mark.vcr
     async def test_block_url_with_different_entity_types(

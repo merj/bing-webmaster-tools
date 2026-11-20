@@ -24,7 +24,7 @@ The Bing Webmaster API Client is a modern, async Python library that provides a 
 - **Production-ready** - Extensive logging, testing, and error handling
 
 ### Requirements
-- Python 3.10 or higher
+- Python 3.11 or higher
 - Bing Webmaster API key (follow the instructions [here](https://learn.microsoft.com/en-us/bingwebmaster/getting-access#using-api-key))
 
 ## Installation
@@ -70,6 +70,7 @@ client = BingWebmasterClient(Settings(api_key="your_api_key_here"))
 3. Configuration file:
 ```python
 from dotenv import load_dotenv
+
 load_dotenv()  # Load from .env file
 client = BingWebmasterClient(Settings.from_env())
 ```
@@ -90,7 +91,7 @@ async with BingWebmasterClient(Settings.from_env()) as client:
 settings = Settings(
     api_key="your_api_key",
     timeout=30,  # Custom timeout
-    max_retries=5  # Custom retry count
+    max_retries=5,  # Custom retry count
 )
 async with BingWebmasterClient(settings) as client:
     sites = await client.sites.get_sites()
@@ -113,15 +114,14 @@ from bing_webmaster_tools import Settings
 settings = Settings(
     # Required
     api_key="your_api_key",  # Also via BING_WEBMASTER_API_KEY env var
-
     # Optional with defaults
     base_url="https://ssl.bing.com/webmaster/api.svc/json",
     timeout=30,  # Request timeout in seconds
     max_retries=3,  # Maximum number of retry attempts
     rate_limit_calls=10,  # Number of calls allowed per period
     rate_limit_period=1,  # Rate limit period in seconds
-    disable_destructive_operations=False
-    # Disable destructive operations, if you want to prevent accidental deletions etc. 
+    disable_destructive_operations=False,
+    # Disable destructive operations, if you want to prevent accidental deletions etc.
 )
 ```
 
@@ -136,10 +136,10 @@ BING_WEBMASTER_MAX_RETRIES=5
 The client provides structured error handling:
 
 ```python
-from bing_webmaster_tools.exceptions import (
-    BingWebmasterError,
+from bing_webmaster_tools import (
     AuthenticationError,
-    RateLimitError
+    BingWebmasterError,
+    RateLimitError,
 )
 
 
@@ -154,7 +154,7 @@ async def handle_api_calls():
         print("Too many requests")
     except BingWebmasterError as e:
         # Handle other API errors
-        print(f"API error: {e.message}, Status: {e.status_code}")
+        print(f"API error: {e}, Status: {e.status_code}")
 ```
 
 ### Rate Limiting
