@@ -43,3 +43,6 @@ jobs:
 
       - name: Run type checking
         run: poetry run mypy
+
+      - name: Run tests (offline: unit tests and recorded cassettes, no API key)
+        run: poetry run pytest -p no:cacheprovider --record-mode=none

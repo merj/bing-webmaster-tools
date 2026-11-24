@@ -117,8 +117,8 @@ settings = Settings(
     # Optional with defaults
     base_url="https://ssl.bing.com/webmaster/api.svc/json",
     timeout=30,  # Request timeout in seconds
-    max_retries=3,  # Maximum number of retry attempts
-    rate_limit_calls=10,  # Number of calls allowed per period
+    max_retries=3,  # Retries after the first attempt (so up to 4 requests)
+    rate_limit_calls=5,  # Number of calls allowed per period
     rate_limit_period=1,  # Rate limit period in seconds
     disable_destructive_operations=False
     # Disable destructive operations, if you want to prevent accidental deletions etc. 
@@ -136,7 +136,7 @@ BING_WEBMASTER_MAX_RETRIES=5
 The client provides structured error handling:
 
 ```python
-from bing_webmaster_tools.exceptions import (
+from bing_webmaster_tools.errors import (
     BingWebmasterError,
     AuthenticationError,
     RateLimitError
@@ -187,3 +187,21 @@ pip install poetry
 # Install dependencies and setup development environment
 poetry install
 ```
+
+### Running the tests
+The test suite runs offline, with no API key: unit tests in `tests/unit` and the recorded
+responses (cassettes) in `tests/integration/cassettes`, replayed by pytest-recording.
+
+```bash
+poetry run pytest --record-mode=none
+```
+
+To record new cassettes, put `BING_WEBMASTER_API_KEY` and `BING_WEBMASTER_TEST_SITE` in a `.env` file
+and run the integration tests with `--record-mode=once`. Cassettes store the test site as
+`example.test` and never store the key, but they do keep search queries and URLs from the account, so
+record against a site whose data can be public.
+
+### Dates
+Dates are returned as timezone-aware datetimes in the offset Bing sent. Bing currently dates daily and
+weekly figures at midnight UTC (older responses used midnight Pacific time with a `-0700`/`-0800`
+offset), so `.date()` gives the day Bing means on any machine.

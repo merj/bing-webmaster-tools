@@ -15,8 +15,11 @@ class BlockReason(IntEnum):
 
 
 class BlockedUrl(BingModel):
+    response_only_fields = {"days_to_expire"}
+
     type: str = Field("BlockedUrl:#Microsoft.Bing.Webmaster.Api", alias="__type")
     date: datetime
+    days_to_expire: Optional[int] = None
     entity_type: "BlockedUrl.BlockedUrlEntityType"
     request_type: "BlockedUrl.BlockedUrlRequestType"
     url: str
@@ -31,9 +34,16 @@ class BlockedUrl(BingModel):
 
 
 class PagePreview(BingModel):
-    date_fields = BingModel.date_fields | {"block_date"}
+    date_fields = BingModel.date_fields | {"block_date", "submit_date"}
 
+    # Not documented by Microsoft (its page returns 404); the fields are those the API sends
     type: str = Field(..., alias="__type")
     url: str
     block_reason: BlockReason
     block_date: Optional[datetime] = None
+    action: Optional[int] = None
+    reason: Optional[str] = None
+    refresh_reason: Optional[int] = None
+    site_url: Optional[str] = None
+    submit_date: Optional[datetime] = None
+    user_id: Optional[str] = None

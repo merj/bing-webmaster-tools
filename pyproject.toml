@@ -107,13 +107,13 @@ markers = [
     "unit: marks tests as unit tests",
     "integration: marks tests as integration tests"
 ]
-pythonpath = ["bing_webmaster_tools_sdk"]
+pythonpath = ["."]
 asyncio_mode = "auto"  # Added for async tests
 asyncio_default_fixture_loop_scope = "session"
 asyncio_default_test_loop_scope = "session"
 
 [tool.coverage.run]
-source = ["bing_webmaster"]
+source = ["bing_webmaster_tools"]
 omit = ["tests/*", "**/__init__.py"]
 
 [tool.coverage.report]

@@ -9,7 +9,17 @@ from dotenv import find_dotenv, load_dotenv
 
 from bing_webmaster_tools import BingWebmasterClient, Settings
 
-load_dotenv(find_dotenv(raise_error_if_not_found=True))
+# A .env is only needed to record new cassettes. Without one, the suite replays the committed
+# cassettes offline: cassettes store the test site as example.test and never store the API key.
+load_dotenv(find_dotenv())
+
+REPLAY_SITE = "https://example.test"
+REPLAY_API_KEY = "replay-only"
+
+
+def _is_live() -> bool:
+    """True when a real API key is configured, so requests may reach the API."""
+    return bool(os.getenv("BING_WEBMASTER_API_KEY"))
 
 
 @pytest.fixture(scope="session")
@@ -82,7 +92,8 @@ def vcr_config(test_site) -> Dict[str, Any]:  # noqa: C901
 @pytest_asyncio.fixture(scope="session")
 async def client() -> AsyncGenerator[BingWebmasterClient, None]:
     """Fixture providing a configured BingWebmasterClient."""
-    async with BingWebmasterClient(settings=Settings.from_env()) as client:
+    settings = Settings.from_env() if _is_live() else Settings(api_key=REPLAY_API_KEY, max_retries=1)
+    async with BingWebmasterClient(settings=settings) as client:
         yield client
 
 
@@ -104,6 +115,8 @@ async def _verify_site(client: BingWebmasterClient, site_url: str) -> None:
 @pytest_asyncio.fixture(scope="session")
 async def test_site(client: BingWebmasterClient) -> str:
     """Fixture providing a test site URL from the account."""
+    if not _is_live():
+        return REPLAY_SITE
     site = get_required_env_var("BING_WEBMASTER_TEST_SITE")
     await _verify_site(client, site)
     return site.rstrip("/")

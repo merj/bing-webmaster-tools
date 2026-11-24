@@ -3,10 +3,11 @@ from typing import List, cast
 
 from pydantic import validate_call
 
+from bing_webmaster_tools.errors import ApiErrorCode, BingWebmasterError
 from bing_webmaster_tools.models.base import ApiResponse
 from bing_webmaster_tools.models.site_management import Site, SiteMoveSettings, SiteRole
 from bing_webmaster_tools.services.api_client import ApiClient
-from bing_webmaster_tools.utils import ModelLike, to_model_instance
+from bing_webmaster_tools.utils import ModelLike, deprecated, to_model_instance
 
 
 class SiteManagementService:
@@ -47,6 +48,33 @@ class SiteManagementService:
 
         self._logger.info(f"Retrieved {len(api_response.data)} sites")
         return api_response.data
+
+    @validate_call
+    async def check_site_verification(self, site_url: str) -> bool:
+        """Check whether a site in the account is verified, without attempting verification.
+
+        Unlike verify_site(), this is a read: it does not trigger a verification attempt. The method is
+        served by the API but not documented by Microsoft.
+
+        Args:
+            site_url: The URL of the site, as listed by get_sites()
+
+        Returns:
+            bool: True if the site is verified
+
+        Raises:
+            BingWebmasterError: If the check fails. Bing answers an unverified site with error code
+                SITE_NOT_VERIFIED rather than False, so that case is returned as False here.
+
+        """
+        self._logger.debug(f"Checking verification for {site_url}")
+        try:
+            response = await self._client.request("GET", "CheckSiteVerification", params={"siteUrl": site_url})
+        except BingWebmasterError as exc:
+            if exc.error_code == ApiErrorCode.SITE_NOT_VERIFIED:
+                return False
+            raise
+        return bool(response.get("d"))
 
     @validate_call
     async def add_site(self, site_url: str) -> None:
@@ -174,10 +202,11 @@ class SiteManagementService:
         """
         site_role_model = to_model_instance(site_role, SiteRole)
         self._logger.debug(f"Removing site role for {site_role_model.email} on {site_url}")
-        data = {"siteUrl": site_url, "siteRole": site_role_model.model_dump(by_alias=True)}
+        data = {"siteUrl": site_url, "siteRole": site_role_model.to_api_dict()}
         await self._client.request("POST", "RemoveSiteRole", data=data)
         self._logger.info(f"Successfully removed site role for {site_role_model.email}")
 
+    @deprecated("SubmitSiteMove is no longer served by the Bing Webmaster API (HTTP 404 since at least 2026-11).")
     @validate_call
     async def submit_site_move(self, site_url: str, settings: ModelLike[SiteMoveSettings]) -> None:
         """Submit a site move request.
@@ -192,10 +221,11 @@ class SiteManagementService:
         """
         settings_model = to_model_instance(settings, SiteMoveSettings)
         self._logger.debug(f"Submitting site move for {site_url}")
-        data = {"siteUrl": site_url, "settings": settings_model.model_dump(by_alias=True)}
+        data = {"siteUrl": site_url, "settings": settings_model.to_api_dict()}
         await self._client.request("POST", "SubmitSiteMove", data=data)
         self._logger.info(f"Successfully submitted site move for {site_url}")
 
+    @deprecated("GetSiteMoves is no longer served by the Bing Webmaster API (HTTP 404 since at least 2026-11).")
     @validate_call
     async def get_site_moves(self, site_url: str) -> List[SiteMoveSettings]:
         """Get site move information for a specific site.

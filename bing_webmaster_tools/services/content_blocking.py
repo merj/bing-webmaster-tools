@@ -84,7 +84,7 @@ class ContentBlockingService:
             url=blocked_url,
         )
 
-        data = {"siteUrl": site_url, "blockedUrl": blocked_url_data.model_dump(by_alias=True)}
+        data = {"siteUrl": site_url, "blockedUrl": blocked_url_data.to_api_dict()}
 
         await self._client.request("POST", "AddBlockedUrl", data=data)
         self._logger.info(f"Successfully blocked URL: {blocked_url}")
@@ -121,7 +121,7 @@ class ContentBlockingService:
             url=blocked_url,
         )
 
-        data = {"siteUrl": site_url, "blockedUrl": blocked_url_data.model_dump(by_alias=True)}
+        data = {"siteUrl": site_url, "blockedUrl": blocked_url_data.to_api_dict()}
 
         await self._client.request("POST", "RemoveBlockedUrl", data=data)
         self._logger.info(f"Successfully unblocked URL: {blocked_url}")

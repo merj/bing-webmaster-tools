@@ -4,6 +4,10 @@ import pytest
 
 from bing_webmaster_tools.models.keyword_analysis import Keyword, KeywordStats
 
+# The day the cassettes were recorded. Date-ranged requests are built from it so the cassettes keep
+# matching on replay; set it to the new day whenever the cassettes are re-recorded.
+RECORDED_ON = datetime(2024, 11, 14)
+
 
 @pytest.mark.asyncio
 class TestKeywordAnalysisService:
@@ -30,7 +34,7 @@ class TestKeywordAnalysisService:
         test_query = "python"
         country = "us"
         language = "en-US"
-        end_date = datetime.now()
+        end_date = RECORDED_ON
         start_date = end_date - timedelta(days=30)  # Last 30 days
 
         keyword_data = await client.keywords.get_keyword(
@@ -51,7 +55,7 @@ class TestKeywordAnalysisService:
         test_query = "python programming"
         country = "us"
         language = "en-US"
-        end_date = datetime.now()
+        end_date = RECORDED_ON
         start_date = end_date - timedelta(days=30)
 
         related_keywords = await client.keywords.get_related_keywords(
@@ -91,7 +95,7 @@ class TestKeywordAnalysisService:
         test_query = "python"
         country = "us"
         language = "en-US"
-        start_date = datetime.now() + timedelta(days=1)  # Future date
+        start_date = RECORDED_ON + timedelta(days=1)  # Future date
         end_date = start_date + timedelta(days=30)
 
         keyword_data = await client.keywords.get_keyword(

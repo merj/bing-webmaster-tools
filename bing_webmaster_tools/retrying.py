@@ -27,7 +27,8 @@ def get_retry_decorator(config: RetryConfig) -> Callable[[Callable[P, T]], Calla
     """Get a retry decorator with the specified configuration."""
     return tc.retry(
         retry=tc.retry_if_exception(config.should_retry),
-        stop=tc.stop_after_attempt(config.num_retries),
+        # num_retries counts retries, so the first attempt comes on top of them
+        stop=tc.stop_after_attempt(config.num_retries + 1),
         wait=tc.wait_exponential(
             min=config.min_wait,
             max=config.max_wait,
@@ -45,8 +46,7 @@ def _log_retry_error_attempt(retry_state: tc.RetryCallState, num_retries: int) -
 
     exc = retry_state.outcome.exception()
     logger.warning(f"Error: {exc.__class__.__name__}: {exc}")
-    if retry_state.attempt_number < num_retries:
-        current_attempt, num_attempts = retry_state.attempt_number + 1, num_retries
+    if retry_state.attempt_number <= num_retries:
         logger.warning(
-            f"Retrying (attempt {current_attempt}/{num_attempts}), " f"waiting for {retry_state.upcoming_sleep}s"
+            f"Retrying (retry {retry_state.attempt_number}/{num_retries}), waiting for {retry_state.upcoming_sleep}s"
         )
