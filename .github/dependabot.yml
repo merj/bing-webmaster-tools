@@ -13,12 +13,10 @@ updates:
       - "dependencies"
       - "security"
 
-    # Assign reviewers
-    reviewers:
-      - "org/maintainers"
-
-    # Configure version updates
-    versioning-strategy: "widen"
+    # Dependabot no longer accepts "widen" here. With "auto", it treats this
+    # package as a library (the description in pyproject.toml matches the PyPI
+    # summary) and widens version ranges instead of raising their lower bounds.
+    versioning-strategy: "auto"
 
     # Allow up to 10 open pull requests at a time
     open-pull-requests-limit: 10
