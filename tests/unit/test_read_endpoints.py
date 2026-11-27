@@ -10,6 +10,7 @@ from typing import Any, Callable, Dict, List, NamedTuple, Optional
 
 import pytest
 
+from bing_webmaster_tools.errors import ApiErrorCode, BingWebmasterError
 from bing_webmaster_tools.models.base import BingModel
 from bing_webmaster_tools.models.crawling import UrlWithCrawlIssues
 
@@ -566,3 +567,17 @@ async def test_null_payload_means_no_data(services, api):
     """Bing sends {"d": null}, as well as an empty list, when it has nothing to return."""
     api.responses.append({"d": None})
     assert await services.traffic.get_query_stats(SITE) == []
+
+
+async def test_check_site_verification(services, api):
+    api.returns(True)
+    assert await services.sites.check_site_verification(SITE) is True
+    assert (api.last.method, api.last.endpoint, api.last.params) == ("GET", "CheckSiteVerification", {"siteUrl": SITE})
+
+
+async def test_check_site_verification_unverified_is_false(services, api):
+    async def unverified(*args: Any, **kwargs: Any) -> Dict[str, Any]:
+        raise BingWebmasterError("ERROR!!! SiteNotVerified", status_code=400, error_code=ApiErrorCode.SITE_NOT_VERIFIED)
+
+    api.request = unverified  # type: ignore[method-assign]
+    assert await services.sites.check_site_verification(SITE) is False

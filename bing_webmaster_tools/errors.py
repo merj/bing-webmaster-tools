@@ -7,6 +7,7 @@ class ApiErrorCode(IntEnum):
 
     ALREADY_EXISTS = 12
     DEPRECATED = 16
+    SITE_NOT_VERIFIED = 19  # undocumented; sent for a site in the account that isn't verified
     INTERNAL_ERROR = 1
     INVALID_API_KEY = 3
     INVALID_PARAMETER = 8
