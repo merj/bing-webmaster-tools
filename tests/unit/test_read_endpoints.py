@@ -537,3 +537,9 @@ def test_weekly_dates_differ_by_seven_days():
     from bing_webmaster_tools.utils import parse_timestamp_from_api
 
     assert parse_timestamp_from_api(DAY) - parse_timestamp_from_api(WEEK) == timedelta(days=2)
+
+
+async def test_retired_site_moves_warn(services, api):
+    api.returns([])
+    with pytest.warns(DeprecationWarning, match="no longer served"):
+        await services.sites.get_site_moves(SITE)

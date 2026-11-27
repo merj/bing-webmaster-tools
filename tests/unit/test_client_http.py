@@ -179,3 +179,12 @@ async def test_api_key_is_not_logged(bing, caplog):
     ours = [r.getMessage() for r in caplog.records if r.name.startswith("bing_webmaster_tools")]
     assert ours, "expected the client to log the request at DEBUG"
     assert not any("secret-key" in line for line in ours)
+
+
+async def test_retired_method_gets_a_clear_error(bing):
+    fake, base = bing
+    fake.then(status=404, body="")
+    async with client_for(base, max_retries=0) as client:
+        with pytest.raises(BingWebmasterError, match="no method 'GetSiteMoves'.*retired") as exc:
+            await client.request("GET", "GetSiteMoves", params={"siteUrl": "https://a.test/"})
+    assert exc.value.status_code == 404

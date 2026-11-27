@@ -6,7 +6,7 @@ from pydantic import validate_call
 from bing_webmaster_tools.models.base import ApiResponse
 from bing_webmaster_tools.models.site_management import Site, SiteMoveSettings, SiteRole
 from bing_webmaster_tools.services.api_client import ApiClient
-from bing_webmaster_tools.utils import ModelLike, to_model_instance
+from bing_webmaster_tools.utils import ModelLike, deprecated, to_model_instance
 
 
 class SiteManagementService:
@@ -178,6 +178,7 @@ class SiteManagementService:
         await self._client.request("POST", "RemoveSiteRole", data=data)
         self._logger.info(f"Successfully removed site role for {site_role_model.email}")
 
+    @deprecated("SubmitSiteMove is no longer served by the Bing Webmaster API (HTTP 404 since at least 2026-11).")
     @validate_call
     async def submit_site_move(self, site_url: str, settings: ModelLike[SiteMoveSettings]) -> None:
         """Submit a site move request.
@@ -196,6 +197,7 @@ class SiteManagementService:
         await self._client.request("POST", "SubmitSiteMove", data=data)
         self._logger.info(f"Successfully submitted site move for {site_url}")
 
+    @deprecated("GetSiteMoves is no longer served by the Bing Webmaster API (HTTP 404 since at least 2026-11).")
     @validate_call
     async def get_site_moves(self, site_url: str) -> List[SiteMoveSettings]:
         """Get site move information for a specific site.
