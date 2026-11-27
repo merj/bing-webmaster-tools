@@ -31,10 +31,12 @@ class CrawlStats(BingModel):
     code_302: int
     code_4xx: int
     code_5xx: int
-    contains_malware: int
+    connection_timeout: int
+    contains_malware: int  # Microsoft documents it as no longer available
     crawl_errors: int
     crawled_pages: int
     date: datetime
+    dns_failures: int
     in_index: int
     in_links: int
 

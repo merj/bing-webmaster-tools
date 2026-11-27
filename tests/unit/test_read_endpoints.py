@@ -174,15 +174,17 @@ CASES = {
                 "Code302": 4,
                 "Code4xx": 963,
                 "Code5xx": 4,
+                "ConnectionTimeout": 2,
                 "ContainsMalware": 0,
                 "CrawlErrors": 1064,
                 "CrawledPages": 13109,
                 "Date": DAY,
+                "DnsFailures": 1,
                 "InIndex": 57200,
                 "InLinks": 41595,
             }
         ],
-        first(lambda r: (r.crawled_pages, r.crawl_errors) == (13109, 1064) or pytest.fail(r)),
+        first(lambda r: (r.connection_timeout, r.dns_failures, r.crawled_pages) == (2, 1, 13109) or pytest.fail(r)),
     ),
     "get_crawl_issues": Case(
         lambda c: c.crawling.get_crawl_issues(SITE),
@@ -352,12 +354,13 @@ CASES = {
             {
                 "__type": "BlockedUrl:#Microsoft.Bing.Webmaster.Api",
                 "Date": DAY,
+                "DaysToExpire": 78,
                 "EntityType": 0,
                 "RequestType": 0,
                 "Url": PAGE,
             }
         ],
-        first(lambda r: r.url == PAGE or pytest.fail(r)),
+        first(lambda r: r.days_to_expire == 78 or pytest.fail(r)),
     ),
     "get_active_page_preview_blocks": Case(
         lambda c: c.blocking.get_active_page_preview_blocks(SITE),
@@ -366,11 +369,17 @@ CASES = {
         [
             {
                 "__type": "PagePreview:#Microsoft.Bing.Webmaster.Shared.DataContracts",
+                "Action": 0,
                 "BlockReason": 4,
+                "Reason": "4",
+                "RefreshReason": 0,
+                "SiteUrl": SITE,
+                "SubmitDate": DAY,
                 "Url": PAGE,
+                "UserId": "0123456789ABCDEF",
             }
         ],
-        first(lambda r: r.block_reason == 4 or pytest.fail(r)),
+        first(lambda r: (r.block_reason, r.submit_date.timestamp()) == (4, DAY_TS) or pytest.fail(r)),
     ),
     # regional, sites, url parameters
     "get_country_region_settings": Case(

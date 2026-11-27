@@ -2,6 +2,7 @@
 
 import pytest
 
+from bing_webmaster_tools.models.content_blocking import BlockedUrl
 from bing_webmaster_tools.models.crawling import CrawlSettings
 from bing_webmaster_tools.models.traffic_analysis import RankAndTrafficStats
 
@@ -43,3 +44,20 @@ def test_request_bodies_leave_out_undeclared_fields():
 async def test_services_send_request_models_without_undeclared_fields(services, api):
     await services.crawling.save_crawl_settings(SITE, {**CRAWL_SETTINGS, "SomethingNew": 1})
     assert api.last.data == {"siteUrl": SITE, "crawlSettings": CRAWL_SETTINGS}
+
+
+def test_request_bodies_leave_out_response_only_fields():
+    """GetBlockedUrls sends DaysToExpire; AddBlockedUrl and RemoveBlockedUrl don't take it."""
+    blocked = BlockedUrl.model_validate(
+        {
+            "__type": "BlockedUrl:#Microsoft.Bing.Webmaster.Api",
+            "Date": net_date(1795305600000, None),
+            "DaysToExpire": 78,
+            "EntityType": 0,
+            "RequestType": 0,
+            "Url": "https://www.example.com/helmets/",
+        }
+    )
+    assert blocked.days_to_expire == 78
+    assert "DaysToExpire" not in blocked.to_api_dict()
+    assert blocked.to_api_dict()["__type"] == "BlockedUrl:#Microsoft.Bing.Webmaster.Api"
