@@ -42,7 +42,9 @@ class Settings(BaseSettings):
         description="Base URL for the Bing Webmaster API",
     )
     timeout: int = Field(30, ge=1, le=300, description="Request timeout in seconds")
-    max_retries: int = Field(3, ge=0, le=10, description="Maximum number of retry attempts for failed requests")
+    max_retries: int = Field(
+        3, ge=0, le=10, description="Retries for a failed request, after the first attempt (3 means up to 4 requests)"
+    )
     rate_limit_calls: Optional[int] = Field(5, ge=1, description="Number of API calls allowed per rate limit period")
     rate_limit_period: Optional[int] = Field(1, ge=1, description="Rate limit period in seconds")
     disable_destructive_operations: bool = Field(False, description="Whether to disable operations that modify data")

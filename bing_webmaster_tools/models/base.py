@@ -1,7 +1,7 @@
 from datetime import datetime
-from typing import Any, ClassVar, Dict, Generic, List, Literal, Type, TypeVar, Union, overload
+from typing import Any, ClassVar, Dict, Generic, List, Literal, Optional, Type, TypeVar, Union, overload
 
-from pydantic import BaseModel, ConfigDict, field_validator
+from pydantic import BaseModel, ConfigDict, Field, field_validator
 
 from bing_webmaster_tools.utils import parse_timestamp_from_api
 
@@ -14,12 +14,25 @@ def _snake_to_camel(string: str) -> str:
 class BingModel(BaseModel):
     # Class variable to specify which fields should be treated as dates
     date_fields: ClassVar[set[str]] = {"date"}
+    # Fields Bing sends in responses but doesn't accept back when the model is used as request input
+    response_only_fields: ClassVar[set[str]] = set()
 
     model_config = ConfigDict(
         alias_generator=_snake_to_camel,
         validate_assignment=True,
         populate_by_name=True,
+        # Keep fields Bing sends that a model doesn't declare yet (readable from model_extra), so new
+        # API fields are not silently lost; tests/unit/test_read_endpoints.py fails when one appears.
+        extra="allow",
     )
+
+    # WCF's type hint, e.g. "QueryStats:#Microsoft.Bing.Webmaster.Api"; models that send it declare it themselves
+    type: Optional[str] = Field(None, alias="__type")
+
+    def to_api_dict(self) -> Dict[str, Any]:
+        """Serialise for a request body: API field names, without response-only or undeclared fields."""
+        exclude = set(self.response_only_fields) | set(self.model_extra or {})
+        return self.model_dump(by_alias=True, exclude=exclude)
 
     @field_validator("*", mode="before")
     @classmethod
@@ -77,7 +90,9 @@ class ApiResponse(BaseModel, Generic[T]):
             ApiResponse instance with parsed data
 
         """
-        api_data = response.get("d", [] if is_list else {})
+        api_data = response.get("d")
+        if api_data is None:  # Bing sends {"d": null} as well as an empty list when there is nothing
+            api_data = [] if is_list else {}
 
         parsed_data: Union[TItem, List[TItem]]
         if is_list:

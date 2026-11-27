@@ -221,17 +221,14 @@ class BingWebmasterClient:
         url = f"{self.settings.base_url}/{endpoint}"
 
         request_params = self._convert_params(params)
-        request_params["apikey"] = self.settings.get_api_key()
-
-        # Convert params to API format
-        params = params.copy() if params is not None else {}
-        params["apikey"] = self.settings.get_api_key()
 
         data_json: Optional[str] = None
         if data is not None:
             data_json = json.dumps(data, cls=DateTimeEncoder)
 
+        # Logged before the API key is added, so the key never reaches the logs
         logger.debug(f"Sending request to: {url}, method: {method}, params: {request_params}")
+        request_params["apikey"] = self.settings.get_api_key()
 
         @self._retry_decorator
         async def _request() -> Dict[str, Any]:
@@ -257,7 +254,7 @@ class BingWebmasterClient:
                             ) from exc
 
                     # Handle error responses
-                    self._handle_error_response(content, response.status)
+                    self._handle_error_response(content, response.status, endpoint)
 
             except aiohttp.ClientError as exc:
                 raise BingWebmasterError(f"Network error occurred: {exc}") from exc
@@ -332,7 +329,7 @@ class BingWebmasterClient:
         return False
 
     @staticmethod
-    def _handle_error_response(content: str, status_code: int) -> NoReturn:
+    def _handle_error_response(content: str, status_code: int, endpoint: str = "") -> NoReturn:
         """Parse error response and raise appropriate exception.
 
         Attempts to parse the error response as JSON and extract structured error
@@ -341,6 +338,7 @@ class BingWebmasterClient:
         Args:
             content: Response content
             status_code: HTTP status code
+            endpoint: The API method called, for the error message
 
         Raises:
             AuthenticationError: For authentication failures
@@ -351,6 +349,14 @@ class BingWebmasterClient:
             This method always raises an exception, hence the NoReturn type hint
 
         """
+        if status_code == 404 and not content.strip():
+            # Bing answers a method it no longer serves (or never had) with an empty 404
+            raise BingWebmasterError(
+                message=f"Bing Webmaster API has no method {endpoint!r} (HTTP 404): it may have been retired",
+                status_code=status_code,
+                error_code=ApiErrorCode.NOT_FOUND,
+            )
+
         try:
             error_data = json.loads(content)
         except json.JSONDecodeError as exc:

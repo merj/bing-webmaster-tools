@@ -68,7 +68,7 @@ class RegionalSettingsService:
         self._logger.debug(f"Adding country/region settings for {site_url}")
         data = {
             "siteUrl": site_url,
-            "settings": settings_model.model_dump(by_alias=True),
+            "settings": settings_model.to_api_dict(),
         }
 
         await self._client.request("POST", "AddCountryRegionSettings", data=data)
@@ -88,7 +88,7 @@ class RegionalSettingsService:
         """
         settings_model = to_model_instance(settings, CountryRegionSettings)
         self._logger.debug(f"Removing country/region settings for {site_url}")
-        data = {"siteUrl": site_url, "settings": settings_model.model_dump(by_alias=True)}
+        data = {"siteUrl": site_url, "settings": settings_model.to_api_dict()}
 
         await self._client.request("POST", "RemoveCountryRegionSettings", data=data)
         self._logger.info("Successfully removed country/region settings")
