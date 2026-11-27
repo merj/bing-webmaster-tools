@@ -118,7 +118,7 @@ settings = Settings(
     base_url="https://ssl.bing.com/webmaster/api.svc/json",
     timeout=30,  # Request timeout in seconds
     max_retries=3,  # Retries after the first attempt (so up to 4 requests)
-    rate_limit_calls=10,  # Number of calls allowed per period
+    rate_limit_calls=5,  # Number of calls allowed per period
     rate_limit_period=1,  # Rate limit period in seconds
     disable_destructive_operations=False,
     # Disable destructive operations, if you want to prevent accidental deletions etc.
@@ -187,3 +187,20 @@ pip install poetry
 # Install dependencies and setup development environment
 poetry install
 ```
+
+### Running the tests
+The tests run offline, with no API key:
+
+```bash
+poetry run pytest --block-network
+```
+
+- `tests/unit` calls every read method against a fake transport and the HTTP layer against a local
+  test server. `test_read_endpoints.py` and `test_recorded_contracts.py` fail when a model doesn't
+  declare a field Bing sends, so add the field to the model when they do.
+- `tests/integration` replays the recorded responses (cassettes) in `tests/integration/cassettes`.
+
+To record new cassettes, set `BING_WEBMASTER_API_KEY` and `BING_WEBMASTER_TEST_SITE` (in the
+environment or a `.env` file) and run the integration tests with `--record-mode=rewrite`. Cassettes
+store the test site as `example.test` and never store the key, but they keep search queries and URLs
+from the account, so record against a site whose data can be public.
