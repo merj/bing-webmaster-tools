@@ -3,7 +3,7 @@ import functools
 import logging
 import re
 import warnings
-from datetime import datetime
+from datetime import datetime, timedelta, timezone
 from time import time
 from typing import Any, Awaitable, Callable, Optional, Type, TypeVar, Union
 
@@ -39,19 +39,44 @@ class RateLimiter:
             self.tokens -= 1
 
 
+_EPOCH = datetime(1970, 1, 1, tzinfo=timezone.utc)
+
+
 def parse_timestamp_from_api(value: Any) -> datetime:
-    """Parse a timestamp from a .NET JSON date string."""
+    """Parse a .NET JSON date string, such as ``/Date(1728975600000-0700)/``, into an aware datetime.
+
+    The number is milliseconds since the Unix epoch, in UTC. The optional offset is the time zone the
+    value was written in, and the result keeps it, so ``.date()`` gives the day Bing means. Without an
+    offset the result is in UTC. Bing currently dates daily figures at midnight UTC with no offset;
+    older responses used midnight Pacific time (``-0700`` or ``-0800``). The result never depends on
+    the time zone of the machine running the code.
+    """
     if not isinstance(value, str):
         raise ValueError(f"Expected {value} to be string")
-    match = re.search(r"/Date\((-?\d+)(?:[+-]\d{4})?\)/", value)
-    if match:
-        timestamp = int(match.group(1)) / 1000
-        return datetime.fromtimestamp(timestamp)
-    raise ValueError(f"Unable to parse date: {value}")
+    match = re.search(r"/Date\((-?\d+)(?:([+-])(\d{2})(\d{2}))?\)/", value)
+    if not match:
+        raise ValueError(f"Unable to parse date: {value}")
+    # Epoch arithmetic rather than fromtimestamp(), which fails on Windows for dates before 1970,
+    # and Bing sends .NET's DateTime.MinValue (/Date(-62135596800000)/) for "never".
+    instant = _EPOCH + timedelta(milliseconds=int(match.group(1)))
+    if match.group(2) is None:
+        return instant
+    sign = 1 if match.group(2) == "+" else -1
+    offset = timedelta(hours=int(match.group(3)), minutes=int(match.group(4)))
+    try:
+        return instant.astimezone(timezone(sign * offset))
+    except OverflowError:
+        # DateTime.MinValue with a negative offset falls before year 1; keep it in UTC
+        return instant
 
 
 def format_date_for_api(dt: datetime) -> str:
-    """Format datetime in .NET JSON date format."""
+    """Format a datetime in .NET JSON date format (UTC milliseconds since the epoch).
+
+    A naive datetime is taken as UTC, not as the local time of the machine running the code.
+    """
+    if dt.tzinfo is None:
+        dt = dt.replace(tzinfo=timezone.utc)
     return f"/Date({int(dt.timestamp() * 1000)}+0000)/"
 
 
