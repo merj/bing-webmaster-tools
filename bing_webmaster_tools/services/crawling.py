@@ -68,7 +68,7 @@ class CrawlingService:
         self._logger.debug(f"Saving crawl settings for {site_url}")
         data = {
             "siteUrl": site_url,
-            "crawlSettings": crawl_settings_model.model_dump(by_alias=True),
+            "crawlSettings": crawl_settings_model.to_api_dict(),
         }
         await self._client.request("POST", "SaveCrawlSettings", data=data)
 

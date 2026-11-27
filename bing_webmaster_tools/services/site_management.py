@@ -174,7 +174,7 @@ class SiteManagementService:
         """
         site_role_model = to_model_instance(site_role, SiteRole)
         self._logger.debug(f"Removing site role for {site_role_model.email} on {site_url}")
-        data = {"siteUrl": site_url, "siteRole": site_role_model.model_dump(by_alias=True)}
+        data = {"siteUrl": site_url, "siteRole": site_role_model.to_api_dict()}
         await self._client.request("POST", "RemoveSiteRole", data=data)
         self._logger.info(f"Successfully removed site role for {site_role_model.email}")
 
@@ -193,7 +193,7 @@ class SiteManagementService:
         """
         settings_model = to_model_instance(settings, SiteMoveSettings)
         self._logger.debug(f"Submitting site move for {site_url}")
-        data = {"siteUrl": site_url, "settings": settings_model.model_dump(by_alias=True)}
+        data = {"siteUrl": site_url, "settings": settings_model.to_api_dict()}
         await self._client.request("POST", "SubmitSiteMove", data=data)
         self._logger.info(f"Successfully submitted site move for {site_url}")
 

@@ -91,7 +91,7 @@ class ContentManagementService:
             "siteUrl": site_url,
             "url": url,
             "page": page,
-            "filterProperties": filter_properties.model_dump(by_alias=True),
+            "filterProperties": filter_properties.to_api_dict(),
         }
         self._logger.debug(f"Retrieving child URL info for {url} on {site_url}")
         response = await self._client.request("POST", "GetChildrenUrlInfo", data=data)
