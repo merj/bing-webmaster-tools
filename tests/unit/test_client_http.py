@@ -14,7 +14,7 @@ import pytest_asyncio
 from aiohttp import web
 from aiohttp.test_utils import TestServer
 
-from bing_webmaster_tools import AuthenticationError, BingWebmasterClient, BingWebmasterError, Settings
+from bing_webmaster_tools import AuthenticationError, BingWebmasterClient, BingWebmasterError, RateLimitError, Settings
 
 pytestmark = [
     pytest.mark.unit,
@@ -149,3 +149,22 @@ async def test_unknown_error_codes_keep_the_message(bing):
         with pytest.raises(BingWebmasterError, match="Something new") as exc:
             await client.request("GET", "GetQueryStats")
     assert exc.value.error_code is None
+
+
+async def test_throttling_is_retried_then_raised(bing):
+    fake, base = bing
+    fake.always(status=400, payload={"ErrorCode": 4, "Message": "ThrottleUser"})
+    async with client_for(base, max_retries=1) as client:
+        with pytest.raises(RateLimitError):
+            await client.request("GET", "GetQueryStats")
+    # max_retries=1: the first attempt plus one retry
+    assert len(fake.requests) == 2
+
+
+async def test_max_retries_zero_means_a_single_attempt(bing):
+    fake, base = bing
+    fake.always(status=500, body="oops")
+    async with client_for(base, max_retries=0) as client:
+        with pytest.raises(BingWebmasterError):
+            await client.request("GET", "GetQueryStats")
+    assert len(fake.requests) == 1

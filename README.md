@@ -117,7 +117,7 @@ settings = Settings(
     # Optional with defaults
     base_url="https://ssl.bing.com/webmaster/api.svc/json",
     timeout=30,  # Request timeout in seconds
-    max_retries=3,  # Maximum number of retry attempts
+    max_retries=3,  # Retries after the first attempt (so up to 4 requests)
     rate_limit_calls=10,  # Number of calls allowed per period
     rate_limit_period=1,  # Rate limit period in seconds
     disable_destructive_operations=False,
