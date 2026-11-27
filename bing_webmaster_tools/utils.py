@@ -71,7 +71,12 @@ def parse_timestamp_from_api(value: Any) -> datetime:
 
 
 def format_date_for_api(dt: datetime) -> str:
-    """Format datetime in .NET JSON date format."""
+    """Format a datetime in .NET JSON date format (UTC milliseconds since the epoch).
+
+    A naive datetime is taken as UTC, not as the local time of the machine running the code.
+    """
+    if dt.tzinfo is None:
+        dt = dt.replace(tzinfo=timezone.utc)
     return f"/Date({int(dt.timestamp() * 1000)}+0000)/"
 
 

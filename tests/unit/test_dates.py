@@ -7,7 +7,7 @@ from datetime import datetime, timedelta, timezone
 
 import pytest
 
-from bing_webmaster_tools.utils import parse_timestamp_from_api
+from bing_webmaster_tools.utils import format_date_for_api, parse_timestamp_from_api
 
 pytestmark = pytest.mark.unit
 
@@ -72,3 +72,26 @@ def test_net_min_value_means_never_and_parses_on_every_platform(raw):
 def test_parse_rejects_other_formats(raw):
     with pytest.raises(ValueError):
         parse_timestamp_from_api(raw)
+
+
+def test_format_round_trips_an_aware_datetime():
+    aware = datetime(2024, 10, 15, tzinfo=PDT)
+    assert format_date_for_api(aware) == "/Date(1728975600000+0000)/"
+    assert parse_timestamp_from_api(format_date_for_api(aware)) == aware
+
+
+@pytest.mark.parametrize("machine_tz", ["UTC0", "PST8PDT", "HST10", "JST-9"])
+def test_format_takes_a_naive_datetime_as_utc_whatever_the_machine_time_zone(machine_tz):
+    """The old formatter read a naive datetime as the machine's local time, shifting it by the offset."""
+    code = (
+        "from datetime import datetime; from bing_webmaster_tools.utils import format_date_for_api as f; "
+        "print(f(datetime(2024, 10, 15, 7)))"
+    )
+    result = subprocess.run(
+        [sys.executable, "-c", code],
+        env={**os.environ, "TZ": machine_tz},
+        capture_output=True,
+        text=True,
+        check=True,
+    )
+    assert result.stdout.strip() == "/Date(1728975600000+0000)/"
