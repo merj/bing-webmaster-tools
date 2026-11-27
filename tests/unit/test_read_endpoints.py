@@ -193,11 +193,19 @@ CASES = {
                 "__type": "UrlWithCrawlIssues:#Microsoft.Bing.Webmaster.Api",
                 "HttpCode": 404,
                 "InLinks": 3,
-                "Issues": 4,
+                "Issues": 20,  # CODE_4XX | BLOCKED_BY_ROBOTS_TXT
                 "Url": PAGE,
             }
         ],
-        first(lambda r: r.issues == UrlWithCrawlIssues.CrawlIssues.CODE_4XX or pytest.fail(r)),
+        first(
+            lambda r: (
+                (
+                    UrlWithCrawlIssues.CrawlIssues.CODE_4XX in r.issues
+                    and UrlWithCrawlIssues.CrawlIssues.BLOCKED_BY_ROBOTS_TXT in r.issues
+                )
+                or pytest.fail(r)
+            )
+        ),
     ),
     "get_crawl_settings": Case(
         lambda c: c.crawling.get_crawl_settings(SITE),

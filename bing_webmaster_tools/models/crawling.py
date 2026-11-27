@@ -1,5 +1,5 @@
 from datetime import datetime
-from enum import IntEnum
+from enum import IntFlag
 from typing import List
 
 from pydantic import Field, field_validator
@@ -46,7 +46,8 @@ class UrlWithCrawlIssues(BingModel):
     url: str
     in_links: int
 
-    class CrawlIssues(IntEnum):
+    # Bit flags: a URL with several issues sends their sum (e.g. 20 = CODE_4XX | BLOCKED_BY_ROBOTS_TXT)
+    class CrawlIssues(IntFlag):
         BLOCKED_BY_ROBOTS_TXT = 16
         CODE_301 = 1
         CODE_302 = 2
