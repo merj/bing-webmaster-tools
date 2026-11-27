@@ -221,17 +221,14 @@ class BingWebmasterClient:
         url = f"{self.settings.base_url}/{endpoint}"
 
         request_params = self._convert_params(params)
-        request_params["apikey"] = self.settings.get_api_key()
-
-        # Convert params to API format
-        params = params.copy() if params is not None else {}
-        params["apikey"] = self.settings.get_api_key()
 
         data_json: Optional[str] = None
         if data is not None:
             data_json = json.dumps(data, cls=DateTimeEncoder)
 
+        # Logged before the API key is added, so the key never reaches the logs
         logger.debug(f"Sending request to: {url}, method: {method}, params: {request_params}")
+        request_params["apikey"] = self.settings.get_api_key()
 
         @self._retry_decorator
         async def _request() -> Dict[str, Any]:

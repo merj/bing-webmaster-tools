@@ -168,3 +168,14 @@ async def test_max_retries_zero_means_a_single_attempt(bing):
         with pytest.raises(BingWebmasterError):
             await client.request("GET", "GetQueryStats")
     assert len(fake.requests) == 1
+
+
+async def test_api_key_is_not_logged(bing, caplog):
+    fake, base = bing
+    caplog.set_level("DEBUG")
+    fake.then(payload={"d": []})
+    async with client_for(base) as client:
+        await client.request("GET", "GetQueryStats", params={"siteUrl": "https://a.test/"})
+    ours = [r.getMessage() for r in caplog.records if r.name.startswith("bing_webmaster_tools")]
+    assert ours, "expected the client to log the request at DEBUG"
+    assert not any("secret-key" in line for line in ours)
