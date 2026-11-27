@@ -77,7 +77,9 @@ class ApiResponse(BaseModel, Generic[T]):
             ApiResponse instance with parsed data
 
         """
-        api_data = response.get("d", [] if is_list else {})
+        api_data = response.get("d")
+        if api_data is None:  # Bing sends {"d": null} as well as an empty list when there is nothing
+            api_data = [] if is_list else {}
 
         parsed_data: Union[TItem, List[TItem]]
         if is_list:

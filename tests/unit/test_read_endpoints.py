@@ -543,3 +543,9 @@ async def test_retired_site_moves_warn(services, api):
     api.returns([])
     with pytest.warns(DeprecationWarning, match="no longer served"):
         await services.sites.get_site_moves(SITE)
+
+
+async def test_null_payload_means_no_data(services, api):
+    """Bing sends {"d": null}, as well as an empty list, when it has nothing to return."""
+    api.responses.append({"d": None})
+    assert await services.traffic.get_query_stats(SITE) == []
