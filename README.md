@@ -165,6 +165,14 @@ The client includes built-in rate limiting:
 
 To turn off rate limiting, simply set the rate limit configuration variables to `None`.
 
+### Dates
+Dates are returned as timezone-aware datetimes in the offset Bing sent, or in UTC when it sends none.
+Bing currently dates daily and weekly figures at midnight UTC (older responses used midnight Pacific
+time), so `.date()` gives the day Bing means on any machine. Compare them with aware datetimes:
+ordering a naive and an aware datetime raises `TypeError`, and `==` between them is always `False`.
+
+Naive datetimes you pass in request bodies are sent as UTC.
+
 ## Services
 
 The client provides access to different API functionalities through specialized services.
